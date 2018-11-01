@@ -9,6 +9,7 @@ class DatabaseSeeder extends Seeder
     {
       $this->call([
         RolesTableSeeder::class,
+        DiscountSeeder::class,
         UserTableSeeder::class
       ]);
     }

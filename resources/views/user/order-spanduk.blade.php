@@ -79,6 +79,9 @@
                                                 <li>
                                                   2. Biaya desain spanduk <b>{{ Config::get('price.spanduk') }}</b>
                                                 </li>
+                                                <li>
+                                                  3. Pengerjaan paling lama adalah {{ Config::get('revision.spanduk') }}
+                                                </li>
                                             </div>
                                             <div class="billing-details pr-10" style="margin-top: 15%">
                                                 <h6 class="widget-title border-left mb-20">Apa yang Akan Anda Dapatkan</h6>
@@ -96,7 +99,7 @@
                                                 <h6 class="widget-title border-left mb-20">Media Pengiriman Desain</h6>
 
                                                 <input type="text" disabled value="{{ Auth::user()->email }}">
-                                                <input type="text" class="custom-text" value="{{ Auth::user()->phone }}" name="phone" placeholder="(Opsional) No HP atau WA">
+                                                <input type="text" class="custom-text" value="{{ Auth::user()->phone }}" name="phone" placeholder="No HP atau WA">
                                                 <input type="text" class="custom-text" value="{{ Auth::user()->sosmed }}" name="sosmed" placeholder="(Opsional)  LINE atau Telegram">
 
                                             </div>

@@ -11,5 +11,12 @@ Note: This is the file where you can add your custom styles to change the look o
 ---------------------------------------------------------------*/
 
 /* ----------------------------------------------------
-	You can put your custom css code here: 
+	You can put your custom css code here:
 -------------------------------------------------------*/
+p.td-title-2{
+  text-align: right;
+}
+.order-payment{
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 5px;
+}

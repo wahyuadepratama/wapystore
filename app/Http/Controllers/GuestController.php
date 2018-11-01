@@ -17,8 +17,9 @@ class GuestController extends Controller
       $user = User::where('email_confirmation',$token)->first();
       if($user){
         $user->verified = true;
+        $user->discount_id = 2;
         $user->save();
       }
-      return redirect("/home");
+      return view("guest/verified");
     }
 }

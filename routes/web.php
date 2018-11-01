@@ -6,16 +6,22 @@ Auth::routes();
 Route::get('confirmation/{token}','GuestController@confirmation');
 
 Route::get('home', 'HomeController@index');
-Route::get('order/spanduk', 'UserController@orderSpanduk');
+
+Route::get('job','DesignerController@indexJob');
+Route::get('job/on-progress','DesignerController@indexJobProgress');
+
+Route::get('order/spanduk', 'OrderController@orderSpanduk');
 Route::post('order/spanduk/store', 'OrderController@storeSpanduk');
 
-Route::get('order/poster', 'UserController@orderPoster');
-Route::get('order/banner', 'UserController@orderBanner');
-Route::get('order/pamflet', 'UserController@orderPamflet');
-Route::get('order/id-card', 'UserController@orderIdCard');
-Route::get('order/logo', 'UserController@orderLogo');
-Route::get('order/cv', 'UserController@orderCv');
-Route::get('order/book-cover', 'UserController@orderBookCover');
+Route::get('order/poster', 'OrderController@orderPoster');
+Route::get('order/banner', 'OrderController@orderBanner');
+Route::get('order/pamflet', 'OrderController@orderPamflet');
+Route::get('order/id-card', 'OrderController@orderIdCard');
+Route::get('order/logo', 'OrderController@orderLogo');
+Route::get('order/cv', 'OrderController@orderCv');
+Route::get('order/book-cover', 'OrderController@orderBookCover');
+
+Route::get('order/destroy/{token}','OrderController@destroyOrder');
 
 // ------------- ADMIN ROUTE ----------------//
 Route::get('root', 'AdminController@index');
@@ -27,10 +33,11 @@ Route::post('root/user-management/restore/{id}','AdminController@restoreUser');
 Route::post('root/user-management/update/{id}','AdminController@updateUser');
 Route::post('root/user-management/reset-password/{id}','AdminController@resetPasswordUser');
 
-Route::get('root/order-type','AdminController@indexOrderType');
-Route::get('root/order-type/update','AdminController@indexUpdateOrderType');
-Route::post('root/order-type/create/store','AdminController@storeCreateOrderType');
-Route::post('root/order-type/term/create/store/{id}','AdminController@storeTerm');
-Route::post('root/order-type/update/{id}','AdminController@storeOrderType');
-Route::post('root/order-type/term/update/store/{id}','AdminController@storeUpdateTerm');
+Route::post('root/discount-management/store','AdminController@storeDiscount');
+Route::get('root/discount-management','AdminController@indexDiscount');
 // ------------- END OF ADMIN ROUTE ----------------//
+
+// Route::get('tes',function ()
+// {
+//   return view('mail/confirmation');
+// });

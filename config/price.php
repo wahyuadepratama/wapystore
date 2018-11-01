@@ -8,6 +8,5 @@ return [
     'id-card' => 60000,
     'logo' => 60000,
     'cv' => 60000,
-    'book-cover' => 60000
-
+    'book-cover' => 60000,
 ];

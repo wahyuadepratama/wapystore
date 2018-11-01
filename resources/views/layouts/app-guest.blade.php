@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Subash || Home-2</title>
+    <title>WapyDesign</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{URL::asset('img/icon/favicon.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{URL::asset('storage/logo/wapydesign.png')}}">
 
     <!-- All CSS Files -->
     <!-- Bootstrap fremwork main css -->

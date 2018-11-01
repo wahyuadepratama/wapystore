@@ -30,6 +30,11 @@
 
   <div id="page-content" class="page-wrapper">
 
+    @if ($errors->has('email'))
+      <div class="alert alert-danger" role="alert" style="margin-left:7%;margin-right:7%">
+      <center><a href="#" class="alert-link">{{ $errors->first('email') }}</a></center>
+      </div><br>
+    @endif
       <!-- LOGIN SECTION START -->
       <div class="login-section mb-80">
           <div class="container">
@@ -41,7 +46,7 @@
                                 <p>If you have an account, Please log in.</p>
                                 <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                   {{ csrf_field() }}
-                                  <input type="text" name="identity" value="{{ old('name') }}" required autofocus placeholder="E-Mail">
+                                  <input type="text" name="identity" value="{{ old('email') }}" required autofocus placeholder="E-Mail or Username">
                                   <input type="password" name="password" placeholder="Password" required>
                                   @if ($errors->has('name'))
                                       <span class="help-block alert alert-danger">
@@ -68,11 +73,6 @@
                                   </div>
                                   <input type="password"  placeholder="Password" name="password" required>
                                   <input type="password"  placeholder="Confirm Password" name="password_confirmation" required>
-                                  @if ($errors->has('email'))
-                                      <span class="help-block alert alert-danger">
-                                          <small><strong>{{ $errors->first('email') }}</strong></small>
-                                      </span>
-                                  @endif
                                   @if ($errors->has('password'))
                                       <span class="help-block alert alert-danger">
                                           <small><strong>{{ $errors->first('password') }}</strong></small>

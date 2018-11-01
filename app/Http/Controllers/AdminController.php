@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Term;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Discount;
 use App\Models\OrderType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -87,6 +88,32 @@ class AdminController extends Controller
       $user->save();
 
       return back()->with('success','You have successfully reset password '.$user->username.'. New Password: '.$new);
-    }    
+    }
+
+    public function indexDiscount()
+    {
+      $discount = Discount::all();
+      $customer = User::where('role_id',3)->where('verified',true)->get();
+      return view('admin/discount-management')->with('discount', $discount)
+                                              ->with('customer',$customer);
+    }
+
+    public function storeDiscount(Request $request)
+    {
+      $this->validatorStoreDiscount($request->all())->validate();
+      Discount::create([
+        'name' => $request->name,
+        'discount' => $request->discount
+      ]);
+      return back();
+    }
+
+    public function validatorStoreDiscount(array $data)
+    {
+        return Validator::make($data, [
+            'name'  => 'required|string|max:190',
+            'discount' => 'required'
+        ]);
+    }
 
 }

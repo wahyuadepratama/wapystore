@@ -12,7 +12,8 @@ class User extends Authenticatable
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'name','email','role_id','password','avatar','income','created_at','updated_at', 'email_confirmation', 'verified', 'phone', 'sosmed'
+        'name','email','role_id','password','avatar','income','created_at','updated_at', 'email_confirmation',
+        'verified', 'phone', 'sosmed', 'discount_id'
     ];
 
     protected $hidden = [
@@ -29,5 +30,9 @@ class User extends Authenticatable
 
     public function transaction(){
       return $this->hasMany('App\Models\Transaction');
+    }
+
+    public function discount(){
+      return $this->belongsTo('App\Models\Discount','discount_id');
     }
 }

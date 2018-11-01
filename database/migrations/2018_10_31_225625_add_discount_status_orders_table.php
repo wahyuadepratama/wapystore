@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnUser extends Migration
+class AddDiscountStatusOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class AddColumnUser extends Migration
      */
     public function up()
     {
-      Schema::table('users', function (Blueprint $table) {
-          $table->string('phone',15)->nullable();
-          $table->string('sosmed')->nullable();
+      Schema::table('orders', function (Blueprint $table) {
+          $table->string('discount_status')->nullable();          
       });
     }
 

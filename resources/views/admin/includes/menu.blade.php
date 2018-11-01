@@ -23,7 +23,11 @@
                         <li><i class="menu-icon fa fa-user"></i><a href="/root/user-management">All User</a></li>
                         <li><i class="menu-icon ti-lock"></i><a href="/root/user-management/blocked">User Blocked</a></li>
                     </ul>
-                </li>                
+                </li>
+
+                <li class="{{ Request::is('root/discount-management') ? 'active' : '' }}">
+                    <a href="/root/discount-management"> <i class="menu-icon fa fa-check"></i>Discount Management</a>
+                </li>
 
             </ul>
         </div>

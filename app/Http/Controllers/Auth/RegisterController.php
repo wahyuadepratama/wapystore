@@ -39,16 +39,36 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-        $token = bin2hex(random_bytes(50));
-        $name = preg_replace('/@.*?$/', '', $data['email']);        
+        $url = url('/');
+        if(strpos($url, 'root') !== false){
 
-        return User::create([
-            'name' => $name,
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'role_id' => 3,
-            'email_confirmation' => $token,
-        ]);
+          $token = bin2hex(random_bytes(50));
+          $name = preg_replace('/@.*?$/', '', $data['email']);
+
+          return User::create([
+              'name' => $name,
+              'email' => $data['email'],
+              'password' => bcrypt($data['password']),
+              'role_id' => 2,
+              'discount_id' => 1,
+              'email_confirmation' => $token,
+              'verified' => true,
+          ]);
+
+        }else{
+
+          $token = bin2hex(random_bytes(50));
+          $name = preg_replace('/@.*?$/', '', $data['email']);
+
+          return User::create([
+              'name' => $name,
+              'email' => $data['email'],
+              'password' => bcrypt($data['password']),
+              'role_id' => 3,
+              'discount_id' => 1,
+              'email_confirmation' => $token,
+          ]);
+        }
 
     }
 
