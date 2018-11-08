@@ -10,7 +10,7 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{URL::asset('storage/logo/wapydesign.png')}}">
-
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- All CSS Files -->
     <!-- Bootstrap fremwork main css -->
     <link rel="stylesheet" href="{{URL::asset('guest/css/bootstrap.min.css')}}">
@@ -28,6 +28,9 @@
     <link href="{{URL::asset('guest/css/color/color-core.css')}}" data-style="styles" rel="stylesheet">
     <!-- User style -->
     <link rel="stylesheet" href="{{URL::asset('guest/css/custom.css')}}">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
 
     <!-- Modernizr JS -->
     <script src="{{URL::asset('guest/js/vendor/modernizr-2.8.3.min.js')}}"></script>
@@ -47,6 +50,7 @@
 
   <!-- jquery latest version -->
   <script src="{{URL::asset('guest/js/vendor/jquery-3.1.1.min.js')}}"></script>
+
   <!-- Bootstrap framework js -->
   <script src="{{URL::asset('guest/js/bootstrap.min.js')}}"></script>
   <!-- jquery.nivo.slider js -->
@@ -55,6 +59,7 @@
   <script src="{{URL::asset('guest/js/plugins.js')}}"></script>
   <!-- Main js file that contents all jQuery plugins activation. -->
   <script src="{{URL::asset('guest/js/main.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
   @yield('script')
 

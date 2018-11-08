@@ -21,15 +21,14 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('role_id')->unsigned()->index();
             $table->integer('discount_id')->unsigned()->index();
-            $table->string('avatar')->default('default-avatar.png');
-            $table->decimal('income', 8, 2)->nullable();
+            $table->string('avatar')->default('default-avatar.png');            
             $table->string('phone',15)->nullable();
             $table->string('sosmed')->nullable();
             $table->boolean('verified')->nullable();
             $table->string('email_confirmation')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();            
+            $table->softDeletes();
         });
     }
 

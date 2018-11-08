@@ -18,8 +18,7 @@ class CreateOrdersTable extends Migration
             $table->integer('client_id')->unsigned()->index();
             $table->string('name',100); //design spanduk, pamflet, poster, dll
             $table->integer('price');
-            $table->string('status',20)->default('waiting'); //waiting, on_progress, done, revision, done
-            $table->string('project')->default('open'); //open, close
+            $table->string('status',20)->default('waiting'); //waiting, on_progress, done, revision, done            
             $table->string('size_long', 20)->nullable();
             $table->string('size_wide', 20)->nullable();
             $table->mediumText('content')->nullable();

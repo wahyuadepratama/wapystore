@@ -49,11 +49,18 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                      <input type="text" name="name" class="form-control"><br>
-                                      <input type="number" name="discount" class="form-control">
+                                      <input type="text" name="name" placeholder="keterangan diskon" class="form-control"><br>
+                                      <input type="number" name="discount" placeholder="besar diskon (%)" class="form-control"><br>
+                                      @foreach(config('product') as $key => $value)
+                                      <div class="col-md-12">
+                                        <div class="checkbox">
+                                          <label><input type="checkbox" name="product[]" value="{{ $value }}"> {{ $value }}</label>
+                                        </div>
+                                      </div>
+                                      @endforeach
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>                                          
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                         <input type="submit" class="btn btn-warning" value="Add"></input>
                                     </div>
                                   </form>
@@ -68,6 +75,7 @@
                         <tr>
                           <th>Name</th>
                           <th>Discount(%)</th>
+                          <th>Product</th>
                           <th>Send To One</th>
                           <th>Broadcast</th>
                           <th>Action</th>
@@ -79,13 +87,21 @@
                           <td>{{$data1->name}}</td>
                           <td>{{$data1->discount}}</td>
                           <td>
+                            @php
+                             $dataArray = unserialize($data1->product);
+                            @endphp
+                            @foreach($dataArray as $value)
+                              {{ $value.", " }}
+                            @endforeach
+                          </td>
+                          <td>
                             <button type="button" name="button" data-toggle="modal" data-target="#sendToOne{{$data1->id}}" class="btn btn-info">Select User</button>
                           </td>
                           <td>
                             <a href="/root/discount-management/broadcast" class="btn btn-info">Broadcast to All User</a>
                           </td>
                           <td>
-                            <a href="/root/discount-management" class="btn btn-danger">Destroy</a>
+                            <a href="/root/discount-management/destroy/{{ $data1->id }}" onclick="return confirm('Are you sure you want to delete this discount ?');" class="btn btn-danger">Destroy</a>
                           </td>
 
                           <div class="modal fade" id="sendToOne{{$data1->id}}" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
@@ -104,6 +120,7 @@
                                           <option value="{{ $data2->id }}">{{ $data2->name }}</option>
                                           @endforeach
                                         </select>
+                                        <input type="hidden" name="discount_id" value="{{ $data1->id }}">
                                       </div>
                                       <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

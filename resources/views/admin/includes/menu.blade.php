@@ -25,8 +25,28 @@
                     </ul>
                 </li>
 
-                <li class="{{ Request::is('root/discount-management') ? 'active' : '' }}">
-                    <a href="/root/discount-management"> <i class="menu-icon fa fa-check"></i>Discount Management</a>
+                <li class="menu-item-has-children dropdown {{ Request::is('root/discount-management', 'root/discount-management/*') ? 'active' : '' }}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tags"></i>Discount Management</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-tag"></i><a href="/root/discount-management">All Discount</a></li>
+                        <li><i class="menu-icon fa fa-user"></i><a href="/root/discount-management/users">User's Discount</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-item-has-children dropdown {{ Request::is('root/transaction', 'root/transaction/*') ? 'active' : '' }}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-shopping-cart"></i>Transactions</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-bell"></i><a href="/root/transaction">Waiting Order</a></li>
+                        <li><i class="menu-icon fa fa-user"></i><a href="/root/transaction/on-progress">On Progress Order</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-item-has-children dropdown {{ Request::is('root/theme', 'root/theme/*') ? 'active' : '' }}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-themeisle"></i>Themes</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-windows"></i><a href="/root/theme">List Theme</a></li>
+                        <li><i class="menu-icon fa fa-photo"></i><a href="/root/theme/photo">Theme - Photo</a></li>
+                    </ul>
                 </li>
 
             </ul>

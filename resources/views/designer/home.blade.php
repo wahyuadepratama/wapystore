@@ -15,10 +15,10 @@
               <div class="row">
                   <div class="col-xs-12">
                       <div class="breadcrumbs-inner">
-                          <h1 class="breadcrumbs-title">Home / Designer</h1>
+                          <h1 class="breadcrumbs-title">Designer</h1>
                           <ul class="breadcrumb-list">
-                              <li><a href="index.html">Home</a></li>
-                              <li>Home / Designer</li>
+                              <li><a href="/">Home</a></li>
+                              <li>Designer</li>
                           </ul>
                       </div>
                   </div>
@@ -63,7 +63,17 @@
                             <span>{{ Auth::user()->email }}</span><br>
                             <span>{{ Auth::user()->phone }}</span><br>
                             <span>
-                              <strong style="font-size:15px">IDR Rp {{number_format((Auth::user()->income),0,',','.')}} ,-<strong>
+                              <strong style="font-size:15px">
+                                @php
+                                  $debit = \App\Models\HistoryTransaction::where('user_id',Auth::user()->id)->sum('debit');
+                                  $kredit = \App\Models\HistoryTransaction::where('user_id',Auth::user()->id)->sum('kredit');
+                                  $saldo = $debit + $kredit;
+                                @endphp
+                                IDR Rp {{number_format(($saldo),0,',','.')}} ,-
+                              <strong>
+                            </span><br><br>
+                            <span>
+                              <a href="/home/history" style="border-radius: 5%" class="btn btn-info"><strong>History Transaction</strong></a>
                             </span>
                           </p>
                         </div>
@@ -78,9 +88,15 @@
                     @foreach($job as $data)
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a  href="#My_order_info">No. Orderan #{{ $data->id }}</a>
-                            </h4>
+                          @if($data->order->status == "on_progress")
+                          <h4 class="panel-title alert alert-danger">
+                              <a  href="#My_order_info"><strong class="text-danger">No. Orderan #{{ $data->id }} Sedang Kamu Kerjakan</strong></a>
+                          </h4>
+                          @else
+                          <h4 class="panel-title alert alert-info">
+                              <a  href="#My_order_info"><strong class="text-info">No. Orderan #{{ $data->id }} Selesai Dikerjakan</strong></a>
+                          </h4>
+                          @endif
                         </div>
                         <div id="My_order_info" role="tabpanel" >
                             <div class="panel-body">
@@ -88,7 +104,7 @@
                                     <div class="payment-details">
                                       <div class="col-md-12 order-payment">
                                         <div class="col-md-3">
-                                          <span class"td-title-1">Waktu Order</span>
+                                          <span class"td-title-1">Order Date</span>
                                         </div>
                                         <div class="col-md-9">
                                           <p class="td-title-2">{{ $data->order->updated_at }}</p>
@@ -107,7 +123,7 @@
                                           <span class"td-title-1">Price</span>
                                         </div>
                                         <div class="col-md-9">
-                                          <p class="td-title-2">{{ $data->order->price }}</p>
+                                          <p class="td-title-2">Rp {{number_format(($data->order->price),0,',','.')}} ,-</p>
                                         </div>
                                       </div>
                                       @if($data->order->discount_status != NULL)
@@ -130,10 +146,10 @@
                                       </div>
                                       @if($data->order->revision != NULL)
                                       <div class="col-md-12 order-payment">
-                                        <div class="col-md-3">
-                                          <span class"td-title-1">Opportunities for revision</span>
+                                        <div class="col-md-4">
+                                          <span class"td-title-1">Opportunities for Revision</span>
                                         </div>
-                                        <div class="col-md-9">
+                                        <div class="col-md-8">
                                           <p class="td-title-2">{{ $data->order->revision }}</p>
                                         </div>
                                       </div>
@@ -158,7 +174,7 @@
                                       </div>
                                       <div class="col-md-12 order-payment">
                                         <div class="col-md-3">
-                                          <span class"td-title-1">Ukuran</span>
+                                          <span class"td-title-1">Size</span>
                                         </div>
                                         <div class="col-md-9">
                                           <p class="td-title-2">{{ $data->order->size_long }} x {{ $data->order->size_wide }} (cm)</p>
@@ -189,11 +205,6 @@
                                           </span>
                                         </div>
                                       </div>
-                                      @endif
-                                      @if($data->order->status == "on_progress")
-                                      <a href="#" class="btn btn-info form-control">Sedang Dikerjakan oleh {{ $data->user->name }}</a>
-                                      @else
-                                      <a href="#" class="btn btn-success form-control">Closed Project</a>
                                       @endif
                                     </div>
                             </div>

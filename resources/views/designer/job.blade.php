@@ -15,10 +15,10 @@
               <div class="row">
                   <div class="col-xs-12">
                       <div class="breadcrumbs-inner">
-                          <h1 class="breadcrumbs-title">Login / Register</h1>
+                          <h1 class="breadcrumbs-title">Job</h1>
                           <ul class="breadcrumb-list">
-                              <li><a href="index.html">Home</a></li>
-                              <li>Login / Register</li>
+                              <li><a href="/">Home</a></li>
+                              <li>Take a job</li>
                           </ul>
                       </div>
                   </div>
@@ -41,6 +41,13 @@
                   </div>
                   <!-- new-customers -->
                   <div class="col-md-9">
+
+                    @if($message = Session::get('success'))
+                    <div class="alert alert-success" role="alert">
+                      {{ $message }}
+                    </div>
+                    @endif
+
                     <!-- My Order info -->
                     @if(!$orderan->isEmpty())
                     @foreach($orderan as $data)
@@ -62,7 +69,7 @@
                                     <div class="payment-details">
                                       <div class="col-md-12 order-payment">
                                         <div class="col-md-3">
-                                          <span class"td-title-1">Waktu Order</span>
+                                          <span class"td-title-1">Order Date</span>
                                         </div>
                                         <div class="col-md-9">
                                           <p class="td-title-2">{{ $data->updated_at }}</p>
@@ -104,10 +111,10 @@
                                       </div>
                                       @if($data->revision != NULL)
                                       <div class="col-md-12 order-payment">
-                                        <div class="col-md-3">
-                                          <span class"td-title-1">Opportunities for revision</span>
+                                        <div class="col-md-4">
+                                          <span class"td-title-1">Opportunities for Revision</span>
                                         </div>
-                                        <div class="col-md-9">
+                                        <div class="col-md-8">
                                           <p class="td-title-2">{{ $data->revision }}</p>
                                         </div>
                                       </div>
@@ -127,12 +134,15 @@
                                             @if($data->status == "revision")
                                               Sedang Dalam Proses Revisi
                                             @endif
+                                            @if($data->status == "done")
+                                              Selesai Dikerjakan
+                                            @endif
                                           </p>
                                         </div>
                                       </div>
                                       <div class="col-md-12 order-payment">
                                         <div class="col-md-3">
-                                          <span class"td-title-1">Ukuran (p x l)</span>
+                                          <span class"td-title-1">Size (p x l)</span>
                                         </div>
                                         <div class="col-md-9">
                                           <p class="td-title-2">{{ $data->size_long }} x {{ $data->size_wide }} (cm)</p>
@@ -164,6 +174,21 @@
                                         </div>
                                       </div>
                                       @endif
+                                      @if($data->file != NULL)
+                                      <div class="col-md-12 order-payment">
+                                        <div class="col-md-3">
+                                          <span class"td-title-1">File, Logo, Etc</span>
+                                        </div>
+                                        <div class="col-md-9">
+                                          <span class="td-title-2">
+                                            <form method="get" action="/storage/orderan/{{ $data->file }}">
+                                               <button type="submit" class="btn btn-info">Download!</button>
+                                            </form>
+                                          </td>
+                                          </span>
+                                        </div>
+                                      </div>
+                                      @endif
                                       @if($data->status == "waiting")
                                           <a class="btn btn-success form-control" href="/job/take/{{ $data->id }}" onclick="return confirm('Are you sure you want to take this job ?');">Take This Job</a>
                                       @endif
@@ -173,8 +198,10 @@
                     </div>
                     @endforeach
                     @else
-                      <center> Anda belum melakukan orderan </center>
+                      <center> Belum ada orderan lagi hari ini </center>
                     @endif
+
+                    {{ $orderan->links() }}
 
                   </div>
               </div>

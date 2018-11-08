@@ -7,12 +7,11 @@
                         <img src="{{URL::asset('guest/img/logo/logo.png')}}" alt="">
                     </div>
                     <ul class="footer-menu-2">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Pages</a></li>
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/portofolio">Portofolio</a></li>
+                        <li><a href="/theme">Design Theme</a></li>
+                        <li><a href="/price">Price</a></li>
+                        <li><a href="/contact">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -27,18 +26,18 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-4">
-                    <ul class="footer-social footer-social-2">
+                    <ul class="footer-social footer-social-3">
                         <li>
-                            <a class="facebook" href="" title="Facebook"><i class="zmdi zmdi-facebook"></i></a>
+                            <a class="google-plus" href="" title="Email"><i class="zmdi zmdi-email"></i></a>
                         </li>
                         <li>
-                            <a class="google-plus" href="" title="Google Plus"><i class="zmdi zmdi-google-plus"></i></a>
+                            <a class="google-plus" href="" title="Google"><i class="zmdi zmdi-google-plus"></i></a>
                         </li>
                         <li>
-                            <a class="twitter" href="" title="Twitter"><i class="zmdi zmdi-twitter"></i></a>
+                            <a class="google-plus" href="" title="Instagram"><i class="zmdi zmdi-instagram"></i></a>
                         </li>
                         <li>
-                            <a class="rss" href="" title="RSS"><i class="zmdi zmdi-rss"></i></a>
+                          <a class="google-plus" href="" title="Whatsapp"><i class="zmdi zmdi-whatsapp"></i></a>
                         </li>
                     </ul>
                 </div>

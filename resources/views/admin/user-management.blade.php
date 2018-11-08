@@ -42,7 +42,7 @@
                       <thead>
                         <tr>
                           <th>Name</th>
-                          <th>Username</th>
+                          <th>Phone</th>
                           <th>Email</th>
                           <th>Roles</th>
                           <th>Action</th>
@@ -52,15 +52,15 @@
                         @foreach($users as $data1)
                         <tr>
                           <td>{{$data1->name}}</td>
-                          <td>{{$data1->username}}</td>
+                          <td>{{$data1->phone}}</td>
                           <td>{{$data1->email}}</td>
                           <td>{{$data1->role->role_name}}</td>
                           <td>
+                            <button type="button" class="btn.sm btn-primary" data-toggle="modal" data-target="#show{{$data1->id}}"><i class="ti-fullscreen"></i></button>
                             @if($data1->role->id != 1)
-                            <button type="button" class="btn btn-warning mb-1" data-toggle="modal" data-target="#delete{{$data1->id}}"><i class="ti-lock"></i></button>
+                            <button type="button" class="btn.sm btn-warning mb-1" data-toggle="modal" data-target="#delete{{$data1->id}}"><i class="ti-lock"></i></button>
+                            <button type="button" class="btn.sm btn-success" data-toggle="modal" data-target="#update{{$data1->id}}"><i class="ti-pencil-alt"></i></button>
                             @endif
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#show{{$data1->id}}"><i class="ti-fullscreen"></i></button>
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#update{{$data1->id}}"><i class="ti-pencil-alt"></i></button>
                           </td>
 
                           <div class="modal fade" id="delete{{$data1->id}}" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
@@ -100,17 +100,24 @@
                                       <div class="modal-body">
                                           <p>
                                             <div class="col-md-4"></div>
-                                            <div class="col-md-4">
-                                              <center><img src="{{asset('storage/avatar/default.png')}}" width="150" height="150"></center>
-                                            </div>
-                                            <div class="col-md-4"></div><br><br>
+                                            <div class="col-md-4"></div>
                                             <div class="col-md-6" style="text-align:right">
                                               Akun dibuat :<br>
-                                              Akun diupdate :
+                                              Akun diupdate :<br>
+                                              @if($data1->role_id == 2)
+                                              @endif
+                                              Sosmed :<br>
+                                              Verifikasi :<br>
                                             </div>
                                             <div class="col-md-6" style="text-align:left">
-                                              {{$data1->created_at}}<br>
-                                              {{$data1->updated_at}}
+                                              {{ $data1->created_at }}<br>
+                                              {{ $data1->updated_at }}<br>
+                                              {{ $data1->sosmed }}<br>
+                                              @if($data1->verified == NULL)
+                                                {{ "Unverified" }}
+                                              @else
+                                                {{ "Verified" }}
+                                              @endif
                                             </div>
                                           </p>
                                       </div>

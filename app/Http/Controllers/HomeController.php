@@ -21,6 +21,7 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::user()->role_id == 3){
+
           if(Auth::user()->verified != true){
             Mail::to(Auth::user()->email)->send(new RegisterConfirmation(Auth::user()->email_confirmation, Auth::user()->name));
           }
@@ -29,9 +30,10 @@ class HomeController extends Controller
           $user     = User::with('discount')->where('id',Auth::user()->id)->first();
           return view('user/home')->with('orderan', $orderan)->with('user',$user);
 
-        }if(Auth::user()->role_id == 2){
+        }
+        if(Auth::user()->role_id == 2){
 
-          $orderan  = Transaction::with('order')->with('user')->orderBy('created_at', 'desc')->get();
+          $orderan  = Transaction::with('order')->with('user')->orderBy('created_at', 'asc')->get();          
           return view('designer/home')->with('job', $orderan);
 
         }else{

@@ -4,16 +4,23 @@ Route::get('/', 'GuestController@index');
 
 Auth::routes();
 Route::get('confirmation/{token}','GuestController@confirmation');
+Route::get('theme','ThemeController@index');
+Route::get('theme/{id}','ThemeController@show');
 
 Route::get('home', 'HomeController@index');
+Route::get('home/history', 'DesignerController@indexHistory');
 
 Route::get('job','DesignerController@indexJob');
 Route::get('job/on-progress','DesignerController@indexJobProgress');
+Route::get('job/revision','DesignerController@indexJobRevision');
+Route::get('job/closed','DesignerController@indexJobClosed');
+Route::get('job/take/{id}','DesignerController@takeJob');
 
 Route::get('order/spanduk', 'OrderController@orderSpanduk');
 Route::post('order/spanduk/store', 'OrderController@storeSpanduk');
-
 Route::get('order/poster', 'OrderController@orderPoster');
+Route::post('order/poster/store', 'OrderController@storePoster');
+
 Route::get('order/banner', 'OrderController@orderBanner');
 Route::get('order/pamflet', 'OrderController@orderPamflet');
 Route::get('order/id-card', 'OrderController@orderIdCard');
@@ -35,9 +42,18 @@ Route::post('root/user-management/reset-password/{id}','AdminController@resetPas
 
 Route::post('root/discount-management/store','AdminController@storeDiscount');
 Route::get('root/discount-management','AdminController@indexDiscount');
-// ------------- END OF ADMIN ROUTE ----------------//
+Route::post('root/discount-management/send','AdminController@sendDiscount');
+Route::get('root/discount-management/destory/{id}','AdminController@destroyDiscount');
+Route::get('root/discount-management/users','AdminController@userDiscount');
 
-// Route::get('tes',function ()
-// {
-//   return view('mail/confirmation');
-// });
+Route::get('root/transaction/','AdminController@waitingOrder');
+Route::get('root/transaction/on-progress','AdminController@onProgressOrder');
+Route::get('root/transaction/{transaction_id}/{order_id}','AdminController@confirmPayment');
+
+Route::get('root/theme','AdminController@indexTheme');
+Route::post('root/theme/store', 'AdminController@storeTheme');
+Route::get('root/theme/destroy/{id}', 'AdminController@destroyTheme');
+Route::get('root/theme/photo', 'AdminController@indexThemePhoto');
+Route::post('root/theme/photo/store', 'AdminController@storeThemePhoto');
+Route::get('root/theme/photo/destroy/{id}', 'AdminController@destroyThemePhoto');
+// ------------- END OF ADMIN ROUTE ----------------//

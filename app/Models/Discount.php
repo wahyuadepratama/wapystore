@@ -8,7 +8,7 @@ class Discount extends Model
 {
     protected $table = 'discount';
     protected $fillable = [
-        'name', 'discount', 'created_at', 'updated_at'
+        'name', 'discount', 'created_at', 'updated_at', 'product'
     ];
 
     public function user(){

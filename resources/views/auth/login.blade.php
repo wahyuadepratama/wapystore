@@ -17,7 +17,7 @@
                       <div class="breadcrumbs-inner">
                           <h1 class="breadcrumbs-title">Login / Register</h1>
                           <ul class="breadcrumb-list">
-                              <li><a href="index.html">Home</a></li>
+                              <li><a href="/">Home</a></li>
                               <li>Login / Register</li>
                           </ul>
                       </div>
