@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{URL::asset('storage/logo/wapydesign.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{URL::asset('guest/images/logo/icon.png')}}">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- All CSS Files -->
     <!-- Bootstrap fremwork main css -->

@@ -13,15 +13,15 @@
       <div class="breadcrumbs overlay-bg">
           <div class="container">
               <div class="row">
-                  <div class="col-xs-12">
-                      <div class="breadcrumbs-inner">
-                          <h1 class="breadcrumbs-title">Login / Register</h1>
-                          <ul class="breadcrumb-list">
-                              <li><a href="/">Home</a></li>
-                              <li>Login / Register</li>
-                          </ul>
-                      </div>
-                  </div>
+                <div class="col-xs-12">
+                    <div class="breadcrumbs-inner">
+                        <h1 class="breadcrumbs-title">Poster</h1>
+                        <ul class="breadcrumb-list">
+                            <li><a href="/">Home</a></li>
+                            <li>Poster</li>
+                        </ul>
+                    </div>
+                </div>
               </div>
           </div>
       </div>
@@ -77,10 +77,10 @@
                                                   1. Mengisi <b>form pesanan</b> selengkap mungkin
                                                 </li>
                                                 <li>
-                                                  2. Biaya desain poster <b>{{ Config::get('price.poster') }}</b>
+                                                  2. Biaya desain poster <b>Rp {{number_format((Config::get('price.poster')),0,',','.')}} ,-</b>
                                                 </li>
                                                 <li>
-                                                  3. Pengerjaan paling lama adalah {{ Config::get('revision.poster') }}
+                                                  3. Pengerjaan paling lama adalah {{ Config::get('time-work.poster') }} hari
                                                 </li>
                                             </div>
                                             <div class="billing-details pr-10" style="margin-top: 15%">
@@ -89,7 +89,7 @@
                                                   1. Anda akan mendapatkan file cdr, psd, jpg dan png
                                                 </li>
                                                 <li>
-                                                  2. Anda akan mendapatkan revisi sebanyak 2x
+                                                  2. Anda akan mendapatkan kesempatan revisi sebanyak {{ Config::get('revision.poster') }}x
                                                 </li>
                                             </div>
                                         </div>
@@ -126,17 +126,30 @@
                                                         <small><strong>{{ $errors->first('theme') }}</strong></small>
                                                     </span>
                                                 @endif
-                                                <select class="custom-select" name="theme" onchange="myFunction()" id="theme">
-                                                    <option value="defalt">Pilih Tema Desain</option>
-                                                    <option value="c-1">Victoria</option>
-                                                    <option value="c-2">Chittagong</option>
-                                                    <option value="c-3">Boston</option>
-                                                    <option value="c-4">Cambridge</option>
-                                                    <option value="create_own">Tulis Tema Sendiri</option>
-                                                </select>
-                                                <div id="create_own">
 
-                                                </div>
+                                                <select class="form-control custom-select" name="theme" onchange="myFunction()" id="theme">
+                                                  <option value="Bebas">Pilih Tema Desain</option>
+                                                  @foreach($theme as $value)
+                                                  <option value="{{ $value->name }}">{{ $value->name }}</option>
+                                                  @endforeach
+                                                  <option value="create_own">Tulis Tema Sendiri</option>
+                                                </select>
+                                                <br><br>
+
+                                                  <script type="text/javascript">
+                                                  // In your Javascript (external .js resource or <script> tag)
+                                                    $(document).ready(function() {
+                                                      $('.custom-select').select2();
+                                                    });
+                                                  </script>
+                                                <!-- <select class="custom-select" name="theme" onchange="myFunction()" id="theme">
+                                                    <option value="Bebas">Pilih Tema Desain</option>
+                                                    @foreach($theme as $value)
+                                                    <option value="{{ $value->name }}">{{ $value->name }}</option>
+                                                    @endforeach
+                                                    <option value="create_own">Tulis Tema Sendiri</option>
+                                                </select> -->
+                                                <div id="create_own"></div>
 
                                                 <script>
                                                 function myFunction() {

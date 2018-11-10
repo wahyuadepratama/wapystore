@@ -58,16 +58,16 @@
                               @foreach($mutation as $data)
                               <div class="payment-details">
                                 <div class="col-md-12 order-payment">
-                                  <div class="col-md-2">
+                                  <div class="col-md-3">
                                     <span class"td-title-1">
                                       @if($data->kredit == NULL)
-                                        <strong>{{ "DEBIT" }}</strong>
+                                        <strong>{{ $data->created_at." [DEBIT]" }}</strong>
                                       @else
-                                        <strong>{{ "KREDIT" }}</strong>
+                                        <strong>{{ $data->created_at." [KREDIT]" }}</strong>
                                       @endif
                                     </span>
                                   </div>
-                                  <div class="col-md-6">
+                                  <div class="col-md-5">
                                     <span class"td-title-1">
                                       {{ $data->keterangan }}
                                     </span>

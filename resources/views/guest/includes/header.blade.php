@@ -1,7 +1,7 @@
 <!-- START HEADER AREA -->
 <header class="header-area header-wrapper header-2">
     <!-- header-middle-area -->
-    <div id="sticky-header" class="header-middle-area plr-185">
+    <div id="sticky-header" class="header-middle-area plr-185" style="font-weight: bolder;">
         <div class="container-fluid">
             <div class="full-width-mega-dropdown">
                 <div class="row">
@@ -9,7 +9,7 @@
                     <div class="col-md-2 col-sm-6 col-xs-12">
                         <div class="logo">
                             <a href="/">
-                                <img src="{{URL::asset('guest/images/logo/wapydesign.svg')}}" alt="main logo" width="100">
+                                <img src="{{URL::asset('guest/images/logo/wapydesign.svg')}}" alt="main logo" width="120">
                             </a>
                         </div>
                     </div>
@@ -133,9 +133,6 @@
                                 </li>
                                 <li>
                                   <a href="/portofolio">Portofolio</a>
-                                </li>
-                                <li>
-                                  <a href="/price">Price</a>
                                 </li>
                                 <li>
                                     <a href="/contact">Contact</a>

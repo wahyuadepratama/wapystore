@@ -39,6 +39,7 @@
                       <thead>
                         <tr>
                           <th>Payment Status</th>
+                          <th>No Order</th>
                           <th>Price</th>
                           <th>Date</th>
                           <th>Owner</th>
@@ -57,6 +58,7 @@
                             <small><a href="#" class="btn-sm btn-success">Complete</a></small>
                             @endif
                           </td>
+                          <td>{{ $value->order->id }}</td>
                           <td>Rp {{number_format($value->order->price,0,',','.')}} ,-</td>
                           <td>{{ $value->updated_at }}</td>
                           <td>{{ $value->order->user->name }}</td>

@@ -15,11 +15,11 @@
               <div class="row">
                   <div class="col-xs-12">
                       <div class="breadcrumbs-inner">
-                          <h1 class="breadcrumbs-title">{{ $theme->name }}</h1>
+                          <h1 class="breadcrumbs-title">{{ $theme->theme->name }}</h1>
                           <ul class="breadcrumb-list">
                               <li><a href="/">Home</a></li>
                               <li><a href="/theme">Theme</a></li>
-                              <li>{{ $theme->name }}</li>
+                              <li>{{ $theme->theme->name }}</li>
                           </ul>
                       </div>
                   </div>
@@ -45,22 +45,37 @@
                 <div class="row">
 
                     <!-- blog-item start -->
-                    <div class="col-md-12 col-sm-12 col-xs-12" style="padding-left:20%; padding-right:20%;">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="imgs-zoom-area">
-                            <img id="zoom_03" src="{{asset('storage/theme/'.$theme->path)}}" data-zoom-image="{{asset('storage/theme/'.$theme->path)}}" width="100%">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <div id="gallery_01" class="carousel-btn slick-arrow-3 mt-60">
-                                      @foreach($detail as $data)
-                                        <div class="p-c">
-                                            <a href="#" data-image="{{asset('storage/theme/'.$data->path)}}" data-zoom-image="{{asset('storage/theme/'.$data->path)}}">
-                                                <img class="zoom_03" src="{{asset('storage/theme/'.$data->path)}}" alt="">
-                                            </a>
-                                        </div>
-                                      @endforeach
-                                    </div>
-                                </div>
+                          <div class="row">
+                            <center>
+                            <div style="width:40%" id="zoom_03">
+                              <img id="view" src="{{asset('storage/theme/'.$theme->path)}}" data-zoom-image="{{asset('storage/theme/'.$theme->path)}}">
+                              <h5 id="viewName">
+                                {{ $theme->name }}
+                              </h5>
                             </div>
+                            <div class="col-xs-12">
+                                <div id="gallery_01" class="carousel-btn slick-arrow-3 mt-60" width="50%">
+                                  @foreach($detail as $data)
+                                    <div class="p-c">
+                                        <a href="#" data-image="{{asset('storage/theme/'.$data->path)}}" data-zoom-image="{{asset('storage/theme/'.$data->path)}}">
+                                            <img onclick="changeView{{ $data->id }}()" class="zoom_03" src="{{asset('storage/theme/'.$data->path)}}" alt="">
+                                        </a>
+                                    </div>
+                                  @endforeach
+                                </div>
+                                @foreach($detail as $data)
+                                <script type="text/javascript">
+                                  function changeView{{ $data->id }}(){
+                                    document.getElementById("view").src = "{{asset('storage/theme/'.$data->path)}}";
+                                    document.getElementById("viewName").innerHTML = "{{ $data->name }}";
+                                  }
+                                </script>
+                                @endforeach
+                            </div>
+                            <center>
+                          </div>
                         </div>
                     </div>
                     <!-- blog-item end -->

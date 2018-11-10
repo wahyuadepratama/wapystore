@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Mail\OrderBroadcast;
 use App\Models\ThemePhoto;
+use App\Models\PhotoTheme;
 use App\Models\Discount;
 use App\Models\Theme;
 use App\Models\Order;
@@ -29,46 +30,46 @@ class OrderController extends Controller
 
     public function orderPoster()
     {
-      return view('user/order-poster');
+      return view('user/order-poster')->with('theme', $this->getTheme());
     }
 
     public function orderBanner()
     {
-      return view('user/order-banner');
+      return view('user/order-banner')->with('theme', $this->getTheme());
     }
 
     public function orderPamflet()
     {
-      return view('user/order-pamflet');
+      return view('user/order-pamflet')->with('theme', $this->getTheme());
     }
 
     public function orderIdCard()
     {
-      return view('user/order-id-card');
+      return view('user/order-id-card')->with('theme', $this->getTheme());
     }
 
     public function orderLogo()
     {
-      return view('user/order-logo');
+      return view('user/order-logo')->with('theme', $this->getTheme());
     }
 
     public function orderCv()
     {
-      return view('user/order-cv');
+      return view('user/order-cv')->with('theme', $this->getTheme());
     }
 
     public function orderBookCover()
     {
-      return view('user/order-book-cover');
+      return view('user/order-book-cover')->with('theme', $this->getTheme());
     }
 
     public function getTheme()
     {
-      return Theme::all();
+      return ThemePhoto::with('theme')->get();
     }
 
     public function storeSpanduk(Request $request)
-    {      
+    {
       $this->validator($request->all())->validate();
       $discount = $this->checkDiscount(\Config::get('price.spanduk'), \Config::get('product.spanduk'));
 
@@ -153,6 +154,259 @@ class OrderController extends Controller
       return redirect('/home');
     }
 
+    public function storeBanner(Request $request)
+    {
+      $this->validator($request->all())->validate();
+      $discount = $this->checkDiscount(\Config::get('price.banner'), \Config::get('product.banner'));
+
+      if($request->file == ""){
+        $file = NULL;
+      }else{
+        $file = Auth::user()->email.'_'.time().'_'.$request->file('file')->getClientOriginalName();
+        $request->file('file')->move(public_path().'/storage/orderan', $file);
+      }
+
+      $user = User::find(Auth::user()->id);
+      $user->phone = $request->phone;
+      $user->sosmed = $request->sosmed;
+      $user->discount_id = 1;
+      $user->save();
+
+      $banner = Order::create([
+        'client_id' => Auth::user()->id,
+        'name' => 'Banner',
+        'price' => $discount['price'],
+        'size_long' => $request->size_long,
+        'size_wide' => $request->size_wide,
+        'theme' => $request->theme,
+        'content' => $request->content,
+        'note' => $request->note,
+        'file' => $file,
+        'revision' => \Config::get('revision.banner'),
+        'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'discount_status' => $discount['status'],
+      ]);
+
+      $designer = User::where('role_id', 2)->get();
+
+      foreach($designer as $data){
+        Mail::to($data->email)->send(new OrderBroadcast($banner));
+      }
+
+      return redirect('/home');
+    }
+
+    public function storePamflet(Request $request)
+    {
+      $this->validator($request->all())->validate();
+      $discount = $this->checkDiscount(\Config::get('price.pamflet'), \Config::get('product.pamflet'));
+
+      if($request->file == ""){
+        $file = NULL;
+      }else{
+        $file = Auth::user()->email.'_'.time().'_'.$request->file('file')->getClientOriginalName();
+        $request->file('file')->move(public_path().'/storage/orderan', $file);
+      }
+
+      $user = User::find(Auth::user()->id);
+      $user->phone = $request->phone;
+      $user->sosmed = $request->sosmed;
+      $user->discount_id = 1;
+      $user->save();
+
+      $pamflet = Order::create([
+        'client_id' => Auth::user()->id,
+        'name' => 'Pamflet',
+        'price' => $discount['price'],
+        'size_long' => $request->size_long,
+        'size_wide' => $request->size_wide,
+        'theme' => $request->theme,
+        'content' => $request->content,
+        'note' => $request->note,
+        'file' => $file,
+        'revision' => \Config::get('revision.pamflet'),
+        'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'discount_status' => $discount['status'],
+      ]);
+
+      $designer = User::where('role_id', 2)->get();
+
+      foreach($designer as $data){
+        Mail::to($data->email)->send(new OrderBroadcast($pamflet));
+      }
+
+      return redirect('/home');
+    }
+
+    public function storeIdCard(Request $request)
+    {
+      $this->validator($request->all())->validate();
+      $discount = $this->checkDiscount(\Config::get('price.id-card'), \Config::get('product.id-card'));
+
+      if($request->file == ""){
+        $file = NULL;
+      }else{
+        $file = Auth::user()->email.'_'.time().'_'.$request->file('file')->getClientOriginalName();
+        $request->file('file')->move(public_path().'/storage/orderan', $file);
+      }
+
+      $user = User::find(Auth::user()->id);
+      $user->phone = $request->phone;
+      $user->sosmed = $request->sosmed;
+      $user->discount_id = 1;
+      $user->save();
+
+      $idCard = Order::create([
+        'client_id' => Auth::user()->id,
+        'name' => 'ID Card',
+        'price' => $discount['price'],
+        'size_long' => $request->size_long,
+        'size_wide' => $request->size_wide,
+        'theme' => $request->theme,
+        'content' => $request->content,
+        'note' => $request->note,
+        'file' => $file,
+        'revision' => \Config::get('revision.id-card'),
+        'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'discount_status' => $discount['status'],
+      ]);
+
+      $designer = User::where('role_id', 2)->get();
+
+      foreach($designer as $data){
+        Mail::to($data->email)->send(new OrderBroadcast($idCard));
+      }
+
+      return redirect('/home');
+    }
+
+    public function storeBookCover(Request $request)
+    {
+      $this->validator($request->all())->validate();
+      $discount = $this->checkDiscount(\Config::get('price.book-cover'), \Config::get('product.book-cover'));
+
+      if($request->file == ""){
+        $file = NULL;
+      }else{
+        $file = Auth::user()->email.'_'.time().'_'.$request->file('file')->getClientOriginalName();
+        $request->file('file')->move(public_path().'/storage/orderan', $file);
+      }
+
+      $user = User::find(Auth::user()->id);
+      $user->phone = $request->phone;
+      $user->sosmed = $request->sosmed;
+      $user->discount_id = 1;
+      $user->save();
+
+      $bookCover = Order::create([
+        'client_id' => Auth::user()->id,
+        'name' => 'Book Cover',
+        'price' => $discount['price'],
+        'size_long' => $request->size_long,
+        'size_wide' => $request->size_wide,
+        'theme' => $request->theme,
+        'content' => $request->content,
+        'note' => $request->note,
+        'file' => $file,
+        'revision' => \Config::get('revision.book-cover'),
+        'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'discount_status' => $discount['status'],
+      ]);
+
+      $designer = User::where('role_id', 2)->get();
+
+      foreach($designer as $data){
+        Mail::to($data->email)->send(new OrderBroadcast($bookCover));
+      }
+
+      return redirect('/home');
+    }
+
+    public function storeCv(Request $request)
+    {
+      $this->validatorCv($request->all())->validate();
+      $discount = $this->checkDiscount(\Config::get('price.cv'), \Config::get('product.cv'));
+
+      if($request->file == ""){
+        $file = NULL;
+      }else{
+        $file = Auth::user()->email.'_'.time().'_'.$request->file('file')->getClientOriginalName();
+        $request->file('file')->move(public_path().'/storage/orderan', $file);
+      }
+
+      $user = User::find(Auth::user()->id);
+      $user->phone = $request->phone;
+      $user->sosmed = $request->sosmed;
+      $user->discount_id = 1;
+      $user->save();
+
+      $cv = Order::create([
+        'client_id' => Auth::user()->id,
+        'name' => 'CV',
+        'price' => $discount['price'],
+        'theme' => $request->theme,
+        'content' => $request->content,
+        'note' => $request->note,
+        'file' => $file,
+        'revision' => \Config::get('revision.cv'),
+        'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'discount_status' => $discount['status'],
+      ]);
+
+      $designer = User::where('role_id', 2)->get();
+
+      foreach($designer as $data){
+        Mail::to($data->email)->send(new OrderBroadcast($cv));
+      }
+
+      return redirect('/home');
+    }
+
+    public function storeLogo(Request $request)
+    {
+      $this->validatorLogo($request->all())->validate();
+      $discount = $this->checkDiscount(\Config::get('price.logo'), \Config::get('product.logo'));
+
+      if($request->file == ""){
+        $file = NULL;
+      }else{
+        $file = Auth::user()->email.'_'.time().'_'.$request->file('file')->getClientOriginalName();
+        $request->file('file')->move(public_path().'/storage/orderan', $file);
+      }
+
+      $user = User::find(Auth::user()->id);
+      $user->phone = $request->phone;
+      $user->sosmed = $request->sosmed;
+      $user->discount_id = 1;
+      $user->save();
+
+      $logo = Order::create([
+        'client_id' => Auth::user()->id,
+        'name' => 'Logo',
+        'price' => $discount['price'],
+        'content' => $request->content,
+        'note' => $request->note,
+        'file' => $file,
+        'revision' => \Config::get('revision.logo'),
+        'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'discount_status' => $discount['status'],
+      ]);
+
+      $designer = User::where('role_id', 2)->get();
+
+      foreach($designer as $data){
+        Mail::to($data->email)->send(new OrderBroadcast($logo));
+      }
+
+      return redirect('/home');
+    }
+
     public function validator(array $data)
     {
         return Validator::make($data, [
@@ -162,6 +416,24 @@ class OrderController extends Controller
           'theme' => 'required',
           'content' => 'required',
           'file' => 'mimes:jpeg,jpg,png,zip,rar|max:52400'
+        ]);
+    }
+
+    public function validatorCv(array $data)
+    {
+        return Validator::make($data, [
+          'phone' => 'required',
+          'theme' => 'required',
+          'content' => 'required',
+          'file' => 'mimes:doc,pdf,docx,zip|max:52400'
+        ]);
+    }
+
+    public function validatorLogo(array $data)
+    {
+        return Validator::make($data, [
+          'phone' => 'required',
+          'content' => 'required',
         ]);
     }
 

@@ -13,15 +13,15 @@
       <div class="breadcrumbs overlay-bg">
           <div class="container">
               <div class="row">
-                  <div class="col-xs-12">
-                      <div class="breadcrumbs-inner">
-                          <h1 class="breadcrumbs-title">Login / Register</h1>
-                          <ul class="breadcrumb-list">
-                              <li><a href="/">Home</a></li>
-                              <li>Login / Register</li>
-                          </ul>
-                      </div>
-                  </div>
+                <div class="col-xs-12">
+                    <div class="breadcrumbs-inner">
+                        <h1 class="breadcrumbs-title">Spanduk</h1>
+                        <ul class="breadcrumb-list">
+                            <li><a href="/">Home</a></li>
+                            <li>Spanduk</li>
+                        </ul>
+                    </div>
+                </div>
               </div>
           </div>
       </div>
@@ -80,7 +80,7 @@
                                                   2. Biaya desain spanduk <b>Rp {{number_format((Config::get('price.spanduk')),0,',','.')}} ,-</b>
                                                 </li>
                                                 <li>
-                                                  3. Pengerjaan paling lama adalah {{ Config::get('revision.spanduk') }} hari
+                                                  3. Pengerjaan paling lama adalah {{ Config::get('time-work.spanduk') }} hari
                                                 </li>
                                             </div>
                                             <div class="billing-details pr-10" style="margin-top: 15%">
@@ -89,7 +89,7 @@
                                                   1. Anda akan mendapatkan file cdr, psd, jpg dan png
                                                 </li>
                                                 <li>
-                                                  2. Anda akan mendapatkan revisi sebanyak {{ Config::get('revision.spanduk') }}x
+                                                  2. Anda akan mendapatkan kesempatan revisi sebanyak {{ Config::get('revision.spanduk') }}x
                                                 </li>
                                             </div>
                                         </div>

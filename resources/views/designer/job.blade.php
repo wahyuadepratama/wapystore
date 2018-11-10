@@ -140,6 +140,7 @@
                                           </p>
                                         </div>
                                       </div>
+                                      @if($data->size_long != NULL | $data->size_wide != NULL)
                                       <div class="col-md-12 order-payment">
                                         <div class="col-md-3">
                                           <span class"td-title-1">Size (p x l)</span>
@@ -148,6 +149,7 @@
                                           <p class="td-title-2">{{ $data->size_long }} x {{ $data->size_wide }} (cm)</p>
                                         </div>
                                       </div>
+                                      @endif
                                       @if($data->content != NULL)
                                       <div class="col-md-12 order-payment">
                                         <div class="col-md-3">

@@ -33,7 +33,7 @@ class HomeController extends Controller
         }
         if(Auth::user()->role_id == 2){
 
-          $orderan  = Transaction::with('order')->with('user')->orderBy('created_at', 'asc')->get();          
+          $orderan  = Transaction::with('order')->with('user')->orderBy('created_at', 'desc')->get();
           return view('designer/home')->with('job', $orderan);
 
         }else{

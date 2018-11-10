@@ -4,8 +4,15 @@ Route::get('/', 'GuestController@index');
 
 Auth::routes();
 Route::get('confirmation/{token}','GuestController@confirmation');
+
 Route::get('theme','ThemeController@index');
 Route::get('theme/{id}','ThemeController@show');
+
+Route::get('portofolio','ThemeController@indexPortofolio');
+
+Route::get('contact', function(){ return view('guest/contact'); });
+
+Route::post('advice','GuestController@storeAdvice');
 
 Route::get('home', 'HomeController@index');
 Route::get('home/history', 'DesignerController@indexHistory');
@@ -18,15 +25,29 @@ Route::get('job/take/{id}','DesignerController@takeJob');
 
 Route::get('order/spanduk', 'OrderController@orderSpanduk');
 Route::post('order/spanduk/store', 'OrderController@storeSpanduk');
+
 Route::get('order/poster', 'OrderController@orderPoster');
 Route::post('order/poster/store', 'OrderController@storePoster');
 
 Route::get('order/banner', 'OrderController@orderBanner');
+Route::post('order/banner/store', 'OrderController@storeBanner');
+
 Route::get('order/pamflet', 'OrderController@orderPamflet');
+Route::post('order/pamflet/store', 'OrderController@storePamflet');
+
 Route::get('order/id-card', 'OrderController@orderIdCard');
-Route::get('order/logo', 'OrderController@orderLogo');
-Route::get('order/cv', 'OrderController@orderCv');
+Route::post('order/id-card/store', 'OrderController@storeIdCard');
+
 Route::get('order/book-cover', 'OrderController@orderBookCover');
+Route::post('order/book-cover/store', 'OrderController@storeBookCover');
+
+// beda field
+Route::get('order/logo', 'OrderController@orderLogo');
+Route::post('order/logo/store', 'OrderController@storeLogo');
+
+Route::get('order/cv', 'OrderController@orderCv');
+Route::post('order/cv/store', 'OrderController@storeCv');
+// end beda field
 
 Route::get('order/destroy/{token}','OrderController@destroyOrder');
 

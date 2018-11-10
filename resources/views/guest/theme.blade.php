@@ -49,7 +49,7 @@
 
                           <style media="screen">
                           .frame-square {width: 100%;padding-top: 90%;overflow: hidden;position: relative;}
-                          .frame-square img {width: 100%;height: auto;margin: auto;position: absolute;top: -100%;right: -100%;bottom: -100%;left: -100%;}
+                          .frame-square img {width: 50%;height: auto;margin: auto;position: absolute;top: -100%;right: -100%;bottom: -100%;left: -100%;}
                           </style>
 
                           <div class="frame-square">

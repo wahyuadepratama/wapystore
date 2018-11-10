@@ -90,11 +90,11 @@
                         <div class="panel-heading">
                           @if($data->order->status == "on_progress")
                           <h4 class="panel-title alert alert-danger">
-                              <a  href="#My_order_info"><strong class="text-danger">No. Orderan #{{ $data->id }} Sedang Kamu Kerjakan</strong></a>
+                              <a  href="#My_order_info"><strong class="text-danger">No. Orderan #{{ $data->order->id }} Sedang Kamu Kerjakan</strong></a>
                           </h4>
                           @else
                           <h4 class="panel-title alert alert-info">
-                              <a  href="#My_order_info"><strong class="text-info">No. Orderan #{{ $data->id }} Selesai Dikerjakan</strong></a>
+                              <a  href="#My_order_info"><strong class="text-info">No. Orderan #{{ $data->order->id }} Selesai Dikerjakan</strong></a>
                           </h4>
                           @endif
                         </div>
@@ -172,6 +172,7 @@
                                           </p>
                                         </div>
                                       </div>
+                                      @if($data->size_long != NULL | $data->size_wide != NULL)
                                       <div class="col-md-12 order-payment">
                                         <div class="col-md-3">
                                           <span class"td-title-1">Size</span>
@@ -180,6 +181,7 @@
                                           <p class="td-title-2">{{ $data->order->size_long }} x {{ $data->order->size_wide }} (cm)</p>
                                         </div>
                                       </div>
+                                      @endif
                                       @if($data->order->content != NULL)
                                       <div class="col-md-12 order-payment">
                                         <div class="col-md-3">
@@ -201,6 +203,21 @@
                                         <div class="col-md-9">
                                           <span class="td-title-2">
                                             <p style="word-wrap: break-word; text-align:justify">{{ $data->order->note }}</p>
+                                          </td>
+                                          </span>
+                                        </div>
+                                      </div>
+                                      @endif
+                                      @if($data->order->file != NULL)
+                                      <div class="col-md-12 order-payment">
+                                        <div class="col-md-3">
+                                          <span class"td-title-1">File, Logo, Etc</span>
+                                        </div>
+                                        <div class="col-md-9">
+                                          <span class="td-title-2">
+                                            <form method="get" action="/storage/orderan/{{ $data->order->file }}">
+                                               <button type="submit" class="btn btn-info">Download!</button>
+                                            </form>
                                           </td>
                                           </span>
                                         </div>

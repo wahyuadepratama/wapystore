@@ -62,6 +62,7 @@
                           <p style="padding:5px;color:black"><span style="font-size:20px;padding:5px;">{{ Auth::user()->name }}</span> <br>
                             <span>{{ Auth::user()->email }}</span><br>
                             <span>{{ Auth::user()->phone }}</span><br>
+                            <span>{{ Auth::user()->sosmed }}</span><br>
                             @if(Auth::user()->verified != true)
                             <span><span class="text text-danger"></strong>Unverified Account</strong></span></span>
                             @else
@@ -170,6 +171,7 @@
                                           </p>
                                         </div>
                                       </div>
+                                      @if($data->size_long != NULL | $data->size_wide != NULL)
                                       <div class="col-md-12 order-payment">
                                         <div class="col-md-3">
                                           <span class"td-title-1">Size</span>
@@ -178,6 +180,7 @@
                                           <p class="td-title-2">{{ $data->size_long }} x {{ $data->size_wide }} (cm)</p>
                                         </div>
                                       </div>
+                                      @endif
                                       @if($data->content != NULL)
                                       <div class="col-md-12 order-payment">
                                         <div class="col-md-3">

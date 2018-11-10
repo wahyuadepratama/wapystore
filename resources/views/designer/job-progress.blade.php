@@ -55,17 +55,17 @@
                         <div class="panel-heading">
                           @if($data->order->status == "on_progress")
                           <h4 class="panel-title alert alert-danger">
-                              <a  href="#My_order_info"><strong class="text-danger">#{{ $data->id }} Already Taken By {{ $data->user->name }}</strong></a>
+                              <a  href="#My_order_info"><strong class="text-danger">#{{ $data->order->id }} Already Taken By {{ $data->user->name }}</strong></a>
                           </h4>
                           @endif
                           @if($data->order->status == "revision")
                           <h4 class="panel-title alert alert-danger">
-                              <a  href="#My_order_info"><strong class="text-danger">#{{ $data->id }} Is Being Revised By {{ $data->user->name }}</strong></a>
+                              <a  href="#My_order_info"><strong class="text-danger">#{{ $data->order->id }} Is Being Revised By {{ $data->user->name }}</strong></a>
                           </h4>
                           @endif
                           @if($data->order->status == "done")
                           <h4 class="panel-title alert alert-info">
-                              <a  href="#My_order_info"><strong class="text-info">#{{ $data->id }} Order Closed</strong></a>
+                              <a  href="#My_order_info"><strong class="text-info">#{{ $data->order->id }} Order Closed</strong></a>
                           </h4>
                           @endif
                         </div>
@@ -97,7 +97,7 @@
                                           <p class="td-title-2">Rp {{number_format(($data->order->price),0,',','.')}} ,-</p>
                                         </div>
                                       </div>
-                                      @if($data->discount_status != NULL)
+                                      @if($data->order->discount_status != NULL)
                                       <div class="col-md-12 order-payment">
                                         <div class="col-md-3">
                                           <span class"td-title-1">Discount</span>
@@ -115,7 +115,7 @@
                                           <p class="td-title-2">{{ $data->order->theme }}</p>
                                         </div>
                                       </div>
-                                      @if($data->revision != NULL)
+                                      @if($data->order->revision != NULL)
                                       <div class="col-md-12 order-payment">
                                         <div class="col-md-4">
                                           <span class"td-title-1">Opportunities for Revision</span>
@@ -143,6 +143,7 @@
                                           </p>
                                         </div>
                                       </div>
+                                      @if($data->order->size_long != NULL | $data->order->size_wide != NULL)
                                       <div class="col-md-12 order-payment">
                                         <div class="col-md-3">
                                           <span class"td-title-1">Size (p x l)</span>
@@ -151,7 +152,8 @@
                                           <p class="td-title-2">{{ $data->order->size_long }} x {{ $data->order->size_wide }} (cm)</p>
                                         </div>
                                       </div>
-                                      @if($data->content != NULL)
+                                      @endif
+                                      @if($data->order->content != NULL)
                                       <div class="col-md-12 order-payment">
                                         <div class="col-md-3">
                                           <span class"td-title-1">Content</span>
@@ -164,7 +166,7 @@
                                         </div>
                                       </div>
                                       @endif
-                                      @if($data->note != NULL)
+                                      @if($data->order->note != NULL)
                                       <div class="col-md-12 order-payment">
                                         <div class="col-md-3">
                                           <span class"td-title-1">Note</span>
@@ -177,14 +179,14 @@
                                         </div>
                                       </div>
                                       @endif
-                                      @if($data->file != NULL)
+                                      @if($data->order->file != NULL)
                                       <div class="col-md-12 order-payment">
                                         <div class="col-md-3">
                                           <span class"td-title-1">File, Logo, Etc</span>
                                         </div>
                                         <div class="col-md-9">
                                           <span class="td-title-2">
-                                            <form method="get" action="/storage/orderan/{{ $data->file }}">
+                                            <form method="get" action="/storage/orderan/{{ $data->order->file }}">
                                                <button type="submit" class="btn btn-info">Download!</button>
                                             </form>
                                           </td>

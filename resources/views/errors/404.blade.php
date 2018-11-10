@@ -1,47 +1,53 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Not Found</title>
+@extends('layouts.app-guest')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('head')
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+@endsection
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #B0BEC5;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
+@section('content')
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+  @include('guest.includes.header')
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
+  <!-- BREADCRUMBS SETCTION START -->
+  <div class="breadcrumbs-section plr-200 mb-80" style="padding-top: 8%">
+      <div class="breadcrumbs overlay-bg">
+          <div class="container">
+              <div class="row">
+                  <div class="col-xs-12">
+                      <div class="breadcrumbs-inner">
+                          <h1 class="breadcrumbs-title">Theme</h1>
+                          <ul class="breadcrumb-list">
+                              <li><a href="/">Home</a></li>
+                              <li>Theme</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- BREADCRUMBS SETCTION END -->
 
-            .title {
-                font-size: 72px;
-                margin-bottom: 40px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Halaman Tidak Ditemukan</div>
-            </div>
-        </div>
-    </body>
-</html>
+  <div id="page-content" class="page-wrapper">
+
+      <!-- ERROR SECTION START -->
+      <div class="error-section mb-80">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="error-404 box-shadow">
+                          <img src="img/others/error.jpg" alt="">
+                          <div class="go-to-btn btn-hover-2">
+                              <a href="index.html">go to home page</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- ERROR SECTION END -->
+  </div>
+
+  @include('guest.includes.footer')
+
+@endsection

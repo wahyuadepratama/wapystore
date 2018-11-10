@@ -13,15 +13,7 @@
       <div class="breadcrumbs overlay-bg">
           <div class="container">
               <div class="row">
-                  <div class="col-xs-12">
-                      <div class="breadcrumbs-inner">
-                          <h1 class="breadcrumbs-title">Login / Register</h1>
-                          <ul class="breadcrumb-list">
-                              <li><a href="/">Home</a></li>
-                              <li>Login / Register</li>
-                          </ul>
-                      </div>
-                  </div>
+                
               </div>
           </div>
       </div>
