@@ -14,7 +14,7 @@
       <!-- LOGO WAPY -->
       <div class="wapy-logo" style="padding: 20px;">
         <center>
-        <img src="https://lh4.googleusercontent.com/nVjOyuU29OTlzf897uTk3NL6517K3qi0OEKhPSPg4IFS5IidTzzBqOVNbzoob55HnmVMon0tv43eGxwod8zm=w1366-h626-rw" alt="Logo" title="Logo" height="80px" width="255px" style="display:block">
+        <img src="https://wapydesign.com/guest/images/logo/wapydesign.svg" alt="Logo" title="Logo" height="80px" width="255px" style="display:block">
       </center>
       </div>
       <!-- END LOGO -->
