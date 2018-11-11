@@ -6,10 +6,11 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Http\Request;
 use App\Mail\OrderBroadcast;
+use Illuminate\Http\Request;
 use App\Models\ThemePhoto;
 use App\Models\PhotoTheme;
+use App\Mail\PaymentOrder;
 use App\Models\Discount;
 use App\Models\Theme;
 use App\Models\Order;
@@ -104,6 +105,8 @@ class OrderController extends Controller
 
       $designer = User::where('role_id', 2)->get();
 
+      $this->sendPaymentOrderEmail($spanduk);
+
       foreach($designer as $data){
         Mail::to($data->email)->send(new OrderBroadcast($spanduk));
       }
@@ -146,6 +149,8 @@ class OrderController extends Controller
       ]);
 
       $designer = User::where('role_id', 2)->get();
+
+      $this->sendPaymentOrderEmail($poster);
 
       foreach($designer as $data){
         Mail::to($data->email)->send(new OrderBroadcast($poster));
@@ -190,6 +195,8 @@ class OrderController extends Controller
 
       $designer = User::where('role_id', 2)->get();
 
+      $this->sendPaymentOrderEmail($banner);
+
       foreach($designer as $data){
         Mail::to($data->email)->send(new OrderBroadcast($banner));
       }
@@ -232,6 +239,8 @@ class OrderController extends Controller
       ]);
 
       $designer = User::where('role_id', 2)->get();
+
+      $this->sendPaymentOrderEmail($pamflet);
 
       foreach($designer as $data){
         Mail::to($data->email)->send(new OrderBroadcast($pamflet));
@@ -276,6 +285,8 @@ class OrderController extends Controller
 
       $designer = User::where('role_id', 2)->get();
 
+      $this->sendPaymentOrderEmail($idCard);
+
       foreach($designer as $data){
         Mail::to($data->email)->send(new OrderBroadcast($idCard));
       }
@@ -319,6 +330,8 @@ class OrderController extends Controller
 
       $designer = User::where('role_id', 2)->get();
 
+      $this->sendPaymentOrderEmail($bookCover);
+
       foreach($designer as $data){
         Mail::to($data->email)->send(new OrderBroadcast($bookCover));
       }
@@ -360,6 +373,8 @@ class OrderController extends Controller
 
       $designer = User::where('role_id', 2)->get();
 
+      $this->sendPaymentOrderEmail($cv);
+
       foreach($designer as $data){
         Mail::to($data->email)->send(new OrderBroadcast($cv));
       }
@@ -399,6 +414,8 @@ class OrderController extends Controller
       ]);
 
       $designer = User::where('role_id', 2)->get();
+
+      $this->sendPaymentOrderEmail($logo);
 
       foreach($designer as $data){
         Mail::to($data->email)->send(new OrderBroadcast($logo));
@@ -460,6 +477,11 @@ class OrderController extends Controller
           'status' => NULL
         ];
       }
+    }
+
+    public function sendPaymentOrderEmail($order)
+    {
+      Mail::to(Auth::user()->email)->send(new PaymentOrder(Auth::user()->name, $order->name, $order->price));
     }
 
     public function destroyOrder($id)

@@ -5,16 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link rel="stylesheet" href="http://fonts.gstatic.com/s/googlesans/v9/4UaGrENHsxJlGDuGo1OIlL3Awp5MKg.woff2">
     <title></title>
 
   </head>
-  <body style="background-color: white;margin: 0 auto;font-family: 'Muli', sans-serif;">
-    <div class="container-all" style="background-color: #eee;margin: 0 auto;font-family: 'Muli', sans-serif;">
-    <div class="wapy-container" style="max-width:728px;margin: 0 auto;font-family: 'Muli', sans-serif;background-color: white;">
+  <body style="background-color: white;margin: 0 auto;font-family: 'Google Sans', sans-serif;">
+    <div class="container-all" style="background-color: white;margin: 0 auto;font-family: 'Google Sans', sans-serif;">
+    <div class="wapy-container" style="max-width:728px;margin: 0 auto;font-family: 'Google Sans', sans-serif;background-color: white;">
       <!-- LOGO WAPY -->
       <div class="wapy-logo" style="padding: 20px;">
         <center>
-        <img src="https://wapydesign.com/guest/images/logo/wapydesign.svg" alt="Logo" title="Logo" height="80px" width="255px" style="display:block">
+        <img src="https://wapydesign.com/guest/images/logo/wapydesign.png" alt="Logo" title="Logo" height="110px" width="255px" style="display:block">
       </center>
       </div>
       <!-- END LOGO -->
@@ -23,34 +24,39 @@
         <center><h2 style="margin:0px;padding:0px">Hi, {{ $name }}!</h2></center>
       </div>
       <!-- END HEADER -->
+
       <!-- CONTENT -->
       <div class="wapy-content" style="padding: 20px;">
-        <p style="font-family: 'Muli', sans-serif;">Thanks for creating an account on <b>Wapy Design</b>. Your username is <b>{{ $name }}</b><br><br>
+        <p style="font-family: 'Google Sans', sans-serif; font-size: 17px">
 
-          You can access your account area to view your orders. Please confirm you email address here and you will get 10% discount for first order.<br><br>
+          Thanks for creating an account on <b>Wapy Design</b>. Your username is <b>{{ $name }}</b><br><br>
+          You can access your account area to view your orders. Please confirm your email address here and you will get <b>10% discount</b> for first order.<br><br>
+          
         </p>
-        <center><a href="@php echo url('/') @endphp/{{ $token }}" class="wapy-btn" style="padding: 15px;background-color: #f7482d;color: white;text-decoration: none;font-family: 'Muli', sans-serif;"><b>Email Confirmation</b></a></center>
+        <center><a href="@php echo url('/') @endphp/confirmation/{{ $token }}" class="wapy-btn" style="padding: 15px;background-color: #f7482d;color: white;text-decoration: none;font-family: 'Google Sans', sans-serif;"><b>Email Confirmation</b></a></center>
       </div>
       <!-- END CONTENT -->
+
       <!-- FOOTER -->
       <div class="wapy-footer" style="margin-top: 25px;padding: 15px 20px;background-color: #ddd;">
-        <h3 style="font-family: 'Muli', sans-serif; margin:0px"><b>Contact Us</b></h3>
-        <table class="wapy-contact" style="font-family: 'Muli', sans-serif;">
+        <h3 style="font-family: 'Google Sans', sans-serif; margin:0px"><b>Contact Us</b></h3>
+        <table class="wapy-contact" style="font-family: 'Google Sans', sans-serif;">
           <tr>
-            <td style="padding: 2px 0px;"><img src="https://lh5.googleusercontent.com/W9xosw1kseadgUw_zYYd39rQuOs-txIi_fNbM637cW6Wbj3OKyOobyjpVHiwSSdcJUdDiIaGAgLZ5PVD_puW=w1366-h577" alt="whatsapp" title="whatsapp" width="20px" height="20" style="display:block"></td>
-            <td style="padding: 2px 5px;font-family: 'Muli', sans-serif;">0896-7625-3311</td>
+            <td style="padding: 2px 0px;"><img src="https://wapydesign.com/guest/images/icons/whatsapp.png" alt="whatsapp" title="whatsapp" width="20px" height="20" style="display:block"></td>
+            <td style="padding: 2px 5px;font-family: 'Google Sans', sans-serif;">0896-7625-3311</td>
           </tr>
           <tr>
-            <td style="padding: 2px 0px;"><img src="https://lh6.googleusercontent.com/1tRHfaDo6syUlZgSuLsbqVFMTYMj3Skl_oyNryCz4Iw_ZYFMqB9BPGbhXoWCmt0fzsJCkFlv9q4NPShTIWN7=w1366-h577-rw" alt="line" title="line" width="20px" height="20" style="display:block"></td>
-            <td style="padding: 2px 5px;font-family: 'Muli', sans-serif;">@paa0093h</td>
+            <td style="padding: 2px 0px;"><img src="https://wapydesign.com/guest/images/icons/line.png" alt="line" title="line" width="20px" height="20" style="display:block"></td>
+            <td style="padding: 2px 5px;font-family: 'Google Sans', sans-serif;">@paa0093h</td>
           </tr>
           <tr>
-            <td style="padding: 2px 0px;"><img src="https://lh6.googleusercontent.com/2wLj9MJYycbYhleKKEait2fBS5DgXEyPT34LkNznhX2OI74NmzLkpYk7gimG8yI9WZdzTXmE4y5tPTNTaDq4=w1366-h577-rw" alt="email" title="email" width="20px" height="20" style="display:block"></td>
-            <td style="padding: 2px 5px;"><span style="text-decoration:none;color:black;font-family: 'Muli', sans-serif;">official@wapydesign.com</span></td>
+            <td style="padding: 2px 0px;"><img src="https://wapydesign.com/guest/images/icons/email.png" alt="email" title="email" width="20px" height="20" style="display:block"></td>
+            <td style="padding: 2px 5px;"><span style="text-decoration:none;color:black;font-family: 'Google Sans', sans-serif;">official@wapydesign.com</span></td>
           </tr>
         </table>
       </div>
       <!-- END FOOTER -->
+
     </div>
 </div>
   </body>

@@ -42,7 +42,7 @@
                 </div>
                 <div class="col-md-4 col-sm-3" style="margin-top: 1%; margin-bottom: 1%">
                     <ul class="footer-payment">
-                        <a href="#"><img src="{{URL::asset('guest/images/icons/bni.jpg')}}" width="15%" alt=""></a>&nbsp;&nbsp;
+                        <a href="#"><img src="{{URL::asset('guest/images/icons/bni.png')}}" width="15%" alt=""></a>&nbsp;&nbsp;
                         <a href="#"><img src="{{URL::asset('guest/images/icons/mandiri.png')}}" width="15%" alt=""></a>&nbsp;&nbsp;
                         <a href="#"><img src="{{URL::asset('guest/images/icons/bri.png')}}" width="15%" alt=""></a>
                     </ul>

@@ -85,7 +85,8 @@
                   <div class="col-md-9">
                     @if(Auth::user()->verified != true)
                     <div class="alert alert-warning" role="alert">
-                      Please check your email address for account verification. You will get <a href="#" class="alert-link">10% Discount</a> on all types of design orders.
+                      Please check your email address for account verification. You will get <a href="#" class="alert-link">10% Discount</a> on all types of design orders.<br>
+                      Did not receive email? try checking spam or resending email here &nbsp;<a class="text text-danger" href="/confirmation/resend"><strong>Resend Email</strong></a>
                     </div>
                     @endif
                     <!-- My Order info -->

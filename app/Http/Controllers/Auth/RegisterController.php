@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Mail\RegisterConfirmation;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -59,6 +61,8 @@ class RegisterController extends Controller
 
           $token = bin2hex(random_bytes(50));
           $name = preg_replace('/@.*?$/', '', $data['email']);
+
+          Mail::to($data['email'])->send(new RegisterConfirmation($token, $name));
 
           return User::create([
               'name' => $name,

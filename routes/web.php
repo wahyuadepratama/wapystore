@@ -4,6 +4,7 @@ Route::get('/', 'GuestController@index');
 
 Auth::routes();
 Route::get('confirmation/{token}','GuestController@confirmation');
+Route::get('confirmation/resend','HomeController@resendEmail');
 
 Route::get('theme','ThemeController@index');
 Route::get('theme/{id}','ThemeController@show');

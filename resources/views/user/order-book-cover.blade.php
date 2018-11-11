@@ -99,7 +99,12 @@
                                                 <h6 class="widget-title border-left mb-20">Media Pengiriman Desain</h6>
 
                                                 <input type="text" disabled value="{{ Auth::user()->email }}">
-                                                <input type="text" class="custom-text" value="{{ Auth::user()->phone }}" name="phone" placeholder="No HP atau WA">
+                                                @if ($errors->has('phone'))
+                                                    <span class="text-danger">
+                                                        <small><strong>{{ $errors->first('phone') }}</strong></small>
+                                                    </span>
+                                                @endif
+                                                <input type="text" class="custom-text" value="{{ Auth::user()->phone }}" name="phone" placeholder="No HP atau WA" required>
                                                 <input type="text" class="custom-text" value="{{ Auth::user()->sosmed }}" name="sosmed" placeholder="(Opsional)  LINE atau Telegram">
 
                                             </div>
@@ -112,14 +117,14 @@
                                                         <small><strong>{{ $errors->first('size_long') }}</strong></small>
                                                     </span>
                                                 @endif
-                                                <input type="text" class="custom-text" value="{{ old('size_long') }}" name="size_long" placeholder="Panjang (cm)">
+                                                <input type="text" class="custom-text" value="{{ old('size_long') }}" name="size_long" placeholder="Panjang (cm)" required>
 
                                                 @if ($errors->has('size_wide'))
                                                     <span class="text-danger">
                                                         <small><strong>{{ $errors->first('size_wide') }}</strong></small>
                                                     </span>
                                                 @endif
-                                                <input type="text" class="custom-text" value="{{ old('size_wide') }}" name="size_wide" placeholder="Lebar (cm)">
+                                                <input type="text" class="custom-text" value="{{ old('size_wide') }}" name="size_wide" placeholder="Lebar (cm)" required>
 
                                                 @if ($errors->has('theme'))
                                                     <span class="text-danger">
@@ -174,7 +179,7 @@
                                                         <small><strong>{{ $errors->first('content') }}</strong></small>
                                                     </span>
                                                 @endif
-                                                <textarea value="{{ old('content') }}" name="content" class="custom-textarea" placeholder="Jelaskan konten halaman depan dan belakang dari cover book disini "></textarea>
+                                                <textarea value="{{ old('content') }}" name="content" class="custom-textarea" placeholder="Jelaskan konten halaman depan dan belakang dari cover book disini " required></textarea>
 
                                                 @if ($errors->has('note'))
                                                     <span class="text-danger">

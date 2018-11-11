@@ -15,10 +15,10 @@
               <div class="row">
                   <div class="col-xs-12">
                       <div class="breadcrumbs-inner">
-                          <h1 class="breadcrumbs-title">Theme</h1>
+                          <h1 class="breadcrumbs-title">404 Not Found</h1>
                           <ul class="breadcrumb-list">
                               <li><a href="/">Home</a></li>
-                              <li>Theme</li>
+                              <li>404</li>
                           </ul>
                       </div>
                   </div>
@@ -36,9 +36,9 @@
               <div class="row">
                   <div class="col-md-12">
                       <div class="error-404 box-shadow">
-                          <img src="img/others/error.jpg" alt="">
+                          <img src="{{ asset('guest/images/404/404.png') }}" alt="">
                           <div class="go-to-btn btn-hover-2">
-                              <a href="index.html">go to home page</a>
+                              <a href="/">go to home page</a>
                           </div>
                       </div>
                   </div>

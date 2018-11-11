@@ -13,7 +13,7 @@
       <div class="breadcrumbs overlay-bg">
           <div class="container">
               <div class="row">
-                
+
               </div>
           </div>
       </div>
@@ -38,8 +38,8 @@
                                 <p>If you have an account, Please log in.</p>
                                 <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                   {{ csrf_field() }}
-                                  <input type="text" name="identity" value="{{ old('email') }}" required autofocus placeholder="E-Mail or Username">
-                                  <input type="password" name="password" placeholder="Password" required>
+                                  <input type="text" name="identity" value="{{ old('email') }}" required autofocus placeholder="E-Mail or Username" style="color: black;">
+                                  <input type="password" name="password" placeholder="Password" required style="color: black;">
                                   @if ($errors->has('name'))
                                       <span class="help-block alert alert-danger">
                                           <small><strong>{{ $errors->first('name') }}</strong></small>
@@ -60,11 +60,11 @@
                               <div class="login-account p-30 box-shadow">
                                   <div class="row">
                                       <div class="col-sm-12">
-                                          <input type="text" placeholder="E-Mail" name="email" value="{{ old('email') }}" required>
+                                          <input type="text" placeholder="E-Mail" name="email" value="{{ old('email') }}" required style="color: black;">
                                       </div>
                                   </div>
-                                  <input type="password"  placeholder="Password" name="password" required>
-                                  <input type="password"  placeholder="Confirm Password" name="password_confirmation" required>
+                                  <input type="password"  placeholder="Password" name="password" required style="color: black;">
+                                  <input type="password"  placeholder="Confirm Password" name="password_confirmation" required style="color: black;">
                                   @if ($errors->has('password'))
                                       <span class="help-block alert alert-danger">
                                           <small><strong>{{ $errors->first('password') }}</strong></small>

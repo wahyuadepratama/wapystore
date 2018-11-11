@@ -102,7 +102,12 @@
                                                 <h6 class="widget-title border-left mb-20">Media Pengiriman Desain</h6>
 
                                                 <input type="text" disabled value="{{ Auth::user()->email }}">
-                                                <input type="text" class="custom-text" value="{{ Auth::user()->phone }}" name="phone" placeholder="No HP atau WA">
+                                                @if ($errors->has('phone'))
+                                                    <span class="text-danger">
+                                                        <small><strong>{{ $errors->first('phone') }}</strong></small>
+                                                    </span>
+                                                @endif
+                                                <input type="text" class="custom-text" value="{{ Auth::user()->phone }}" name="phone" placeholder="No HP atau WA" required>
                                                 <input type="text" class="custom-text" value="{{ Auth::user()->sosmed }}" name="sosmed" placeholder="(Opsional)  LINE atau Telegram">
 
                                             </div>
@@ -115,7 +120,7 @@
                                                         <small><strong>{{ $errors->first('content') }}</strong></small>
                                                     </span>
                                                 @endif
-                                                <textarea value="{{ old('content') }}" name="content" class="custom-textarea" placeholder="Jelaskan deskripsi logo disini. Deskripsikan perusahaan atau organisasi anda dengan jelas"></textarea>
+                                                <textarea value="{{ old('content') }}" name="content" class="custom-textarea" placeholder="Jelaskan deskripsi logo disini. Deskripsikan perusahaan atau organisasi anda dengan jelas" required></textarea>
 
                                                 @if ($errors->has('note'))
                                                     <span class="text-danger">
