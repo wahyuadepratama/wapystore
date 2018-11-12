@@ -28,36 +28,34 @@
       <!-- CONTENT -->
       <div class="wapy-content" style="padding: 20px;">
         <p style="font-family: 'Google Sans', sans-serif; font-size: 17px">
-          You get an order from our client, check here to get the job. Increase your income on wapydesign and get a bonus
+          Pembayaran anda sudah kami proses. Preview desain anda akan segera kami kirimkan via sosial media.
+          Jika dalam 24 jam tidak ada konfirmasi dari anda, kami anggap tidak ada revisi, file desain akan kami
+          kirimkan ke email anda dan status orderan akan kami "close".
         </p><br>
 
         <center>
           <table style="font-family: 'Google Sans', sans-serif; font-size: 17px">
             <tr>
-              <td style="font-family: 'Google Sans', sans-serif;">Client &nbsp;</td>
+              <td style="font-family: 'Google Sans', sans-serif;">Pesanan &nbsp;</td>
               <td style="font-family: 'Google Sans', sans-serif;">&nbsp; : &nbsp;</td>
-              <td style="font-family: 'Google Sans', sans-serif;">{{ $data->user->name }}</td>
+              <td style="font-family: 'Google Sans', sans-serif;">{{ $data->order->name }}</td>
             </tr>
             <tr>
-              <td style="font-family: 'Google Sans', sans-serif;">Order &nbsp;</td>
+              <td style="font-family: 'Google Sans', sans-serif;">Harga &nbsp;</td>
               <td style="font-family: 'Google Sans', sans-serif;">&nbsp; : &nbsp;</td>
-              <td style="font-family: 'Google Sans', sans-serif;">{{ $data->name }}</td>
+              <td style="font-family: 'Google Sans', sans-serif;">Rp {{number_format(($data->order->price),0,',','.')}} ,-</td>
             </tr>
             <tr>
-              <td style="font-family: 'Google Sans', sans-serif;">Price &nbsp;</td>
+              <td style="font-family: 'Google Sans', sans-serif;">Status &nbsp;</td>
               <td style="font-family: 'Google Sans', sans-serif;">&nbsp; : &nbsp;</td>
-              <td style="font-family: 'Google Sans', sans-serif;">Rp {{number_format(($data->price),0,',','.')}} ,-</td>
-            </tr>
-            <tr>
-              <td style="font-family: 'Google Sans', sans-serif;">Theme &nbsp;</td>
-              <td style="font-family: 'Google Sans', sans-serif;">&nbsp; : &nbsp;</td>
-              <td style="font-family: 'Google Sans', sans-serif;">{{ $data->theme }}</td>
+              <td style="font-family: 'Google Sans', sans-serif; color: green;"><strong>{{ $data->payment_status }}</strong></td>
             </tr>
           </table>
         </center><br>
 
         <p style="font-family: 'Google Sans', sans-serif; font-size: 17px">
-          <center><a href="@php echo url('/') @endphp/job" class="wapy-btn" style="padding: 15px;background-color: #f7482d;color: white;text-decoration: none;font-family: 'Google Sans', sans-serif;"><b>Take Job</b></a></center>
+          Harap segera cek sosial media anda terkait informasi revisi. Terima kasih sudah mempercayai desain anda pada <b>Wapy Design</b>.
+          <br><br> Salam Hangat <br> <b>CEO Wapy Design</b>
         </p>
 
         </p>

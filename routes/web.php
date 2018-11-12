@@ -6,13 +6,14 @@ Auth::routes();
 Route::get('confirmation/{token}','GuestController@confirmation');
 Route::get('confirmation/resend','HomeController@resendEmail');
 
+Route::get('upload','GuestController@uploadDesign');
+
 Route::get('theme','ThemeController@index');
 Route::get('theme/{id}','ThemeController@show');
 
 Route::get('portofolio','ThemeController@indexPortofolio');
 
 Route::get('contact', function(){ return view('guest/contact'); });
-
 Route::post('advice','GuestController@storeAdvice');
 
 Route::get('home', 'HomeController@index');
@@ -71,6 +72,9 @@ Route::get('root/discount-management/users','AdminController@userDiscount');
 Route::get('root/transaction/','AdminController@waitingOrder');
 Route::get('root/transaction/on-progress','AdminController@onProgressOrder');
 Route::get('root/transaction/{transaction_id}/{order_id}','AdminController@confirmPayment');
+Route::get('root/transaction/change/sudah/{id}','AdminController@confirmSudah');
+Route::get('root/transaction/change/belum/{id}','AdminController@confirmBelum');
+Route::get('root/transaction/change/status/done/{id}','AdminController@confirmDone');
 
 Route::get('root/theme','AdminController@indexTheme');
 Route::post('root/theme/store', 'AdminController@storeTheme');

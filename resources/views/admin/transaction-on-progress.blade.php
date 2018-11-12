@@ -35,17 +35,19 @@
           <div class="col-md-12">
               <div class="card">
                   <div class="card-body">
+                    <small>
                     <table id="user-management" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th>Payment Status</th>
+                          <th>Payment</th>
+                          <th>File Upload</th>
+                          <th>Status</th>
                           <th>No Order</th>
                           <th>Price</th>
-                          <th>Date</th>
+                          <th>Dikerjakan</th>
                           <th>Owner</th>
                           <th>Designer</th>
                           <th>Product</th>
-
                         </tr>
                       </thead>
                       <tbody>
@@ -53,12 +55,36 @@
                         <tr>
                           <td>
                             @if($value->payment_status == 'waiting')
-                            <small><a href="/root/transaction/{{ $value->id }}/{{ $value->order->id }}" onclick="return confirm('Are you sure you want to confirm this transaction ?');" class="btn-sm btn-danger"><strong>Confirm Payment</strong></a></small>
+                            <small><a href="/root/transaction/{{ $value->id }}/{{ $value->order->id }}" onclick="return confirm('Are you sure you want to confirm this transaction ? email confirmation will be send to your client');" class="btn-sm btn-danger">Confirm</a></small>
                             @else
                             <small><a href="#" class="btn-sm btn-success">Complete</a></small>
                             @endif
                           </td>
-                          <td>{{ $value->order->id }}</td>
+                          <td>
+                            <div class="container">
+                              <div class="row" style="padding-bottom: 5%">
+                                @if($value->status == 'belum diupload')
+                                <a href="/root/transaction/change/sudah/{{ $value->id }}" class="btn-sm btn-danger">Belum</a>
+                                @else
+                                <a href="/root/transaction/change/belum/{{ $value->id }}" class="btn-sm btn-success">Sudah</a>
+                                @endif
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="container">
+                              <div class="row" style="padding-bottom: 5%">
+                                @if($value->order->status == 'revision')
+                                <a href="/root/transaction/change/status/done/{{ $value->order->id }}" onclick="return confirm('Are you sure you want to confirm this transaction to be done? email confirmation will be send to your client');" class="btn-sm btn-warning">Revisi</a>
+                                @elseif($value->order->status == 'on_progress')
+                                <a href="/root/transaction/change/status/done/{{ $value->order->id }}" class="btn-sm btn-danger">Progress</a>
+                                @else
+                                <a class="btn-sm btn-success">Done</a>
+                                @endif
+                              </div>
+                            </div>
+                          </td>
+                          <td>#{{ $value->order->id }}</td>
                           <td>Rp {{number_format($value->order->price,0,',','.')}} ,-</td>
                           <td>{{ $value->updated_at }}</td>
                           <td>{{ $value->order->user->name }}</td>
@@ -68,6 +94,7 @@
                         @endforeach
                       </tbody>
                     </table>
+                    </small>
                   </div>
               </div>
           </div>

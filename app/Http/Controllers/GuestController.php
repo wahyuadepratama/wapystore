@@ -46,4 +46,9 @@ class GuestController extends Controller
           'message' => 'required'
         ]);
     }
+
+    public function uploadDesign()
+    {
+      return redirect()->away('https://docs.google.com/forms/d/e/1FAIpQLSdD090kS2zBKzmYkFKMOOqrUTAj1hekuiTSyYaZSP7MLKmuSg/viewform?usp=sf_link');
+    }
 }

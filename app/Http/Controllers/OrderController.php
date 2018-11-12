@@ -108,7 +108,7 @@ class OrderController extends Controller
       $this->sendPaymentOrderEmail($spanduk);
 
       foreach($designer as $data){
-        Mail::to($data->email)->send(new OrderBroadcast($spanduk));
+        Mail::to($data->email)->send(new OrderBroadcast($data->name, $spanduk));
       }
 
       return redirect('/home');
@@ -153,7 +153,7 @@ class OrderController extends Controller
       $this->sendPaymentOrderEmail($poster);
 
       foreach($designer as $data){
-        Mail::to($data->email)->send(new OrderBroadcast($poster));
+        Mail::to($data->email)->send(new OrderBroadcast($data->name, $poster));
       }
 
       return redirect('/home');
@@ -198,7 +198,7 @@ class OrderController extends Controller
       $this->sendPaymentOrderEmail($banner);
 
       foreach($designer as $data){
-        Mail::to($data->email)->send(new OrderBroadcast($banner));
+        Mail::to($data->email)->send(new OrderBroadcast($data->name, $banner));
       }
 
       return redirect('/home');
@@ -243,7 +243,7 @@ class OrderController extends Controller
       $this->sendPaymentOrderEmail($pamflet);
 
       foreach($designer as $data){
-        Mail::to($data->email)->send(new OrderBroadcast($pamflet));
+        Mail::to($data->email)->send(new OrderBroadcast($data->name, $pamflet));
       }
 
       return redirect('/home');
@@ -288,7 +288,7 @@ class OrderController extends Controller
       $this->sendPaymentOrderEmail($idCard);
 
       foreach($designer as $data){
-        Mail::to($data->email)->send(new OrderBroadcast($idCard));
+        Mail::to($data->email)->send(new OrderBroadcast($data->name, $idCard));
       }
 
       return redirect('/home');
@@ -333,7 +333,7 @@ class OrderController extends Controller
       $this->sendPaymentOrderEmail($bookCover);
 
       foreach($designer as $data){
-        Mail::to($data->email)->send(new OrderBroadcast($bookCover));
+        Mail::to($data->email)->send(new OrderBroadcast($data->name, $bookCover));
       }
 
       return redirect('/home');
@@ -376,7 +376,7 @@ class OrderController extends Controller
       $this->sendPaymentOrderEmail($cv);
 
       foreach($designer as $data){
-        Mail::to($data->email)->send(new OrderBroadcast($cv));
+        Mail::to($data->email)->send(new OrderBroadcast($data->name, $cv));
       }
 
       return redirect('/home');
@@ -418,7 +418,7 @@ class OrderController extends Controller
       $this->sendPaymentOrderEmail($logo);
 
       foreach($designer as $data){
-        Mail::to($data->email)->send(new OrderBroadcast($logo));
+        Mail::to($data->email)->send(new OrderBroadcast($data->name, $logo));
       }
 
       return redirect('/home');
@@ -460,23 +460,33 @@ class OrderController extends Controller
         $data = Discount::find(Auth::user()->discount_id);
         if(strpos($data->product, $product)){
           $price = $price - ($price * ($data->discount/100));
+          $price = $this->uniqueNumber($price);
           $status = $data->name;
           return [
             'price' => $price,
             'status' => $status
           ];
         }else{
+          $price = $this->uniqueNumber($price);
           return [
             'price' => $price,
             'status' => NULL
           ];
         }
       }else{
+        $price = $this->uniqueNumber($price);
         return [
           'price' => $price,
           'status' => NULL
         ];
       }
+    }
+
+    public function uniqueNumber($price)
+    {
+      $unique = rand(100,999);
+      $price = $price + $unique;
+      return $price;
     }
 
     public function sendPaymentOrderEmail($order)

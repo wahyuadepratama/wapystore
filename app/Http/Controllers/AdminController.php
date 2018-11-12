@@ -11,6 +11,8 @@ use App\Models\Discount;
 use App\Models\ThemePhoto;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use App\Mail\ConfirmPayment;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -165,13 +167,15 @@ class AdminController extends Controller
 
     public function confirmPayment($transaction_id, $order_id)
     {
-      $transaction = Transaction::find($transaction_id);
+      $transaction = Transaction::with('order')->find($transaction_id);
       $transaction->payment_status = "paid";
       $transaction->save();
 
-      $order = Order::find($order_id);
+      $order = Order::with('user')->find($order_id);
       $order->status = "done";
       $order->save();
+
+      Mail::to($order->user->email)->send(new ConfirmPayment($order->user->name, $transaction));
 
       return back();
     }
@@ -228,6 +232,36 @@ class AdminController extends Controller
       $photo->delete();
 
       return back()->with('success','You have successfully destroy this photo!');
+    }
+
+    public function confirmSudah($id)
+    {
+      $transaction = Transaction::find($id);
+      $transaction->status = "sudah diupload";
+      $transaction->save();
+      return back();
+    }
+
+    public function confirmBelum($id)
+    {
+      $transaction = Transaction::find($id);
+      $transaction->status = "belum diupload";
+      $transaction->save();
+      return back();
+    }
+
+    public function confirmDone($id)
+    {
+      $order = Order::find($id);
+      $order->status = "done";
+      $order->save();
+
+      // $designerMoney = $order->price * (0.85);
+      // $adminMoney = $order->price * (0.15);
+      //
+      // return $designerMoney. $adminMoney;
+
+      return back();
     }
 
 }

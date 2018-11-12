@@ -28,7 +28,9 @@
       <!-- CONTENT -->
       <div class="wapy-content" style="padding: 20px;">
         <p style="font-family: 'Google Sans', sans-serif; font-size: 17px">
-          Thank you for ordering <b>{{ $order_name }}</b> on <b>Wapy Design</b>. We are currently processing your order. Your total order is:<br>
+          Thank you for ordering <b>{{ $order_name }}</b> on <b>Wapy Design</b>. We are currently processing your order.
+          Please make a payment until the last 3 digits. We will not process your design until your payment is complete.
+          Your total order is:<br>
           <center style="font-size: 25px"><b> Rp {{number_format(($order_price),0,',','.')}} ,- <b></center>
         </p><br>
 
@@ -56,7 +58,7 @@
 
         <p style="font-family: 'Google Sans', sans-serif; font-size: 17px">
           For information and questions related to orders or designs you can ask our contact below.
-          thank you
+          Thank you
         </p>
 
         </p>

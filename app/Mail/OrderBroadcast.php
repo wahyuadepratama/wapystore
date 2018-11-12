@@ -10,6 +10,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 class OrderBroadcast extends Mailable
 {
     use Queueable, SerializesModels;
+    public $name;
     public $data;
 
     /**
@@ -17,9 +18,10 @@ class OrderBroadcast extends Mailable
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($name, $data)
     {
-        $this->data = $data;
+      $this->name = $name;
+      $this->data = $data;
     }
 
     /**
@@ -37,6 +39,6 @@ class OrderBroadcast extends Mailable
       //   ]);
       // }
 
-      $email->subject('You Get an Order Design')->view('mail/order-broadcast')->with('data',$this->data);
+      $email->subject('There is a job for you! Take it Now!')->view('mail/order-broadcast')->with('name', $this->name)->with('data',$this->data);
     }
 }
