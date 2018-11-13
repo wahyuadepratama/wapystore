@@ -44,11 +44,11 @@
                 <div class="row">
                     <!-- blog-item start -->
                     @foreach($portofolio as $data)
-                    <div class="col-md-3 col-sm-4 col-xs-12" style="padding: 4%">
+                    <div class="col-md-3 col-sm-4 col-xs-12">
                         <div class="product-item product-item-2">
                           <div class="banner-item">
                               <div class="banner-img">
-                                  <a href="/theme/{{ $data->theme->id }}"><img height="300" src="{{URL::asset('storage/theme/'. $data->path)}}" alt=""></a>
+                                  <a href="/theme/{{ $data->theme->id }}"><img src="{{URL::asset('storage/theme/'. $data->path)}}" alt=""></a>
                               </div>
                           </div>
                           <ul class="action-button">

@@ -77,7 +77,7 @@
                                 @if($value->order->status == 'revision')
                                 <a href="/root/transaction/change/status/done/{{ $value->order->id }}" onclick="return confirm('Are you sure you want to confirm this transaction to be done? email confirmation will be send to your client');" class="btn-sm btn-warning">Revisi</a>
                                 @elseif($value->order->status == 'on_progress')
-                                <a href="/root/transaction/change/status/done/{{ $value->order->id }}" class="btn-sm btn-danger">Progress</a>
+                                <a href="/root/transaction/change/status/revision/{{ $value->order->id }}" class="btn-sm btn-danger">Progress</a>
                                 @else
                                 <a class="btn-sm btn-success">Done</a>
                                 @endif

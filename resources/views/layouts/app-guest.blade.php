@@ -1,6 +1,16 @@
 <!doctype html>
 <html class="no-js" lang="en">
+<!--
+//////////////////////////////////////////////////////
 
+Selamat datang di WapyDesign
+
+Website: 		http://wapydesign.com
+Email: 			official@wapydesign.com
+Instagram:  @wapydesign
+
+//////////////////////////////////////////////////////
+ -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">

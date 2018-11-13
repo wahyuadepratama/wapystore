@@ -89,12 +89,15 @@
                 </a>
 
                 <div class="user-menu dropdown-menu">
-                        <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
-
-                        <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
-
-                        <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
-
+                        <a class="nav-link" href="#"><i class="fa fa- user"></i>{{ Auth::user()->name }}</a>
+                        <a class="nav-link" href="#"><i class="fa fa- user"></i>
+                          @php
+                            $debit = \App\Models\HistoryTransaction::where('user_id',Auth::user()->id)->sum('debit');
+                            $kredit = \App\Models\HistoryTransaction::where('user_id',Auth::user()->id)->sum('kredit');
+                            $saldo = $debit + $kredit;
+                          @endphp
+                          <b>Rp {{number_format(($saldo),0,',','.')}} ,-</b>
+                        </a>
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-power -off"></i>Logout</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}

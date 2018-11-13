@@ -28,38 +28,12 @@
       <!-- CONTENT -->
       <div class="wapy-content" style="padding: 20px;">
         <p style="font-family: 'Google Sans', sans-serif; font-size: 17px">
-          Thank you for ordering <b>{{ $order_name }}</b> on <b>Wapy Design</b>. We are currently processing your order.
-          Please make a payment until the <b>last 3 digits</b>. We will not process your design until your payment is complete.
-          And <b>send photo</b> your <b>proof of payment</b> to <b>0896-7625-3311 (Whatsapp)</b> or <b> @paa0093h (Line)</b>
-          so that we can confirm quickly. Your total order is:<br>
-          <center style="font-size: 25px"><b> Rp {{number_format(($order_price),0,',','.')}} ,- <b></center>
-        </p><br>
+          We have sent your design order to this email. Thank you for entrusting your design to us.
+          We are happy to help and serve. Success and prosperity for you.
+        </p>
 
         <p style="font-family: 'Google Sans', sans-serif; font-size: 17px">
-          Payment can be made to one of the following accounts:
-        </p><br>
-
-        <table style="font-family: 'Google Sans', sans-serif; font-size: 17px">
-          <tr>
-            <td style="padding: 10px"><img src="https://wapydesign.com/guest/images/icons/bri.png" width="100px" style="display:block"></td>
-            <td style="padding: 10px;font-family: 'Google Sans', sans-serif;">7241-01-005830-53-8</td>
-            <td style="padding: 10px;font-family: 'Google Sans', sans-serif;">a/n Wahyu Ade Pratama</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px"><img src="https://wapydesign.com/guest/images/icons/mandiri.png" width="100px" style="display:block"></td>
-            <td style="padding: 10px;font-family: 'Google Sans', sans-serif;">111-00-0755133-2</td>
-            <td style="padding: 10px;font-family: 'Google Sans', sans-serif;">a/n Wahyu Ade Pratama</td>
-          </tr>
-          <tr>
-            <td style="padding: 10px"><img src="https://wapydesign.com/guest/images/icons/bni.png" width="100px" style="display:block"></td>
-            <td style="padding: 10px;font-family: 'Google Sans', sans-serif;">068-21-71537</td>
-            <td style="padding: 10px;font-family: 'Google Sans', sans-serif;">a/n Wahyu Ade Pratama</td>
-          </tr>
-        </table><br>
-
-        <p style="font-family: 'Google Sans', sans-serif; font-size: 17px">
-          For information and questions related to orders or designs you can ask our contact below.
-          Thank you
+          <br><br> Best Regards <br> <b>CEO Wapy Design</b>
         </p>
 
         </p>

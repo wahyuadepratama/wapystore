@@ -12,7 +12,10 @@ use App\Models\ThemePhoto;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Mail\ConfirmPayment;
+use App\Mail\FinishTransaction;
+use App\Models\HistoryTransaction;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -172,8 +175,6 @@ class AdminController extends Controller
       $transaction->save();
 
       $order = Order::with('user')->find($order_id);
-      $order->status = "done";
-      $order->save();
 
       Mail::to($order->user->email)->send(new ConfirmPayment($order->user->name, $transaction));
 
@@ -250,18 +251,47 @@ class AdminController extends Controller
       return back();
     }
 
+    public function confirmRevision($id)
+    {
+      $order = Order::with('user')->find($id);
+      $order->status = "revision";
+      $order->save();
+      return back();
+    }
+
     public function confirmDone($id)
     {
-      $order = Order::find($id);
+      $order = Order::with('user')->find($id);
       $order->status = "done";
       $order->save();
 
-      // $designerMoney = $order->price * (0.85);
-      // $adminMoney = $order->price * (0.15);
-      //
-      // return $designerMoney. $adminMoney;
+      $designerMoney = $order->price * (0.85);
+      $adminMoney = $order->price * (0.15);
 
-      return back();
+      HistoryTransaction::create([
+        'user_id' => $order->user->id,
+        'debit' => $designerMoney,
+        'keterangan' => "Bayaran dari orderan #".$order->id,
+        'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta')
+      ]);
+
+      HistoryTransaction::create([
+        'user_id' => Auth::user()->id,
+        'debit' => $adminMoney,
+        'keterangan' => "Bayaran dari orderan #".$order->id,
+        'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta')
+      ]);
+
+      Mail::to($order->user->email)->send(new FinishTransaction($order->user->name));
+
+      return back()->with('success','Transaction is complete, email confirmation has been sent to client');
+    }
+
+    public function redirectToFiles()
+    {
+      return redirect()->away('https://drive.google.com/drive/folders/0By5QTXJ5xFt3fkdxUlhBMURXZW1QU2lUaElXVDNzalBQSzk2TktWR2k4c2JDbE5yMXIwWEU?usp=sharing');
     }
 
 }

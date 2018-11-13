@@ -28,20 +28,20 @@
       <!-- CONTENT -->
       <div class="wapy-content" style="padding: 20px;">
         <p style="font-family: 'Google Sans', sans-serif; font-size: 17px">
-          Pembayaran anda sudah kami proses. Preview desain anda akan segera kami kirimkan via sosial media.
-          Jika dalam 24 jam tidak ada konfirmasi dari anda, kami anggap tidak ada revisi, file desain akan kami
-          kirimkan ke email anda dan status orderan akan kami "close".
+          We have processed your payment. We will send you a <b>preview of your design</b> via social media (Whatsapp and Line).
+          If there is <b>no confirmation from you in 24 hours</b>, we assume there is <b>no revision</b>. After the revision is complete,
+          we will send the design file to <b>your email</b> and the status will be <b>"closed"</b>.
         </p><br>
 
         <center>
           <table style="font-family: 'Google Sans', sans-serif; font-size: 17px">
             <tr>
-              <td style="font-family: 'Google Sans', sans-serif;">Pesanan &nbsp;</td>
+              <td style="font-family: 'Google Sans', sans-serif;">Order &nbsp;</td>
               <td style="font-family: 'Google Sans', sans-serif;">&nbsp; : &nbsp;</td>
               <td style="font-family: 'Google Sans', sans-serif;">{{ $data->order->name }}</td>
             </tr>
             <tr>
-              <td style="font-family: 'Google Sans', sans-serif;">Harga &nbsp;</td>
+              <td style="font-family: 'Google Sans', sans-serif;">Price &nbsp;</td>
               <td style="font-family: 'Google Sans', sans-serif;">&nbsp; : &nbsp;</td>
               <td style="font-family: 'Google Sans', sans-serif;">Rp {{number_format(($data->order->price),0,',','.')}} ,-</td>
             </tr>
@@ -54,8 +54,8 @@
         </center><br>
 
         <p style="font-family: 'Google Sans', sans-serif; font-size: 17px">
-          Harap segera cek sosial media anda terkait informasi revisi. Terima kasih sudah mempercayai desain anda pada <b>Wapy Design</b>.
-          <br><br> Salam Hangat <br> <b>CEO Wapy Design</b>
+          Please immediately <b>check your social media</b> regarding <b>revision information</b>. Thank you for trusting your design to <b>Wapy Design</b>.
+          <br><br> Best Regards <br> <b>CEO Wapy Design</b>
         </p>
 
         </p>

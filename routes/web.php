@@ -74,6 +74,7 @@ Route::get('root/transaction/on-progress','AdminController@onProgressOrder');
 Route::get('root/transaction/{transaction_id}/{order_id}','AdminController@confirmPayment');
 Route::get('root/transaction/change/sudah/{id}','AdminController@confirmSudah');
 Route::get('root/transaction/change/belum/{id}','AdminController@confirmBelum');
+Route::get('root/transaction/change/status/revision/{id}','AdminController@confirmRevision');
 Route::get('root/transaction/change/status/done/{id}','AdminController@confirmDone');
 
 Route::get('root/theme','AdminController@indexTheme');
@@ -82,4 +83,6 @@ Route::get('root/theme/destroy/{id}', 'AdminController@destroyTheme');
 Route::get('root/theme/photo', 'AdminController@indexThemePhoto');
 Route::post('root/theme/photo/store', 'AdminController@storeThemePhoto');
 Route::get('root/theme/photo/destroy/{id}', 'AdminController@destroyThemePhoto');
+
+Route::get('root/file-design', 'AdminController@redirectToFiles');
 // ------------- END OF ADMIN ROUTE ----------------//

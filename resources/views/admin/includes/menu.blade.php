@@ -49,6 +49,10 @@
                     </ul>
                 </li>
 
+                <li class="{{ Request::is('root/file') ? 'active' : '' }}">
+                    <a href="/root/file-design"> <i class="menu-icon fa fa-folder-open"></i>File Design </a>
+                </li>
+
             </ul>
         </div>
     </nav>
