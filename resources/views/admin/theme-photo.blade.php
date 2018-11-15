@@ -87,7 +87,7 @@
                   <div class="card-body">
 
                     @foreach($themePhoto as $data)
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                           <div class="card">
 
                             <style media="screen">
@@ -107,10 +107,12 @@
                                 <span>
                                     @php $theme = \App\Models\ThemePhoto::with('theme')->where('photo_id',$data->id)->get(); @endphp
                                     @foreach($theme as $key)
-                                      <a style="color:black" href="/root/theme/photo-theme/destroy/{{ $key->id }}" class="btn-sm btn-warning" onclick="return confirm('Are you sure want to delete this category?')"><i class="fa fa-close"></i> {{ $key->theme->name }} </a><br><br>
-                                    @endforeach<br>
-                                    Nama: &nbsp;{{ $data->name }}
-                                </span><br><br>
+                                    <p>
+                                      <a style="color:black" href="/root/theme/photo-theme/destroy/{{ $key->id }}" class="btn-sm btn-warning" onclick="return confirm('Are you sure want to delete this category?')"><i class="fa fa-close"></i> {{ $key->theme->name }} </a>
+                                    </p>
+                                    @endforeach
+                                    <p>Nama: &nbsp;{{ $data->name }}</p>
+                                </span>
                                 <span>
                                   <a class="btn btn-danger" href="/root/theme/photo/destroy/{{ $data->id }}" onclick="return confirm('Are you sure want to delete this photo?')"><small>Delete</small></a><br>
                                 </span>

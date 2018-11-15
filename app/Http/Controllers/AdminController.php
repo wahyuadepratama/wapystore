@@ -206,7 +206,7 @@ class AdminController extends Controller
 
     public function indexThemePhoto()
     {
-      $themePhoto = Photo::paginate(6);
+      $themePhoto = Photo::paginate(8);
       $theme = Theme::all();
       return view('admin/theme-photo')->with('themePhoto', $themePhoto)->with('theme',$theme);
     }
