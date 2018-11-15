@@ -206,7 +206,7 @@ class AdminController extends Controller
 
     public function indexThemePhoto()
     {
-      $themePhoto = ThemePhoto::with('photo','theme')->paginate(6);
+      $themePhoto = Photo::paginate(6);
       $theme = Theme::all();
       return view('admin/theme-photo')->with('themePhoto', $themePhoto)->with('theme',$theme);
     }
@@ -235,13 +235,21 @@ class AdminController extends Controller
       return back()->with('success','You have succesfully add new photo - theme');
     }
 
-    public function destroyThemePhoto($id)
+    public function destroyPhoto($id)
     {
-      $photo = ThemePhoto::find($id);
+      $photo = Photo::find($id);
       Storage::delete('theme/'.$photo->path);
       $photo->delete();
 
       return back()->with('success','You have successfully destroy this photo!');
+    }
+
+    public function destroyThemePhoto($id)
+    {
+      $themePhoto = ThemePhoto::find($id);
+      $themePhoto->delete();
+
+      return back()->with('success','You have successfully destroy this theme!');
     }
 
     public function confirmSudah($id)

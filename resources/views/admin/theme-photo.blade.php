@@ -96,7 +96,7 @@
                             </style>
 
                             <div class="frame-square">
-                              <img class="card-img-top" alt="" src="{{ asset('storage/theme/'.$data->photo->path) }}">
+                              <img class="card-img-top" alt="" src="{{ asset('storage/theme/'.$data->path) }}">
                             </div>
 
                             <div class="corner-ribon black-ribon">
@@ -105,11 +105,14 @@
 
                             <footer class="twt-footer" style="color: black;">
                                 <span>
-                                    <i class="fa fa-windows"></i> {{ $data->theme->name }} <br>
-                                    {{ $data->photo->name }}
+                                    @php $theme = \App\Models\ThemePhoto::with('theme')->where('photo_id',$data->id)->get(); @endphp
+                                    @foreach($theme as $key)
+                                      <a style="color:black" href="/root/theme/photo-theme/destroy/{{ $key->id }}" class="btn-sm btn-warning" onclick="return confirm('Are you sure want to delete this category?')"><i class="fa fa-close"></i> {{ $key->theme->name }} </a><br><br>
+                                    @endforeach<br>
+                                    Nama: &nbsp;{{ $data->name }}
                                 </span><br><br>
                                 <span>
-                                  <a class="btn btn-danger" href="/root/theme/photo/destroy/{{ $data->id }}" onclick="return confirm('Are you sure want to delete this photo?')"><small>Delete</small></a>
+                                  <a class="btn btn-danger" href="/root/theme/photo/destroy/{{ $data->id }}" onclick="return confirm('Are you sure want to delete this photo?')"><small>Delete</small></a><br>
                                 </span>
                             </footer>
                           </div>

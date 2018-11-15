@@ -83,7 +83,8 @@ Route::post('root/theme/store', 'AdminController@storeTheme');
 Route::get('root/theme/destroy/{id}', 'AdminController@destroyTheme');
 Route::get('root/theme/photo', 'AdminController@indexThemePhoto');
 Route::post('root/theme/photo/store', 'AdminController@storeThemePhoto');
-Route::get('root/theme/photo/destroy/{id}', 'AdminController@destroyThemePhoto');
+Route::get('root/theme/photo/destroy/{id}', 'AdminController@destroyPhoto');
+Route::get('/root/theme/photo-theme/destroy/{id}', 'AdminController@destroyThemePhoto');
 
 Route::get('root/file-design', 'AdminController@redirectToFiles');
 // ------------- END OF ADMIN ROUTE ----------------//
