@@ -4,7 +4,7 @@ Route::get('/', 'GuestController@index');
 
 Auth::routes();
 Route::get('confirmation/{token}','GuestController@confirmation');
-Route::get('confirmation/resend','HomeController@resendEmail');
+Route::get('confirmation/resend/email','HomeController@resendEmail');
 
 Route::get('upload','GuestController@uploadDesign');
 
@@ -12,6 +12,7 @@ Route::get('theme','ThemeController@index');
 Route::get('theme/{id}','ThemeController@show');
 
 Route::get('portofolio','ThemeController@indexPortofolio');
+Route::get('search','ThemeController@search');
 
 Route::get('contact', function(){ return view('guest/contact'); });
 Route::post('advice','GuestController@storeAdvice');

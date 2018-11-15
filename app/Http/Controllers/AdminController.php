@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\Order;
 use App\Models\Theme;
+use App\Models\Photo;
 use App\Models\Discount;
 use App\Models\ThemePhoto;
 use App\Models\Transaction;
@@ -205,7 +206,7 @@ class AdminController extends Controller
 
     public function indexThemePhoto()
     {
-      $themePhoto = ThemePhoto::with('theme')->paginate(6);
+      $themePhoto = ThemePhoto::with('photo','theme')->paginate(6);
       $theme = Theme::all();
       return view('admin/theme-photo')->with('themePhoto', $themePhoto)->with('theme',$theme);
     }
@@ -215,13 +216,21 @@ class AdminController extends Controller
       $file = time().'_'.$request->file('photo')->getClientOriginalName();
       $request->file('photo')->move(public_path().'/storage/theme', $file);
 
-      ThemePhoto::create([
+      $photo = Photo::create([
         'name' => $request->name,
         'path' => $file,
-        'theme_id' => $request->theme_id,
         'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
         'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta')
       ]);
+
+      foreach ($request->theme as $key) {
+        ThemePhoto::create([
+          'photo_id' => $photo->id,
+          'theme_id' => $key,
+          'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+          'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta')
+        ]);
+      }
 
       return back()->with('success','You have succesfully add new photo - theme');
     }

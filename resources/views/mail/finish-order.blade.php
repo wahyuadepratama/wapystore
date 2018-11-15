@@ -21,25 +21,25 @@
       <!-- END LOGO -->
       <!-- HEADER -->
       <div class="wapy-header" style="padding: 20px 0px;background-color:#f7482d;text-align: center;color: white;">
-        <center><h2 style="margin:0px;padding:0px">Hi {{ $name }}!</h2></center>
+        <center><h2 style="margin:0px;padding:0px">Hai {{ $name }}!</h2></center>
       </div>
       <!-- END HEADER -->
 
       <!-- CONTENT -->
       <div class="wapy-content" style="padding: 20px;">
-        <p style="font-family: 'Google Sans', sans-serif; font-size: 17px">
-          Thank you for ordering <b>{{ $order_name }}</b> on <b>Wapy Design</b>. We are currently processing your order.
-          Please make a payment until the <b>last 3 digits</b>. We will not process your design until your payment is complete.
-          And <b>send photo</b> your <b>proof of payment</b> to <b>0896-7625-3311 (Whatsapp)</b> or <b> @paa0093h (Line)</b>
-          so that we can confirm quickly. Your total order is:<br>
-          <center style="font-size: 25px"><b> Rp {{number_format(($order_price),0,',','.')}} ,- <b></center>
+        <p style="font-family: 'Google Sans', sans-serif; font-size: 15px">
+          Terima kasih telah melakukan pemesanan <b>{{$order_name}}</b> di <b> Wapy Design </b>. Kami sedang memproses pesanan anda.
+          Harap lakukan pembayaran hingga <b>3 digit terakhir</b>. Kami tidak akan memproses desain anda hingga pembayaran anda selesai.<br><br>
+          Setelah melakukan pembayaran, <b>kirimkan foto bukti pembayaran anda</b> melalui <b>0896-7625-3311 (Whatsapp)</b> atau <b>@paa0093h (Line)</b>
+          agar kami dapat memprosesnya dengan cepat. Total pesanan Anda adalah: <br>
+          <center style = "font-size: 25px"> <b> Rp {{number_format (($order_price), 0, ',', '.')}}, - <b> </ center>
         </p><br>
 
-        <p style="font-family: 'Google Sans', sans-serif; font-size: 17px">
-          Payment can be made to one of the following accounts:
+        <p style="font-family: 'Google Sans', sans-serif; font-size: 15px">
+          Pembayaran dapat dilakukan melalui akun Bank berikut ini:
         </p><br>
 
-        <table style="font-family: 'Google Sans', sans-serif; font-size: 17px">
+        <table style="font-family: 'Google Sans', sans-serif; font-size: 15px">
           <tr>
             <td style="padding: 10px"><img src="https://wapydesign.com/guest/images/icons/bri.png" width="100px" style="display:block"></td>
             <td style="padding: 10px;font-family: 'Google Sans', sans-serif;">7241-01-005830-53-8</td>
@@ -57,9 +57,10 @@
           </tr>
         </table><br>
 
-        <p style="font-family: 'Google Sans', sans-serif; font-size: 17px">
-          For information and questions related to orders or designs you can ask our contact below.
-          Thank you
+        <p style="font-family: 'Google Sans', sans-serif; font-size: 15px">
+          Untuk informasi dan pertanyaan terkait pesanan atau desain, anda dapat menghubungi kami via kontak di bawah ini.
+          Terima kasih
+          <br><br> Best Regards <br> <b>CEO Wapy Design</b>
         </p>
 
         </p>

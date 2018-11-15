@@ -40,7 +40,7 @@ class RegisterConfirmation extends Mailable
       //   ]);
       // }
 
-      $email->subject('Email Confirmation')->view('mail/confirmation')
+      $email->subject('Konfirmasi Email')->view('mail/confirmation')
                                           ->with('token',$this->token)
                                           ->with('name',$this->name);
     }

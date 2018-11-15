@@ -20,7 +20,7 @@ class FinishTransaction extends Mailable
     public function build()
     {
       $email = $this->from('official@wapydesign.com','Wapy Design'); // ---------------------------------  ubah disini
-      $email->subject('Your Order has Arrived')->view('mail/finish-transaction')
+      $email->subject('Pesanan Telah Selesai')->view('mail/finish-transaction')
                                                         ->with('name', $this->name);
     }
 }

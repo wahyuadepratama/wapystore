@@ -21,18 +21,18 @@
       <!-- END LOGO -->
       <!-- HEADER -->
       <div class="wapy-header" style="padding: 20px 0px;background-color:#f7482d;text-align: center;color: white;">
-        <center><h2 style="margin:0px;padding:0px">Hi {{ $name }}!</h2></center>
+        <center><h2 style="margin:0px;padding:0px">Hai {{ $name }}!</h2></center>
       </div>
       <!-- END HEADER -->
 
       <!-- CONTENT -->
       <div class="wapy-content" style="padding: 20px;">
-        <p style="font-family: 'Google Sans', sans-serif; font-size: 17px">
-          We have sent your design order to this email. Thank you for entrusting your design to us.
-          We are happy to help and serve. Success and prosperity for you.
+        <p style="font-family: 'Google Sans', sans-serif; font-size: 15px">
+          Kami telah mengirimkan pesanan desain anda melalui email ini. Terima kasih telah mempercayakan desain anda kepada kami.
+          Kami senang bisa membantu dan melayani anda.
         </p>
 
-        <p style="font-family: 'Google Sans', sans-serif; font-size: 17px">
+        <p style="font-family: 'Google Sans', sans-serif; font-size: 15px">
           <br><br> Best Regards <br> <b>CEO Wapy Design</b>
         </p>
 

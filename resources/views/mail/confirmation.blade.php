@@ -21,19 +21,19 @@
       <!-- END LOGO -->
       <!-- HEADER -->
       <div class="wapy-header" style="padding: 20px 0px;background-color:#f7482d;text-align: center;color: white;">
-        <center><h2 style="margin:0px;padding:0px">Hi, {{ $name }}!</h2></center>
+        <center><h2 style="margin:0px;padding:0px">Hai {{ $name }}!</h2></center>
       </div>
       <!-- END HEADER -->
 
       <!-- CONTENT -->
       <div class="wapy-content" style="padding: 20px;">
-        <p style="font-family: 'Google Sans', sans-serif; font-size: 17px">
-
-          Thanks for creating an account on <b>Wapy Design</b>. Your username is <b>{{ $name }}</b><br><br>
-          You can access your account area to view your orders. Please confirm your email address here and you will get <b>10% discount</b> for first order.<br><br>
-          
-        </p>
-        <center><a href="@php echo url('/') @endphp/confirmation/{{ $token }}" class="wapy-btn" style="padding: 15px;background-color: #f7482d;color: white;text-decoration: none;font-family: 'Google Sans', sans-serif;"><b>Email Confirmation</b></a></center>
+        <p style="font-family: 'Google Sans', sans-serif; font-size: 15px">
+          Terima kasih telah melakukan registrasi akun di <b> Wapy Design</b>. Username anda adalah <b>{{$name}}</b> <br> <br>
+          Anda dapat login dan mengakses halaman <i>home</i> akun untuk melihat pesanan anda.
+          Harap konfirmasi alamat email anda di sini dan untuk mendapatkan <b> diskon 10% </b> pada pemesanan pertama.
+        </p><br>
+        <center><a href="@php echo url('/') @endphp/confirmation/{{ $token }}" class="wapy-btn" style="padding: 15px;background-color: #f7482d;color: white;text-decoration: none;font-family: 'Google Sans', sans-serif;"><b>Konfirmasi Email</b></a></center>
+        <br><br> Best Regards <br> <b>CEO Wapy Design</b>
       </div>
       <!-- END CONTENT -->
 

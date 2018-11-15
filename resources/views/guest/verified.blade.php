@@ -18,7 +18,8 @@
 
     <div class="col-md-12" style="text-align: center; padding-right: 10%; padding-left: 10%">
       <div class="alert alert-success" role="alert">
-      Congratulation! Your account has been verified and you get <a href="#" class="alert-link">10% discount </a>to all of design orders. Please check your account now.
+      Selamat! Akun anda telah berhasil diverifikasi dan anda mendapatkan <a href="#" class="alert-link">diskon 10% </a> untuk semua jenis pesanan.
+      Silahkan cek halaman profile akun anda.
       </div>
     </div>
 

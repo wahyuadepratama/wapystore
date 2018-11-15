@@ -42,6 +42,11 @@
       <!-- LOGIN SECTION START -->
       <div class="login-section mb-80">
           <div class="container">
+            @if($message = Session::get('success'))
+            <div class="alert alert-success" role="alert">
+              {{ $message }}
+            </div>
+            @endif
               <div class="row">
                   <div class="col-md-3">
                     <div class="panel panel-default">
@@ -62,7 +67,7 @@
                           <p style="padding:5px;color:black"><span style="font-size:20px;padding:5px;">{{ Auth::user()->name }}</span> <br>
                             <span>{{ Auth::user()->email }}</span><br>
                             <span>{{ Auth::user()->phone }}</span><br>
-                            <span>{{ Auth::user()->sosmed }}</span><br>
+                            <span>{{ Auth::user()->sosmed }}</span><br><br>
                             @if(Auth::user()->verified != true)
                             <span><span class="text text-danger"></strong>Unverified Account</strong></span></span>
                             @else
@@ -70,7 +75,8 @@
                             @endif
                             @if($user->discount_id != 1)
                             <span>
-                              <div class="alert" style="background-color:#cc8eec; color:white"  role="alert">
+                              <br><br><strong>Voucher:</strong>
+                              <div class="alert" style="margin-top: -7%;background-color:#cc8eec; color:white" role="alert">
                                 {{ $user->discount->name }}
                               </div>
                             </span>
@@ -85,8 +91,8 @@
                   <div class="col-md-9">
                     @if(Auth::user()->verified != true)
                     <div class="alert alert-warning" role="alert">
-                      Please check your email address for account verification. You will get <a href="#" class="alert-link">10% Discount</a> on all types of design orders.<br>
-                      Did not receive email? try checking spam or resending email here &nbsp;<a class="text text-danger" href="/confirmation/resend"><strong>Resend Email</strong></a>
+                      Silakan periksa alamat email anda untuk melakukan verifikasi akun. Anda akan mendapatkan <a href="#" class="alert-link"> Diskon 10% </a> untuk orderan pertama setelah melakukan verifikasi.
+                      Apakah anda tidak menerima email? coba periksa spam atau kirim ulang email di sini &nbsp;<a class="text text-danger" href="/confirmation/resend/email"><strong>Kirim Ulang Email</strong> </a>
                     </div>
                     @endif
                     <!-- My Order info -->
@@ -154,6 +160,7 @@
                                         </div>
                                       </div>
                                       @endif
+                                      @if($data->status != "done")
                                       <div class="col-md-12 order-payment">
                                         <div class="col-md-3">
                                           <span class"td-title-1">Status</span>
@@ -172,6 +179,7 @@
                                           </p>
                                         </div>
                                       </div>
+                                      @endif
                                       @if($data->size_long != NULL | $data->size_wide != NULL)
                                       <div class="col-md-12 order-payment">
                                         <div class="col-md-3">
@@ -210,6 +218,8 @@
                                       @endif
                                       @if($data->status == "waiting")
                                       <a class="btn btn-danger form-control" href="/order/destroy/@php echo md5($data->id) @endphp" onclick="return confirm('Are you sure you want to cancel this order? If you have a discount, it wont return.');">Cancel Order</a>
+                                      @elseif($data->status == "done")
+                                      <a class="btn btn-success form-control" href="#">Selesai Dikerjakan</a>
                                       @else
                                       <a href="#" class="btn btn-info form-control">Sedang Dalam Pengerjaan</a>
                                       @endif

@@ -9,4 +9,7 @@ return [
     'logo' => "Logo",
     'cv' => "Curiculum Vitae",
     'book-cover' => "Book Cover",
+    'calender' => "Calender",
+    'maskot' => "Maskot",
+    'vector' => "Vector Art"
 ];

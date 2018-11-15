@@ -99,7 +99,7 @@
                           </div>
                       </div>
                       <ul class="action-button">
-                          <strong><small>Pengerjaan maks {{ Config::get('time-work.spanduk') }} hari</small></strong>
+                          <strong><small>Pengerjaan minimal {{ Config::get('time-work.spanduk') }} hari</small></strong>
                       </ul>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
                             </div>
                         </div>
                         <ul class="action-button">
-                            <strong><small>Pengerjaan maks {{ Config::get('time-work.poster') }} hari</small></strong>
+                            <strong><small>Pengerjaan minimal {{ Config::get('time-work.poster') }} hari</small></strong>
                         </ul>
                     </div>
                 </div>
@@ -129,7 +129,7 @@
                           </div>
                       </div>
                       <ul class="action-button">
-                          <strong><small>Pengerjaan maks {{ Config::get('time-work.banner') }} hari</small></strong>
+                          <strong><small>Pengerjaan minimal {{ Config::get('time-work.banner') }} hari</small></strong>
                       </ul>
                     </div>
                 </div>
@@ -144,7 +144,7 @@
                           </div>
                       </div>
                       <ul class="action-button">
-                          <strong><small>Pengerjaan maks {{ Config::get('time-work.pamflet') }} hari</small></strong>
+                          <strong><small>Pengerjaan minimal {{ Config::get('time-work.pamflet') }} hari</small></strong>
                       </ul>
                     </div>
                 </div>
@@ -159,7 +159,7 @@
                           </div>
                       </div>
                       <ul class="action-button">
-                          <strong><small>Pengerjaan maks {{ Config::get('time-work.id-card') }} hari</small></strong>
+                          <strong><small>Pengerjaan minimal {{ Config::get('time-work.id-card') }} hari</small></strong>
                       </ul>
                     </div>
                 </div>
@@ -174,7 +174,7 @@
                           </div>
                       </div>
                       <ul class="action-button">
-                          <strong><small>Pengerjaan maks {{ Config::get('time-work.logo') }} hari</small></strong>
+                          <strong><small>Pengerjaan minimal {{ Config::get('time-work.logo') }} hari</small></strong>
                       </ul>
                     </div>
                 </div>
@@ -189,7 +189,7 @@
                           </div>
                       </div>
                       <ul class="action-button">
-                          <strong><small>Pengerjaan maks {{ Config::get('time-work.cv') }} hari</small></strong>
+                          <strong><small>Pengerjaan minimal {{ Config::get('time-work.cv') }} hari</small></strong>
                       </ul>
                     </div>
                 </div>
@@ -204,7 +204,7 @@
                           </div>
                       </div>
                       <ul class="action-button">
-                          <strong><small>Pengerjaan maks {{ Config::get('time-work.book-cover') }} hari</small></strong>
+                          <strong><small>Pengerjaan minimal {{ Config::get('time-work.book-cover') }} hari</small></strong>
                       </ul>
                     </div>
                 </div>

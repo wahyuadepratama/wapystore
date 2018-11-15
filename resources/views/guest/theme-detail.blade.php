@@ -50,26 +50,26 @@
                           <div class="row">
                             <center>
                             <div style="width:40%" id="zoom_03">
-                              <img id="view" src="{{asset('storage/theme/'.$theme->path)}}" data-zoom-image="{{asset('storage/theme/'.$theme->path)}}">
+                              <img id="view" src="{{asset('storage/theme/'.$theme->photo->path)}}" data-zoom-image="{{asset('storage/theme/'.$theme->path)}}">
                               <h5 id="viewName">
-                                {{ $theme->name }}
+                                {{ $theme->photo->name }}
                               </h5>
                             </div>
                             <div class="col-xs-12">
                                 <div id="gallery_01" class="carousel-btn slick-arrow-3 mt-60" width="50%">
                                   @foreach($detail as $data)
                                     <div class="p-c">
-                                        <a href="#" data-image="{{asset('storage/theme/'.$data->path)}}" data-zoom-image="{{asset('storage/theme/'.$data->path)}}">
-                                            <img onclick="changeView{{ $data->id }}()" class="zoom_03" src="{{asset('storage/theme/'.$data->path)}}" alt="">
+                                        <a href="#" data-image="{{asset('storage/theme/'.$data->photo->path)}}" data-zoom-image="{{asset('storage/theme/'.$data->photo->path)}}">
+                                            <img onclick="changeView{{ $data->photo->id }}()" class="zoom_03" src="{{asset('storage/theme/'.$data->photo->path)}}" alt="">
                                         </a>
                                     </div>
                                   @endforeach
                                 </div>
                                 @foreach($detail as $data)
                                 <script type="text/javascript">
-                                  function changeView{{ $data->id }}(){
-                                    document.getElementById("view").src = "{{asset('storage/theme/'.$data->path)}}";
-                                    document.getElementById("viewName").innerHTML = "{{ $data->name }}";
+                                  function changeView{{ $data->photo->id }}(){
+                                    document.getElementById("view").src = "{{asset('storage/theme/'.$data->photo->path)}}";
+                                    document.getElementById("viewName").innerHTML = "{{ $data->photo->name }}";
                                   }
                                 </script>
                                 @endforeach

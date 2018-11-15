@@ -25,7 +25,7 @@ class PaymentOrder extends Mailable
     {
       $email = $this->from('official@wapydesign.com','Wapy Design'); // ---------------------------------  ubah disini
 
-      $email->subject('Order Information')->view('mail/finish-order')
+      $email->subject('Informasi Pesanan')->view('mail/finish-order')
                                           ->with('name', $this->name)
                                           ->with('order_name', $this->order_name)
                                           ->with('order_price', $this->order_price);

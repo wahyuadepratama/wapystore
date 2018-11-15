@@ -80,7 +80,7 @@
                                                   2. Biaya desain banner <b>Rp {{number_format((Config::get('price.banner')),0,',','.')}} ,-</b>
                                                 </li>
                                                 <li>
-                                                  3. Pengerjaan paling lama adalah {{ Config::get('time-work.banner') }} hari
+                                                  3. Pengerjaan paling cepat adalah {{ Config::get('time-work.banner') }} hari
                                                 </li>
                                             </div>
                                             <div class="billing-details pr-10" style="margin-top: 15%">
@@ -94,6 +94,7 @@
                                             </div>
                                         </div>
                                         <!-- billing details -->
+                                        <style media="screen">.custom-text{ color: black !important; }</style>
                                         <div class="col-md-6">
                                             <div class="billing-details pr-10" style="margin-bottom: 5%">
                                                 <h6 class="widget-title border-left mb-20">Media Pengiriman Desain</h6>
@@ -139,7 +140,7 @@
                                                   @endforeach
                                                   <option value="create_own">Tulis Tema Sendiri</option>
                                                 </select>
-                                                <br><br>
+
 
                                                   <script type="text/javascript">
                                                   // In your Javascript (external .js resource or <script> tag)
@@ -147,14 +148,11 @@
                                                       $('.custom-select').select2();
                                                     });
                                                   </script>
-                                                <!-- <select class="custom-select" name="theme" onchange="myFunction()" id="theme">
-                                                    <option value="Bebas">Pilih Tema Desain</option>
-                                                    @foreach($theme as $value)
-                                                    <option value="{{ $value->name }}">{{ $value->name }}</option>
-                                                    @endforeach
-                                                    <option value="create_own">Tulis Tema Sendiri</option>
-                                                </select> -->
-                                                <div id="create_own"></div>
+
+                                                <div id="create_own"></div><br>
+                                                <small><i> *Desain yang akan dibuat tidak akan sama persis dengan tema yang dipilih, namun hanya sebagai gambaran seperti apa warna dan model desainya </i></small>
+                                                <small><i> *Pilih 'tulis tema sendiri' jika tidak ada pilihan tema yang sesuai bagi anda </i></small>
+                                                <br><br>
 
                                                 <script>
                                                 function myFunction() {

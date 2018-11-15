@@ -38,7 +38,7 @@
                       <strong class="card-title">
                         <a class="btn btn-success" data-toggle="modal" data-target="#addNew">Add New</a>
                         <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-sm" role="document">
+                            <div class="modal-dialog modal-md" role="document">
                                 <div class="modal-content">
                                   <form action="/root/theme/photo/store" method="post" enctype="multipart/form-data">
                                     {{ csrf_field() }}
@@ -51,11 +51,28 @@
                                     <div class="modal-body">
                                       <input type="text" name="name" placeholder="nama tema disini" class="form-control"><br>
                                       <input type="file" name="photo" class="form-control"><br>
-                                      <select name="theme_id" class="form-control">
-                                        @foreach($theme as $value)
-                                        <option value="{{ $value->id }}">{{ $value->name }}</option>
-                                        @endforeach
-                                      </select>
+                                      <div class="container">
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                            @php $count = $theme->count(); $batas = $count/2; @endphp
+                                            @foreach($theme as $value)
+                                              @if($count > $batas)
+                                              <input type="checkbox" name="theme[]" value="{{ $value->id }}"> {{ $value->name }}<br>
+                                              @endif
+                                              @php $count--; @endphp
+                                            @endforeach
+                                          </div>
+                                          <div class="col-md-6">
+                                            @php $count = $theme->count(); $batas = $count/2; @endphp
+                                            @foreach($theme as $value)
+                                              @if($count < $batas)
+                                              <input type="checkbox" name="theme[]" value="{{ $value->id }}"> {{ $value->name }}<br>
+                                              @endif
+                                              @php $count--; @endphp
+                                            @endforeach
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -79,18 +96,18 @@
                             </style>
 
                             <div class="frame-square">
-                              <img class="card-img-top" alt="" src="{{ asset('storage/theme/'.$data->path) }}">
+                              <img class="card-img-top" alt="" src="{{ asset('storage/theme/'.$data->photo->path) }}">
                             </div>
 
                             <div class="corner-ribon black-ribon">
                                 <i class="fa fa-photo"></i>
                             </div>
 
-                            <footer class="twt-footer">
-                                <span class="pull-right">
+                            <footer class="twt-footer" style="color: black;">
+                                <span>
                                     <i class="fa fa-windows"></i> {{ $data->theme->name }} <br>
-                                    {{ $data->name }}
-                                </span>
+                                    {{ $data->photo->name }}
+                                </span><br><br>
                                 <span>
                                   <a class="btn btn-danger" href="/root/theme/photo/destroy/{{ $data->id }}" onclick="return confirm('Are you sure want to delete this photo?')"><small>Delete</small></a>
                                 </span>

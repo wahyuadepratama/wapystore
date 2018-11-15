@@ -22,7 +22,7 @@ class ConfirmPayment extends Mailable
   public function build()
   {
     $email = $this->from('official@wapydesign.com','Wapy Design'); // ---------------------------------  ubah disini
-    $email->subject('Payment Confirmation is Complete')->view('mail/confirm-payment')
+    $email->subject('Pembayaran Berhasil')->view('mail/confirm-payment')
                                                       ->with('name', $this->name)
                                                       ->with('data',$this->data);
   }

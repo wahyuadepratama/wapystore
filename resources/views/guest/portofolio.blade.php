@@ -33,11 +33,25 @@
     <div class="blog-section mb-50">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="section-title text-left mb-40">
-                        <h2>Portofolio</h2>
-                    </div>
+              <div class="col-md-12">
+                  <div class="section-title text-left mb-40">
+                      <h2>Portofolio</h2>
+                  </div>
+              </div>
+              <form class="" action="/search" method="get">
+                <div class="col-md-3"></div>
+                <div class="col-md-6" style="margin-bottom: 5%">
+                  <div class="col-md-12">
+                    <input type="text" name="search" class="form-control" style="background-color: #f7f7f794; color:black" placeholder="Search keyword..">
+                  </div>
+                  <div class="col-md-4"></div>
+                  <div class="col-md-4">
+                    <button type="submit" class="btn btn-danger form-control">Search</a>
+                  </div>
+                  <div class="col-md-4"></div>
                 </div>
+                <div class="col-md-3"></div>
+              </form>
             </div>
 
             <div class="blog">
@@ -48,7 +62,7 @@
                         <div class="product-item product-item-2">
                           <div class="banner-item">
                               <div class="banner-img">
-                                  <a href="/theme/{{ $data->theme->id }}"><img src="{{URL::asset('storage/theme/'. $data->path)}}" alt=""></a>
+                                  <a href="/theme/@php $theme = \App\Models\ThemePhoto::where('photo_id', $data->id)->first(); echo $theme->theme_id; @endphp"><img src="{{URL::asset('storage/theme/'. $data->path)}}" alt=""></a>
                               </div>
                           </div>
                           <ul class="action-button">

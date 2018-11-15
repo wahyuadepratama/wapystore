@@ -80,7 +80,7 @@
                                                   2. Biaya desain pamflet <b>Rp {{number_format((Config::get('price.pamflet')),0,',','.')}} ,-</b>
                                                 </li>
                                                 <li>
-                                                  3. Pengerjaan paling lama adalah {{ Config::get('time-work.pamflet') }} hari
+                                                  3. Pengerjaan paling cepat adalah {{ Config::get('time-work.pamflet') }} hari
                                                 </li>
                                             </div>
                                             <div class="billing-details pr-10" style="margin-top: 15%">
@@ -94,6 +94,7 @@
                                             </div>
                                         </div>
                                         <!-- billing details -->
+                                        <style media="screen">.custom-text{ color: black !important; }</style>
                                         <div class="col-md-6">
                                             <div class="billing-details pr-10" style="margin-bottom: 5%">
                                                 <h6 class="widget-title border-left mb-20">Media Pengiriman Desain</h6>
@@ -154,7 +155,10 @@
                                                     @endforeach
                                                     <option value="create_own">Tulis Tema Sendiri</option>
                                                 </select> -->
-                                                <div id="create_own"></div>
+                                                <div id="create_own"></div><br>
+                                                <small><i> *Desain yang akan dibuat tidak akan sama persis dengan tema yang dipilih, namun hanya sebagai gambaran seperti apa warna dan model desainya </i></small>
+                                                <small><i> *Pilih 'tulis tema sendiri' jika tidak ada pilihan tema yang sesuai bagi anda </i></small>
+                                                <br><br>
 
                                                 <script>
                                                 function myFunction() {

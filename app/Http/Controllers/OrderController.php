@@ -13,6 +13,7 @@ use App\Models\PhotoTheme;
 use App\Mail\PaymentOrder;
 use App\Models\Discount;
 use App\Models\Theme;
+use App\Models\Photo;
 use App\Models\Order;
 use App\Models\User;
 use Carbon\Carbon;
@@ -66,7 +67,7 @@ class OrderController extends Controller
 
     public function getTheme()
     {
-      return ThemePhoto::with('theme')->get();
+      return Photo::get();
     }
 
     public function storeSpanduk(Request $request)
@@ -111,7 +112,7 @@ class OrderController extends Controller
         Mail::to($data->email)->send(new OrderBroadcast($data->name, $spanduk));
       }
 
-      return redirect('/home');
+      return redirect('/home')->with('success', 'Terima kasih sudah melakukan pemesanan. Silahkan cek email anda untuk melihat info pembayaran.');
     }
 
     public function storePoster(Request $request)

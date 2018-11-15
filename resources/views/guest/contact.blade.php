@@ -42,7 +42,7 @@
                   <div class="col-sm-3 col-xs-12">
                       <div class="contact-address box-shadow">
                           <i class="zmdi zmdi-instagram"></i>
-                          <h6>IG: @wapydesign.com</h6>
+                          <h6>IG: @wapydesign</h6>
                       </div>
                   </div>
                   <div class="col-sm-3 col-xs-12">

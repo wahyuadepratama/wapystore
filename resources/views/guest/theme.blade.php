@@ -53,9 +53,9 @@
                           </style>
 
                           <div class="frame-square">
-                            @php $img = \App\Models\ThemePhoto::where('theme_id',$data->id)->first(); @endphp
+                            @php $img = \App\Models\ThemePhoto::with('photo')->where('theme_id',$data->id)->inRandomOrder()->first(); @endphp
                             @if($img != NULL)
-                            <img src="{{asset('storage/theme/'.$img->path)}}">
+                            <img src="{{asset('storage/theme/'.$img->photo->path)}}">
                             @else
                             <img src="{{asset('storage/theme/no-image.png')}}">
                             @endif
@@ -67,7 +67,7 @@
                                 <div class="read-more">
                                     <a href="/theme/{{ $data->id }}">Read more</a>
                                 </div>
-                                <ul class="blog-meta">
+                                <!-- <ul class="blog-meta">
                                     <li>
                                         <a href="#"><i class="zmdi zmdi-favorite"></i>89 Like</a>
                                     </li>
@@ -77,7 +77,7 @@
                                     <li>
                                         <a href="#"><i class="zmdi zmdi-share"></i>29 Share</a>
                                     </li>
-                                </ul>
+                                </ul> -->
                             </div>
                         </div>
                     </div>

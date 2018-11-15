@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ThemePhoto extends Model
+class Photo extends Model
 {
-  protected $table = 'photo_themes';
+  protected $table = 'photo';
   protected $fillable = [
-      'theme_id', 'photo_id', 'created_at', 'updated_at'
+      'id', 'name', 'path', 'created_at', 'updated_at'
   ];
 
   public function getCreatedAtAttribute()
@@ -22,11 +22,7 @@ class ThemePhoto extends Model
     return \Carbon\Carbon::parse($this->attributes['updated_at'])->diffForHumans();
   }
 
-  public function theme(){
-    return $this->belongsTo('App\Models\Theme', 'theme_id');
-  }
-
-  public function photo(){
-    return $this->belongsTo('App\Models\Photo', 'photo_id');
+  public function themePhoto(){
+    return $this->hasMany('App\Models\ThemePhoto');
   }
 }

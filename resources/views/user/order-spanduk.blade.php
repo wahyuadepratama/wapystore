@@ -70,7 +70,7 @@
                                 <form action="/order/spanduk/store" method="post" enctype="multipart/form-data">
                                   {{ csrf_field() }}
                                     <div class="row">
-                                        <div class="col-md-6" style="margin-bottom: 10%">
+                                        <div class="col-md-6" style="margin-bottom: 10%;">
                                             <div class="billing-details pr-10">
                                                 <h6 class="widget-title border-left mb-20">Ketentuan Order Spanduk</h6>
                                                 <li>
@@ -80,7 +80,7 @@
                                                   2. Biaya desain spanduk <b>Rp {{number_format((Config::get('price.spanduk')),0,',','.')}} ,-</b>
                                                 </li>
                                                 <li>
-                                                  3. Pengerjaan paling lama adalah {{ Config::get('time-work.spanduk') }} hari
+                                                  3. Pengerjaan paling cepat adalah {{ Config::get('time-work.spanduk') }} hari
                                                 </li>
                                             </div>
                                             <div class="billing-details pr-10" style="margin-top: 15%">
@@ -94,11 +94,12 @@
                                             </div>
                                         </div>
                                         <!-- billing details -->
+                                        <style media="screen">.custom-text{ color: black !important; }</style>
                                         <div class="col-md-6">
                                             <div class="billing-details pr-10" style="margin-bottom: 5%">
                                                 <h6 class="widget-title border-left mb-20">Media Pengiriman Desain</h6>
 
-                                                <input type="text" disabled value="{{ Auth::user()->email }}">
+                                                <input type="text" disabled value="{{ Auth::user()->email }}" style="color: black">
                                                 @if ($errors->has('phone'))
                                                     <span class="text-danger">
                                                         <small><strong>{{ $errors->first('phone') }}</strong></small>
@@ -139,7 +140,6 @@
                                                   @endforeach
                                                   <option value="create_own">Tulis Tema Sendiri</option>
                                                 </select>
-                                                <br><br>
 
                                                   <script type="text/javascript">
                                                   // In your Javascript (external .js resource or <script> tag)
@@ -154,7 +154,10 @@
                                                     @endforeach
                                                     <option value="create_own">Tulis Tema Sendiri</option>
                                                 </select> -->
-                                                <div id="create_own"></div>
+                                                <div id="create_own"></div><br>
+                                                <small><i> *Desain yang akan dibuat tidak akan sama persis dengan tema yang dipilih, namun hanya sebagai gambaran seperti apa warna dan model desainya </i></small>
+                                                <small><i> *Pilih 'tulis tema sendiri' jika tidak ada pilihan tema yang sesuai bagi anda </i></small>
+                                                <br><br>
 
                                                 <script>
                                                 function myFunction() {

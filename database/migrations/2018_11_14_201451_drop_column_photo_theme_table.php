@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignKeyUsers extends Migration
+class DropColumnPhotoThemeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class AddForeignKeyUsers extends Migration
      */
     public function up()
     {
-      Schema::table('users', function (Blueprint $table) {
-          $table->foreign('discount_id')->references('id')->on('discount')->onDelete('cascade')->onUpdate('cascade');
-      });
+      Schema::table('photo_themes', function($table) {
+           $table->dropColumn('name');
+           $table->dropColumn('path');
+        });
     }
 
     /**

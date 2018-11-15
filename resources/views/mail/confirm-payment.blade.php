@@ -21,27 +21,28 @@
       <!-- END LOGO -->
       <!-- HEADER -->
       <div class="wapy-header" style="padding: 20px 0px;background-color:#f7482d;text-align: center;color: white;">
-        <center><h2 style="margin:0px;padding:0px">Hi {{ $name }}!</h2></center>
+        <center><h2 style="margin:0px;padding:0px">Hai {{ $name }}!</h2></center>
       </div>
       <!-- END HEADER -->
 
       <!-- CONTENT -->
       <div class="wapy-content" style="padding: 20px;">
-        <p style="font-family: 'Google Sans', sans-serif; font-size: 17px">
-          We have processed your payment. We will send you a <b>preview of your design</b> via social media (Whatsapp and Line).
-          If there is <b>no confirmation from you in 24 hours</b>, we assume there is <b>no revision</b>. After the revision is complete,
-          we will send the design file to <b>your email</b> and the status will be <b>"closed"</b>.
+        <p style="font-family: 'Google Sans', sans-serif; font-size: 15px">
+          Kami telah memproses pembayaran anda. Kami akan segera menghubungi anda
+          untuk mengirimkan<b> preview desain {{ $data->order->name }}</b> pesanan anda dalam beberapa hari kedepan, </b>melalui media sosial (Whatsapp dan Line).<br><br>
+          Jika tidak ada konfirmasi dari anda dalam 24 jam setelah preview desain kami kirimkan nantinya, kami akan menganggap tidak ada revisi.
+          Dan setelah revisi selesai, kami akan mengirimkan file desain ke<b> email anda </b>.
         </p><br>
 
         <center>
-          <table style="font-family: 'Google Sans', sans-serif; font-size: 17px">
+          <table style="font-family: 'Google Sans', sans-serif; font-size: 15px">
             <tr>
-              <td style="font-family: 'Google Sans', sans-serif;">Order &nbsp;</td>
+              <td style="font-family: 'Google Sans', sans-serif;">Pesanan &nbsp;</td>
               <td style="font-family: 'Google Sans', sans-serif;">&nbsp; : &nbsp;</td>
               <td style="font-family: 'Google Sans', sans-serif;">{{ $data->order->name }}</td>
             </tr>
             <tr>
-              <td style="font-family: 'Google Sans', sans-serif;">Price &nbsp;</td>
+              <td style="font-family: 'Google Sans', sans-serif;">Harga &nbsp;</td>
               <td style="font-family: 'Google Sans', sans-serif;">&nbsp; : &nbsp;</td>
               <td style="font-family: 'Google Sans', sans-serif;">Rp {{number_format(($data->order->price),0,',','.')}} ,-</td>
             </tr>
@@ -53,8 +54,9 @@
           </table>
         </center><br>
 
-        <p style="font-family: 'Google Sans', sans-serif; font-size: 17px">
-          Please immediately <b>check your social media</b> regarding <b>revision information</b>. Thank you for trusting your design to <b>Wapy Design</b>.
+        <p style="font-family: 'Google Sans', sans-serif; font-size: 15px">
+          Harap segera <b> periksa media sosial anda secara berkala</b> untuk mendapatkan <b> informasi dan <i>progress</i> pesanan</b>.
+          Terima kasih telah mempercayakan desain anda kepada kami.
           <br><br> Best Regards <br> <b>CEO Wapy Design</b>
         </p>
 

@@ -80,7 +80,7 @@
                                                   2. Biaya desain logo <b>Rp {{number_format((Config::get('price.logo')),0,',','.')}} ,-</b>
                                                 </li>
                                                 <li>
-                                                  3. Pengerjaan paling lama adalah {{ Config::get('time-work.logo') }} hari
+                                                  3. Pengerjaan paling cepat adalah {{ Config::get('time-work.logo') }} hari
                                                 </li>
                                             </div>
                                             <div class="billing-details pr-10" style="margin-top: 15%">
@@ -97,6 +97,7 @@
                                             </div>
                                         </div>
                                         <!-- billing details -->
+                                        <style media="screen">.custom-text{ color: black !important; }</style>
                                         <div class="col-md-6">
                                             <div class="billing-details pr-10" style="margin-bottom: 5%">
                                                 <h6 class="widget-title border-left mb-20">Media Pengiriman Desain</h6>

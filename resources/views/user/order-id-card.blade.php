@@ -80,13 +80,17 @@
                                                   2. Biaya desain id-card <b>Rp {{number_format((Config::get('price.id-card')),0,',','.')}} ,-</b>
                                                 </li>
                                                 <li>
-                                                  3. Pengerjaan paling lama adalah {{ Config::get('time-work.id-card') }} hari
+                                                  3. Pengerjaan paling cepat adalah {{ Config::get('time-work.id-card') }} hari
+                                                </li>
+                                                <li>
+                                                  4. Jika anda membutuhkan ID Card dengan foto yang langsung terpasang dan jumlah yang banyak, setelah
+                                                  melakukan pesanan anda bisa menghubungi <i>Customer Service</i> kami via kontak <i>Whatsapp</i>
                                                 </li>
                                             </div>
                                             <div class="billing-details pr-10" style="margin-top: 15%">
                                                 <h6 class="widget-title border-left mb-20">Apa yang Akan Anda Dapatkan</h6>
                                                 <li>
-                                                  1. Anda akan mendapatkan file cdr, psd, jpg dan png
+                                                  1. Anda akan mendapatkan file cdr, psd, jpg dan png dari design ID Card (hanya satu desain ID card).
                                                 </li>
                                                 <li>
                                                   2. Anda akan mendapatkan kesempatan revisi sebanyak {{ Config::get('revision.id-card') }}x
@@ -94,6 +98,7 @@
                                             </div>
                                         </div>
                                         <!-- billing details -->
+                                        <style media="screen">.custom-text{ color: black !important; }</style>
                                         <div class="col-md-6">
                                             <div class="billing-details pr-10" style="margin-bottom: 5%">
                                                 <h6 class="widget-title border-left mb-20">Media Pengiriman Desain</h6>
@@ -147,14 +152,11 @@
                                                       $('.custom-select').select2();
                                                     });
                                                   </script>
-                                                <!-- <select class="custom-select" name="theme" onchange="myFunction()" id="theme">
-                                                    <option value="Bebas">Pilih Tema Desain</option>
-                                                    @foreach($theme as $value)
-                                                    <option value="{{ $value->name }}">{{ $value->name }}</option>
-                                                    @endforeach
-                                                    <option value="create_own">Tulis Tema Sendiri</option>
-                                                </select> -->
-                                                <div id="create_own"></div>
+
+                                                <div id="create_own"></div><br>
+                                                <small><i> *Desain yang akan dibuat tidak akan sama persis dengan tema yang dipilih, namun hanya sebagai gambaran seperti apa warna dan model desainya </i></small>
+                                                <small><i> *Pilih 'tulis tema sendiri' jika tidak ada pilihan tema yang sesuai bagi anda </i></small>
+                                                <br><br>
 
                                                 <script>
                                                 function myFunction() {
@@ -179,7 +181,7 @@
                                                         <small><strong>{{ $errors->first('content') }}</strong></small>
                                                     </span>
                                                 @endif
-                                                <textarea value="{{ old('content') }}" name="content" class="custom-textarea" placeholder="Jelaskan konten id-card disini " required></textarea>
+                                                <textarea value="{{ old('content') }}" name="content" class="custom-textarea" placeholder="Jelaskan konten id-card disini. Berapa jumlah id-card yang harus dibuat, dan apa saja konten yang harus ada " required></textarea>
 
                                                 @if ($errors->has('note'))
                                                     <span class="text-danger">
