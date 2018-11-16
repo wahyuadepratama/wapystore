@@ -142,6 +142,7 @@
                                         </div>
                                       </div>
                                       @endif
+                                      @if($data->revision != NULL)
                                       <div class="col-md-12 order-payment">
                                         <div class="col-md-3">
                                           <span class"td-title-1">Theme</span>
@@ -150,6 +151,7 @@
                                           <p class="td-title-2">{{ $data->theme }}</p>
                                         </div>
                                       </div>
+                                      @endif
                                       @if($data->revision != NULL)
                                       <div class="col-md-12 order-payment">
                                         <div class="col-md-4">

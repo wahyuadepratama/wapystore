@@ -65,6 +65,21 @@ class OrderController extends Controller
       return view('user/order-book-cover')->with('theme', $this->getTheme());
     }
 
+    public function orderCalender()
+    {
+      return view('user/order-calender')->with('theme', $this->getTheme());
+    }
+
+    public function orderMaskot()
+    {
+      return view('user/order-maskot')->with('theme', $this->getTheme());
+    }
+
+    public function orderVector()
+    {
+      return view('user/order-vector')->with('theme', $this->getTheme());
+    }
+
     public function getTheme()
     {
       return Photo::get();
@@ -425,6 +440,131 @@ class OrderController extends Controller
       return redirect('/home');
     }
 
+    public function storeCalender(Request $request)
+    {
+      $this->validatorCalender($request->all())->validate();
+      $discount = $this->checkDiscount(\Config::get('price.calender'), \Config::get('product.calender'));
+
+      if($request->file == ""){
+        $file = NULL;
+      }else{
+        $file = Auth::user()->email.'_'.time().'_'.$request->file('file')->getClientOriginalName();
+        $request->file('file')->move(public_path().'/storage/orderan', $file);
+      }
+
+      $user = User::find(Auth::user()->id);
+      $user->phone = $request->phone;
+      $user->sosmed = $request->sosmed;
+      $user->discount_id = 1;
+      $user->save();
+
+      $calender = Order::create([
+        'client_id' => Auth::user()->id,
+        'name' => 'Calender',
+        'price' => $discount['price'],
+        'theme' => $request->theme,
+        'note' => $request->note,
+        'file' => $file,
+        'revision' => \Config::get('revision.calender'),
+        'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'discount_status' => $discount['status'],
+      ]);
+
+      $designer = User::where('role_id', 2)->get();
+
+      $this->sendPaymentOrderEmail($calender);
+
+      foreach($designer as $data){
+        Mail::to($data->email)->send(new OrderBroadcast($data->name, $calender));
+      }
+
+      return redirect('/home')->with('success', 'Terima kasih sudah melakukan pemesanan. Silahkan cek email anda untuk melihat info pembayaran.');
+    }
+
+    public function storeMaskot(Request $request)
+    {
+      $this->validatorMaskot($request->all())->validate();
+      $discount = $this->checkDiscount(\Config::get('price.maskot'), \Config::get('product.maskot'));
+
+      if($request->file == ""){
+        $file = NULL;
+      }else{
+        $file = Auth::user()->email.'_'.time().'_'.$request->file('file')->getClientOriginalName();
+        $request->file('file')->move(public_path().'/storage/orderan', $file);
+      }
+
+      $user = User::find(Auth::user()->id);
+      $user->phone = $request->phone;
+      $user->sosmed = $request->sosmed;
+      $user->discount_id = 1;
+      $user->save();
+
+      $maskot = Order::create([
+        'client_id' => Auth::user()->id,
+        'name' => 'Maskot',
+        'price' => $discount['price'],
+        'content' => $request->content,
+        'note' => $request->note,
+        'file' => $file,
+        'revision' => \Config::get('revision.maskot'),
+        'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'discount_status' => $discount['status'],
+      ]);
+
+      $designer = User::where('role_id', 2)->get();
+
+      $this->sendPaymentOrderEmail($maskot);
+
+      foreach($designer as $data){
+        Mail::to($data->email)->send(new OrderBroadcast($data->name, $maskot));
+      }
+
+      return redirect('/home');
+    }
+
+    public function storeVector(Request $request)
+    {
+      $this->validatorVector($request->all())->validate();
+      $discount = $this->checkDiscount(\Config::get('price.vector'), \Config::get('product.vector'));
+
+      if($request->file == ""){
+        $file = NULL;
+      }else{
+        $file = Auth::user()->email.'_'.time().'_'.$request->file('file')->getClientOriginalName();
+        $request->file('file')->move(public_path().'/storage/orderan', $file);
+      }
+
+      $user = User::find(Auth::user()->id);
+      $user->phone = $request->phone;
+      $user->sosmed = $request->sosmed;
+      $user->discount_id = 1;
+      $user->save();
+
+      $vector = Order::create([
+        'client_id' => Auth::user()->id,
+        'name' => 'Vector Art',
+        'price' => $discount['price'],
+        'content' => $request->content,
+        'file' => $file,
+        'revision' => \Config::get('revision.vector'),
+        'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'discount_status' => $discount['status'],
+      ]);
+
+      $designer = User::where('role_id', 2)->get();
+
+      $this->sendPaymentOrderEmail($vector);
+
+      foreach($designer as $data){
+        Mail::to($data->email)->send(new OrderBroadcast($data->name, $vector));
+      }
+
+      return redirect('/home');
+    }
+
     public function validator(array $data)
     {
         return Validator::make($data, [
@@ -452,6 +592,34 @@ class OrderController extends Controller
         return Validator::make($data, [
           'phone' => 'required',
           'content' => 'required',
+        ]);
+    }
+
+    public function validatorMaskot(array $data)
+    {
+        return Validator::make($data, [
+          'phone' => 'required',
+          'content' => 'required',
+          'file' => 'mimes:jpeg,jpg,png,zip,rar|max:52400'
+        ]);
+    }
+
+    public function validatorVector(array $data)
+    {
+        return Validator::make($data, [
+          'phone' => 'required',
+          'content' => 'required',
+          'file' => 'mimes:jpeg,jpg,png,zip,rar|max:52400'
+        ]);
+    }
+
+    public function validatorCalender(array $data)
+    {
+        return Validator::make($data, [
+          'phone' => 'required',
+          'theme' => 'required',
+          'content' => 'required',
+          'file' => 'mimes:jpeg,jpg,png,zip,rar|max:52400'
         ]);
     }
 

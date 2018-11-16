@@ -49,6 +49,6 @@ class GuestController extends Controller
 
     public function uploadDesign()
     {
-      return redirect()->away('https://docs.google.com/forms/d/e/1FAIpQLSdD090kS2zBKzmYkFKMOOqrUTAj1hekuiTSyYaZSP7MLKmuSg/viewform?usp=sf_link');
+      return redirect()->away('https://docs.google.com/forms/d/e/1FAIpQLScidJZ1Q2wtumjVJMtZyskBqbkXFWBnKfWTShEcCPu0hwDzPg/viewform?usp=sf_link');
     }
 }

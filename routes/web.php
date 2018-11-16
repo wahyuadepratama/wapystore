@@ -50,6 +50,15 @@ Route::post('order/logo/store', 'OrderController@storeLogo');
 
 Route::get('order/cv', 'OrderController@orderCv');
 Route::post('order/cv/store', 'OrderController@storeCv');
+
+Route::get('order/calender', 'OrderController@orderCalender');
+Route::post('order/calender/store', 'OrderController@storeCalender');
+
+Route::get('order/maskot', 'OrderController@orderMaskot');
+Route::post('order/maskot/store', 'OrderController@storeMaskot');
+
+Route::get('order/vector', 'OrderController@orderVector');
+Route::post('order/vector/store', 'OrderController@storeVector');
 // end beda field
 
 Route::get('order/destroy/{token}','OrderController@destroyOrder');

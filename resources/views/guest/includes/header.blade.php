@@ -38,21 +38,30 @@
                                                 <li>
                                                     <a href="/order/pamflet">Pamflet</a>
                                                 </li>
-                                              </ul>
-                                              <ul class="single-mega-item">
                                                 <li>
                                                     <a href="/order/id-card">ID Card</a>
                                                 </li>
+                                                <li>
+                                                    <a href="/order/book-cover">Book Cover</a>
+                                                </li>
+                                              </ul>
+                                              <ul class="single-mega-item">
                                                 <li>
                                                     <a href="/order/logo">Logo</a>
                                                 </li>
                                                 <li>
                                                     <a href="/order/cv">CV</a>
                                                 </li>
-
                                                 <li>
-                                                    <a href="/order/book-cover">Book Cover</a>
+                                                  <a href="/order/calender">Calender</a>
                                                 </li>
+                                                <li>
+                                                  <a href="/order/maskot">Maskot</a>
+                                                </li>
+                                                <li>
+                                                  <a href="/order/vector">Vector Art</a>
+                                                </li>
+
                                               </ul>
                                           </div>
                                       </div>
@@ -67,35 +76,44 @@
                                 <li class="mega-parent"><a href="#">Order</a>
                                     <div class="mega-menu-area mega-menu-area-2 clearfix">
                                         <div class="mega-menu-link mega-menu-link-2  f-left">
-                                            <ul class="single-mega-item">
-                                              <li>
-                                                  <a href="/order/spanduk">Spanduk</a>
-                                              </li>
-                                              <li>
-                                                  <a href="/order/poster">Poster</a>
-                                              </li>
-                                              <li>
-                                                  <a href="/order/banner">Banner</a>
-                                              </li>
-                                              <li>
-                                                  <a href="/order/pamflet">Pamflet</a>
-                                              </li>
-                                            </ul>
-                                            <ul class="single-mega-item">
-                                              <li>
-                                                  <a href="/order/id-card">ID Card</a>
-                                              </li>
-                                              <li>
-                                                  <a href="/order/logo">Logo</a>
-                                              </li>
-                                              <li>
-                                                  <a href="/order/cv">CV</a>
-                                              </li>
+                                          <ul class="single-mega-item">
+                                            <li>
+                                                <a href="/order/spanduk">Spanduk</a>
+                                            </li>
+                                            <li>
+                                                <a href="/order/poster">Poster</a>
+                                            </li>
+                                            <li>
+                                                <a href="/order/banner">Banner</a>
+                                            </li>
+                                            <li>
+                                                <a href="/order/pamflet">Pamflet</a>
+                                            </li>
+                                            <li>
+                                                <a href="/order/id-card">ID Card</a>
+                                            </li>
+                                            <li>
+                                                <a href="/order/book-cover">Book Cover</a>
+                                            </li>
+                                          </ul>
+                                          <ul class="single-mega-item">
+                                            <li>
+                                                <a href="/order/logo">Logo</a>
+                                            </li>
+                                            <li>
+                                                <a href="/order/cv">CV</a>
+                                            </li>
+                                            <li>
+                                              <a href="/order/calender">Calender</a>
+                                            </li>
+                                            <li>
+                                              <a href="/order/maskot">Maskot</a>
+                                            </li>
+                                            <li>
+                                              <a href="/order/vector">Vector Art</a>
+                                            </li>
 
-                                              <li>
-                                                  <a href="/order/book-cover">Book Cover</a>
-                                              </li>
-                                            </ul>
+                                          </ul>
                                         </div>
                                     </div>
                                 </li>
@@ -244,6 +262,15 @@
                                     </li>
                                     <li>
                                         <a href="/order/book-cover">Book Cover</a>
+                                    </li>
+                                    <li>
+                                      <a href="/order/calender">Calender</a>
+                                    </li>
+                                    <li>
+                                      <a href="/order/maskot">Maskot</a>
+                                    </li>
+                                    <li>
+                                      <a href="/order/vector">Vector Art</a>
                                     </li>
                                 </ul>
                               </li>

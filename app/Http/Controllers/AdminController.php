@@ -308,7 +308,7 @@ class AdminController extends Controller
 
     public function redirectToFiles()
     {
-      return redirect()->away('https://drive.google.com/drive/folders/0By5QTXJ5xFt3fkdxUlhBMURXZW1QU2lUaElXVDNzalBQSzk2TktWR2k4c2JDbE5yMXIwWEU?usp=sharing');
+      return redirect()->away('https://drive.google.com/drive/folders/0By5QTXJ5xFt3fkJiN2daUDczZ1lfQ2VnVWtxZXVqbDJnSzNkOGR2Q2VUYS1CRGFLbS1QQTA?usp=sharing');
     }
 
 }
