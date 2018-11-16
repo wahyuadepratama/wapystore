@@ -99,4 +99,7 @@ Route::get('root/theme/photo/destroy/{id}', 'AdminController@destroyPhoto');
 Route::get('/root/theme/photo-theme/destroy/{id}', 'AdminController@destroyThemePhoto');
 
 Route::get('root/file-design', 'AdminController@redirectToFiles');
+
+Route::get('root/promote-email', 'AdminController@promoteEmail');
+Route::post('root/promote-email/store', 'AdminController@storePromoteEmail');
 // ------------- END OF ADMIN ROUTE ----------------//

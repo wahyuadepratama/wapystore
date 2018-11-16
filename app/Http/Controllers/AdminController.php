@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Models\Theme;
 use App\Models\Photo;
 use App\Models\Discount;
+use App\Mail\PromoteEmail;
 use App\Models\ThemePhoto;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
@@ -358,6 +359,24 @@ class AdminController extends Controller
     public function redirectToFiles()
     {
       return redirect()->away('https://drive.google.com/drive/folders/0By5QTXJ5xFt3fkJiN2daUDczZ1lfQ2VnVWtxZXVqbDJnSzNkOGR2Q2VUYS1CRGFLbS1QQTA?usp=sharing');
+    }
+
+    public function promoteEmail()
+    {
+      return view('admin/promote-email');
+    }
+
+    public function storePromoteEmail(Request $request)
+    {
+      $count = 0;
+      foreach ($request->email as $key) {
+        if($key != ""){
+          Mail::to($key)->send(new PromoteEmail($key));
+          $count++;
+        }
+      }
+
+      return back()->with('success', 'You have succesfully send email to '. $count . ' user!');
     }
 
 }

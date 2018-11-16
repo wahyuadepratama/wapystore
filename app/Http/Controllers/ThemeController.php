@@ -24,13 +24,13 @@ class ThemeController extends Controller
 
     public function indexPortofolio()
     {
-      $portofolio = Photo::paginate(8);
+      $portofolio = Photo::paginate(6);
       return view('guest/portofolio')->with('portofolio', $portofolio);
     }
 
     public function search(Request $request)
     {
-      $portofolio = Photo::where('name', 'LIKE', '%'.$request->search.'%')->paginate(1);
+      $portofolio = Photo::where('name', 'LIKE', '%'.$request->search.'%')->paginate(6);
       return view('guest/portofolio')->with('portofolio', $portofolio);
     }
 }

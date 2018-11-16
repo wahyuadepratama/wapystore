@@ -54,6 +54,10 @@
                     <a href="/root/file-design"> <i class="menu-icon fa fa-folder-open"></i>File Design </a>
                 </li>
 
+                <li class="{{ Request::is('root/file') ? 'active' : '' }}">
+                    <a href="/root/promote-email"> <i class="menu-icon fa fa-share-alt"></i>Promote Via Email</a>
+                </li>
+
             </ul>
         </div>
     </nav>

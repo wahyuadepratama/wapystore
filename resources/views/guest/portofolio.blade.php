@@ -58,7 +58,7 @@
                 <div class="row">
                     <!-- blog-item start -->
                     @foreach($portofolio as $data)
-                    <div class="col-md-3 col-sm-4 col-xs-12">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="product-item product-item-2">
                           <div class="banner-item">
                               <div class="banner-img">
