@@ -162,6 +162,9 @@
                                           <a href="/home">Profile</a>
                                       </li>
                                       <li>
+                                        <a href="/home/change-password">Ubah Password</a>
+                                      </li>
+                                      <li>
                                         <a href="{{ route('logout') }}"
                                               onclick="event.preventDefault();
                                                        document.getElementById('logout-form').submit();">
@@ -299,6 +302,9 @@
                                 <ul>
                                     <li>
                                         <a href="/home">Profile</a>
+                                    </li>
+                                    <li>
+                                      <a href="/home/change-password">Ubah Password</a>
                                     </li>
                                     <li>
                                       <a href="{{ route('logout') }}"

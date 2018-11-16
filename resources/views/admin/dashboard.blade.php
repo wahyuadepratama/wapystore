@@ -27,77 +27,89 @@
 
 <div class="content mt-3">
 
-    <div class="col-sm-12">
+    <!-- <div class="col-sm-12">
         <div class="alert  alert-success alert-dismissible fade show" role="alert">
           <span class="badge badge-pill badge-success">Success</span> You successfully read this important alert message.
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-    </div>
+    </div> -->
 
-
-   <div class="col-sm-6 col-lg-3">
-        <div class="card text-white bg-flat-color-1">
-            <div class="card-body pb-0">
-                <div class="dropdown float-right">
-                    <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-                        <i class="fa fa-cog"></i>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <div class="dropdown-menu-content">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
-                </div>
-                <h4 class="mb-0">
-                    <span class="count">10468</span>
-                </h4>
-                <p class="text-light">Members online</p>
-
-                <div class="chart-wrapper px-0" style="height:70px;" height="70">
-                    <canvas id="widgetChart1"></canvas>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
     <!--/.col-->
 
-    <div class="col-sm-6 col-lg-3">
-        <div class="card text-white bg-flat-color-2">
-            <div class="card-body pb-0">
-                <div class="dropdown float-right">
-                    <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-                        <i class="fa fa-cog"></i>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <div class="dropdown-menu-content">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
+    <div class="col-xl-4 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-money text-success border-success"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Total Profit</div>
+                        <div class="stat-digit">Rp {{number_format(($adminMoney),0,',','.')}} ,-</div>
                     </div>
                 </div>
-                <h4 class="mb-0">
-                    <span class="count">10468</span>
-                </h4>
-                <p class="text-light">Members online</p>
-
-                <div class="chart-wrapper px-0" style="height:70px;" height="70">
-                    <canvas id="widgetChart2"></canvas>
-                </div>
-
             </div>
         </div>
     </div>
-    <!--/.col-->
 
-    <div class="col-sm-6 col-lg-3">
-        <div class="card text-white bg-flat-color-3">
+
+    <div class="col-xl-4 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-user text-primary border-primary"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Customer</div>
+                        <div class="stat-digit">{{ $user }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-user text-danger border-danger"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Designer</div>
+                        <div class="stat-digit">{{ $designer }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-layout-grid2 text-warning border-warning"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Total Transaction</div>
+                        <div class="stat-digit">Rp {{number_format(($moneyAll),0,',','.')}} ,-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-alarm-clock text-info border-info"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Waiting Order</div>
+                        <div class="stat-digit">{{ $waiting }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="col-sm-6 col-lg-3">
+        <div class="card text-white bg-flat-color-5">
             <div class="card-body pb-0">
                 <div class="dropdown float-right">
                     <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown">
@@ -105,16 +117,14 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <div class="dropdown-menu-content">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="/root/user-management">Show</a>
                         </div>
                     </div>
                 </div>
                 <h4 class="mb-0">
-                    <span class="count">10468</span>
+                    <span>343434</span>
                 </h4>
-                <p class="text-light">Members online</p>
+                <br><p class="text-light">Total Transaction</p>
 
             </div>
 
@@ -122,39 +132,9 @@
                     <canvas id="widgetChart3"></canvas>
                 </div>
         </div>
-    </div>
-    <!--/.col-->
+    </div> -->
 
-    <div class="col-sm-6 col-lg-3">
-        <div class="card text-white bg-flat-color-4">
-            <div class="card-body pb-0">
-                <div class="dropdown float-right">
-                    <button class="btn bg-transparent dropdown-toggle theme-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-                        <i class="fa fa-cog"></i>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <div class="dropdown-menu-content">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
-                </div>
-                <h4 class="mb-0">
-                    <span class="count">10468</span>
-                </h4>
-                <p class="text-light">Members online</p>
-
-                <div class="chart-wrapper px-3" style="height:70px;" height="70">
-                    <canvas id="widgetChart4"></canvas>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!--/.col-->
-
-    <div class="col-lg-3 col-md-6">
+    <!-- <div class="col-lg-3 col-md-6">
         <div class="social-box facebook">
             <i class="fa fa-facebook"></i>
             <ul>
@@ -168,11 +148,10 @@
                 </li>
             </ul>
         </div>
-        <!--/social-box-->
-    </div><!--/.col-->
+    </div> -->
 
 
-    <div class="col-lg-3 col-md-6">
+    <!-- <div class="col-lg-3 col-md-6">
         <div class="social-box twitter">
             <i class="fa fa-twitter"></i>
             <ul>
@@ -186,11 +165,10 @@
                 </li>
             </ul>
         </div>
-        <!--/social-box-->
-    </div><!--/.col-->
+    </div> -->
 
 
-    <div class="col-lg-3 col-md-6">
+    <!-- <div class="col-lg-3 col-md-6">
         <div class="social-box linkedin">
             <i class="fa fa-linkedin"></i>
             <ul>
@@ -204,11 +182,10 @@
                 </li>
             </ul>
         </div>
-        <!--/social-box-->
-    </div><!--/.col-->
+    </div> -->
 
 
-    <div class="col-lg-3 col-md-6">
+    <!-- <div class="col-lg-3 col-md-6">
         <div class="social-box google-plus">
             <i class="fa fa-google-plus"></i>
             <ul>
@@ -222,10 +199,9 @@
                 </li>
             </ul>
         </div>
-        <!--/social-box-->
-    </div><!--/.col-->
+    </div> -->
 
-    <div class="col-xl-6">
+    <!-- <div class="col-xl-6">
         <div class="card">
             <div class="card-body">
                 <div class="row">
@@ -233,7 +209,7 @@
                         <h4 class="card-title mb-0">Traffic</h4>
                         <div class="small text-muted">October 2017</div>
                     </div>
-                    <!--/.col-->
+
                     <div class="col-sm-8 hidden-sm-down">
                         <button type="button" class="btn btn-primary float-right bg-flat-color-1"><i class="fa fa-cloud-download"></i></button>
                         <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
@@ -249,10 +225,10 @@
                                 </label>
                             </div>
                         </div>
-                    </div><!--/.col-->
+                    </div>
 
 
-                </div><!--/.row-->
+                </div>
                 <div class="chart-wrapper mt-4" >
                     <canvas id="trafficChart" style="height:200px;" height="200"></canvas>
                 </div>
@@ -298,9 +274,9 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div> -->
 
-   <div class="col-xl-3 col-lg-6">
+   <!-- <div class="col-xl-3 col-lg-6">
         <section class="card">
             <div class="twt-feed blue-bg">
                 <div class="corner-ribon black-ribon">
@@ -346,53 +322,12 @@
                 </span>
             </footer>
         </section>
-    </div>
+    </div> -->
 
 
-    <div class="col-xl-3 col-lg-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="stat-widget-one">
-                    <div class="stat-icon dib"><i class="ti-money text-success border-success"></i></div>
-                    <div class="stat-content dib">
-                        <div class="stat-text">Total Profit</div>
-                        <div class="stat-digit">1,012</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
-    <div class="col-xl-3 col-lg-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="stat-widget-one">
-                    <div class="stat-icon dib"><i class="ti-user text-primary border-primary"></i></div>
-                    <div class="stat-content dib">
-                        <div class="stat-text">New Customer</div>
-                        <div class="stat-digit">961</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xl-3 col-lg-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="stat-widget-one">
-                    <div class="stat-icon dib"><i class="ti-layout-grid2 text-warning border-warning"></i></div>
-                    <div class="stat-content dib">
-                        <div class="stat-text">Active Projects</div>
-                        <div class="stat-digit">770</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xl-6">
+    <!-- <div class="col-xl-6">
         <div class="card" >
             <div class="card-header">
                 <h4>World</h4>
@@ -401,8 +336,7 @@
                 <div id="vmap" class="vmap" style="height: 265px;"></div>
             </div>
         </div>
-        <!-- /# card -->
-    </div>
+    </div> -->
 
 
 </div> <!-- .content -->

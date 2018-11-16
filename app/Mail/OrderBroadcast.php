@@ -39,6 +39,6 @@ class OrderBroadcast extends Mailable
       //   ]);
       // }
 
-      $email->subject('Ada Pekerjaan Untukmu! Ambil Sekarang!')->view('mail/order-broadcast')->with('name', $this->name)->with('data',$this->data);
+      $email->subject('Ada Orderan '.$this->data->name.' Untukmu! Ambil Sekarang!')->view('mail/order-broadcast')->with('name', $this->name)->with('data',$this->data);
     }
 }

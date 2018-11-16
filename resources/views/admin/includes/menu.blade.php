@@ -22,6 +22,7 @@
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="menu-icon fa fa-user"></i><a href="/root/user-management">All User</a></li>
                         <li><i class="menu-icon ti-lock"></i><a href="/root/user-management/blocked">User Blocked</a></li>
+                        <li><i class="menu-icon fa fa-plus-square"></i><a href="/root/user-management/add-designer">Add New Designer</a></li>
                     </ul>
                 </li>
 

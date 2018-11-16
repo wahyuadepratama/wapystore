@@ -84,8 +84,7 @@
                           </p>
                         </div>
                       </div>
-                    </div>
-
+                    </div>                    
                   </div>
                   <!-- new-customers -->
                   <div class="col-md-9">

@@ -30,7 +30,28 @@ class AdminController extends Controller
 
     public function index()
     {
-      return view('admin/dashboard');
+      $user = User::where('role_id', 3)->count();
+      $designer = User::where('role_id', 2)->count();
+      $debit = HistoryTransaction::with('user')->whereHas('user',function($query){
+              $query->where('role_id','=', 1);
+            })->sum('debit');
+      $kredit = HistoryTransaction::with('user')->whereHas('user',function($query){
+              $query->where('role_id','=', 1);
+            })->sum('kredit');
+      $adminMoney = $debit + $kredit;
+
+      $debitAll = HistoryTransaction::with('user')->sum('debit');
+      $kreditAll = HistoryTransaction::with('user')->sum('kredit');
+      $moneyAll = $debitAll + $kreditAll;
+
+      $waiting = Order::where('status','waiting')->get()->count();
+
+      return view('admin/dashboard')->with(['user' => $user,
+                                            'designer' => $designer,
+                                            'adminMoney' => $adminMoney,
+                                            'moneyAll' => $moneyAll,
+                                            'waiting' => $waiting
+                                          ]);
     }
 
     public function indexUser()
@@ -97,6 +118,34 @@ class AdminController extends Controller
       $user->save();
 
       return back()->with('success','You have successfully reset password '.$user->username.'. New Password: '.$new);
+    }
+
+    public function registerDesigner(Request $request)
+    {
+      $this->validatorRegisterDesigner($request->all())->validate();
+
+      $token = bin2hex(random_bytes(50));
+      $name = preg_replace('/@.*?$/', '', $request->email);
+
+      User::create([
+          'name' => $name,
+          'email' => $request->email,
+          'password' => bcrypt($request->password),
+          'role_id' => 2,
+          'discount_id' => 1,
+          'email_confirmation' => $token,
+          'verified' => true,
+      ]);
+
+      return back()->with('success','You have succesfully add new designer account');
+    }
+
+    public function validatorRegisterDesigner(array $data)
+    {
+        return Validator::make($data, [
+          'email' => 'required|string|email|max:191|unique:users',
+          'password' => 'required|string|min:6|confirmed',
+        ]);
     }
 
     public function indexDiscount()

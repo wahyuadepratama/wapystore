@@ -3,6 +3,10 @@
 Route::get('/', 'GuestController@index');
 
 Auth::routes();
+Route::get('home', 'HomeController@index');
+Route::get('home/history', 'DesignerController@indexHistory');
+Route::get('home/change-password','HomeController@changePassword');
+Route::post('home/change-password/store','HomeController@storeChangePassword');
 Route::get('confirmation/{token}','GuestController@confirmation');
 Route::get('confirmation/resend/email','HomeController@resendEmail');
 
@@ -16,9 +20,6 @@ Route::get('search','ThemeController@search');
 
 Route::get('contact', function(){ return view('guest/contact'); });
 Route::post('advice','GuestController@storeAdvice');
-
-Route::get('home', 'HomeController@index');
-Route::get('home/history', 'DesignerController@indexHistory');
 
 Route::get('job','DesignerController@indexJob');
 Route::get('job/on-progress','DesignerController@indexJobProgress');
@@ -72,11 +73,13 @@ Route::post('root/user-management/destroy/{id}','AdminController@destroyUser');
 Route::post('root/user-management/restore/{id}','AdminController@restoreUser');
 Route::post('root/user-management/update/{id}','AdminController@updateUser');
 Route::post('root/user-management/reset-password/{id}','AdminController@resetPasswordUser');
+Route::get('root/user-management/add-designer', function(){ return view('admin/user-management-new-designer'); });
+Route::post('root/user-management/add-designer/store', 'AdminController@registerDesigner');
 
 Route::post('root/discount-management/store','AdminController@storeDiscount');
 Route::get('root/discount-management','AdminController@indexDiscount');
 Route::post('root/discount-management/send','AdminController@sendDiscount');
-Route::get('root/discount-management/destory/{id}','AdminController@destroyDiscount');
+Route::get('root/discount-management/destroy/{id}','AdminController@destroyDiscount');
 Route::get('root/discount-management/users','AdminController@userDiscount');
 
 Route::get('root/transaction/','AdminController@waitingOrder');

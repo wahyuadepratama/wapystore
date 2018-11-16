@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\RegisterConfirmation;
@@ -39,5 +40,26 @@ class HomeController extends Controller
         Mail::to(Auth::user()->email)->send(new RegisterConfirmation(Auth::user()->email_confirmation, Auth::user()->name));
       }
       return back();
+    }
+
+    public function changePassword()
+    {
+      return view('auth/password-reset');
+    }
+
+    public function storeChangePassword(Request $request)
+    {
+      $this->validator($request->all())->validate();
+      $user = User::find(Auth::user()->id);
+      $user->password = bcrypt($request->password);
+      $user->save();
+      return redirect('/home')->with('success','You have successfully change your password!');
+    }
+
+    public function validator(array $data)
+    {
+        return Validator::make($data, [
+          'password' => 'required|string|min:6|confirmed',
+        ]);
     }
 }

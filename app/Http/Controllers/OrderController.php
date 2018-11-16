@@ -172,7 +172,7 @@ class OrderController extends Controller
         Mail::to($data->email)->send(new OrderBroadcast($data->name, $poster));
       }
 
-      return redirect('/home');
+      return redirect('/home')->with('success', 'Terima kasih sudah melakukan pemesanan. Silahkan cek email anda untuk melihat info pembayaran.');
     }
 
     public function storeBanner(Request $request)
@@ -217,7 +217,7 @@ class OrderController extends Controller
         Mail::to($data->email)->send(new OrderBroadcast($data->name, $banner));
       }
 
-      return redirect('/home');
+      return redirect('/home')->with('success', 'Terima kasih sudah melakukan pemesanan. Silahkan cek email anda untuk melihat info pembayaran.');
     }
 
     public function storePamflet(Request $request)
@@ -262,7 +262,7 @@ class OrderController extends Controller
         Mail::to($data->email)->send(new OrderBroadcast($data->name, $pamflet));
       }
 
-      return redirect('/home');
+      return redirect('/home')->with('success', 'Terima kasih sudah melakukan pemesanan. Silahkan cek email anda untuk melihat info pembayaran.');
     }
 
     public function storeIdCard(Request $request)
@@ -307,7 +307,7 @@ class OrderController extends Controller
         Mail::to($data->email)->send(new OrderBroadcast($data->name, $idCard));
       }
 
-      return redirect('/home');
+      return redirect('/home')->with('success', 'Terima kasih sudah melakukan pemesanan. Silahkan cek email anda untuk melihat info pembayaran.');
     }
 
     public function storeBookCover(Request $request)
@@ -352,7 +352,7 @@ class OrderController extends Controller
         Mail::to($data->email)->send(new OrderBroadcast($data->name, $bookCover));
       }
 
-      return redirect('/home');
+      return redirect('/home')->with('success', 'Terima kasih sudah melakukan pemesanan. Silahkan cek email anda untuk melihat info pembayaran.');
     }
 
     public function storeCv(Request $request)
@@ -395,7 +395,7 @@ class OrderController extends Controller
         Mail::to($data->email)->send(new OrderBroadcast($data->name, $cv));
       }
 
-      return redirect('/home');
+      return redirect('/home')->with('success', 'Terima kasih sudah melakukan pemesanan. Silahkan cek email anda untuk melihat info pembayaran.');
     }
 
     public function storeLogo(Request $request)
@@ -437,7 +437,7 @@ class OrderController extends Controller
         Mail::to($data->email)->send(new OrderBroadcast($data->name, $logo));
       }
 
-      return redirect('/home');
+      return redirect('/home')->with('success', 'Terima kasih sudah melakukan pemesanan. Silahkan cek email anda untuk melihat info pembayaran.');
     }
 
     public function storeCalender(Request $request)
@@ -521,7 +521,7 @@ class OrderController extends Controller
         Mail::to($data->email)->send(new OrderBroadcast($data->name, $maskot));
       }
 
-      return redirect('/home');
+      return redirect('/home')->with('success', 'Terima kasih sudah melakukan pemesanan. Silahkan cek email anda untuk melihat info pembayaran.');
     }
 
     public function storeVector(Request $request)
@@ -562,7 +562,7 @@ class OrderController extends Controller
         Mail::to($data->email)->send(new OrderBroadcast($data->name, $vector));
       }
 
-      return redirect('/home');
+      return redirect('/home')->with('success', 'Terima kasih sudah melakukan pemesanan. Silahkan cek email anda untuk melihat info pembayaran.');
     }
 
     public function validator(array $data)
