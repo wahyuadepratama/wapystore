@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Mailist;
 use App\Mail\RegisterConfirmation;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
@@ -63,6 +65,13 @@ class RegisterController extends Controller
           $name = preg_replace('/@.*?$/', '', $data['email']);
 
           Mail::to($data['email'])->send(new RegisterConfirmation($token, $name));
+
+          Mailist::firstOrNew([
+            'email' => $data['email'],
+            'last_promote' => NULL,
+            'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+            'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+          ]);
 
           return User::create([
               'name' => $name,

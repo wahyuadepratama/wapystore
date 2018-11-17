@@ -50,12 +50,20 @@
                     </ul>
                 </li>
 
-                <li class="{{ Request::is('root/file') ? 'active' : '' }}">
+                <li class="{{ Request::is('root/file-design') ? 'active' : '' }}">
                     <a href="/root/file-design"> <i class="menu-icon fa fa-folder-open"></i>File Design </a>
                 </li>
 
-                <li class="{{ Request::is('root/file') ? 'active' : '' }}">
-                    <a href="/root/promote-email"> <i class="menu-icon fa fa-share-alt"></i>Promote Via Email</a>
+                <li class="menu-item-has-children dropdown {{ Request::is('root/promote-email') ? 'active' : '' }}">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-share-alt"></i>Promote Via Email</a>
+                  <ul class="sub-menu children dropdown-menu">
+                      <li><i class="menu-icon fa fa-plus-square"></i><a href="/root/promote-email">New Promote</a></li>
+                      <li><i class="menu-icon fa fa-share"></i><a href="/root/promote-email/mailist">Promote to Mailist</a></li>
+                  </ul>
+                </li>
+
+                <li class="{{ Request::is('root/suggestion') ? 'active' : '' }}">
+                    <a href="/root/suggestion"> <i class="menu-icon fa fa-bookmark"></i>Suggestion</a>
                 </li>
 
             </ul>

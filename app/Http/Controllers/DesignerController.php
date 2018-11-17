@@ -20,7 +20,7 @@ class DesignerController extends Controller
 
   public function indexHistory()
   {
-    $mutation = HistoryTransaction::all();
+    $mutation = HistoryTransaction::where('user_id', Auth::user()->id)->get();
     return view('designer/history')->with('mutation',$mutation);
   }
 

@@ -8,6 +8,9 @@ use App\Models\Role;
 use App\Models\Order;
 use App\Models\Theme;
 use App\Models\Photo;
+use App\Models\Advice;
+use App\Models\Visitor;
+use App\Models\Mailist;
 use App\Models\Discount;
 use App\Mail\PromoteEmail;
 use App\Models\ThemePhoto;
@@ -15,6 +18,7 @@ use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Mail\ConfirmPayment;
 use App\Mail\FinishTransaction;
+use App\Mail\MailistPromoteEmail;
 use App\Models\HistoryTransaction;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
@@ -47,11 +51,14 @@ class AdminController extends Controller
 
       $waiting = Order::where('status','waiting')->get()->count();
 
+      $visitor = Visitor::all()->count();
+
       return view('admin/dashboard')->with(['user' => $user,
                                             'designer' => $designer,
                                             'adminMoney' => $adminMoney,
                                             'moneyAll' => $moneyAll,
-                                            'waiting' => $waiting
+                                            'waiting' => $waiting,
+                                            'visitor' => $visitor
                                           ]);
     }
 
@@ -366,17 +373,42 @@ class AdminController extends Controller
       return view('admin/promote-email');
     }
 
+    public function mailistPromoteEmail()
+    {
+      $mailist = Mailist::all();
+      return view('admin/promote-email-mailist')->with('mailist', $mailist);
+    }
+
     public function storePromoteEmail(Request $request)
     {
       $count = 0;
       foreach ($request->email as $key) {
         if($key != ""){
           Mail::to($key)->send(new PromoteEmail($key));
+          Mailist::firstOrNew([
+            'email' => $key,
+            'last_promote' => Carbon::now()->setTimezone('Asia/Jakarta'),
+            'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+            'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta')
+          ]);
           $count++;
         }
       }
 
       return back()->with('success', 'You have succesfully send email to '. $count . ' user!');
+    }
+
+    public function storeMailistPromoteEmail(Request $request)
+    {
+      $mailist = Mailist::find($request->id);
+      Mail::to($mailist->email)->send(new MailistPromoteEmail($mailist->email, $request->subject, $request->body));
+      return back()->with('success', 'You have succesfully send email to '. $mailist->email);
+    }
+
+    public function indexSuggestion()
+    {
+      $advice = Advice::all();
+      return view('admin/suggestion')->with('advice', $advice);
     }
 
 }

@@ -80,14 +80,13 @@
     </div>
 </div>
 
-
 <!-- START PAGE CONTENT -->
 <section id="page-content" class="page-wrapper">
 
     <!-- UP COMMING PRODUCT SECTION START -->
     <div class="up-comming-product-section ptb-60">
         <div class="container">
-            <div class="row">
+            <div class="row">              
                 <div class="col-md-3 col-sm-4 col-xs-12" style="padding: 4%">
                     <div class="product-item product-item-2">
                       <div class="banner-item banner-1">

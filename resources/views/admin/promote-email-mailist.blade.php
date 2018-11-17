@@ -36,19 +36,42 @@
               <div class="card">
                   <div class="card-header">
                       <strong class="card-title">
-                        New Promote (Default Message)
+                        Mailist (Custome Message)
                       </strong>
                   </div>
                   <div class="card-body">
 
-                    <form class="" action="/root/promote-email/store" method="post">
+                    <form action="/root/promote-email/mailist/store" method="post">
                       {{ csrf_field() }}
-                      <input type="text" name="email[]" class="form-control" placeholder="Email 1 here" required><br>
-                      <input type="text" name="email[]" class="form-control" placeholder="Email 2 here"><br>
-                      <input type="text" name="email[]" class="form-control" placeholder="Email 3 here"><br>
-                      <input type="text" name="email[]" class="form-control" placeholder="Email 4 here"><br>
-                      <input type="text" name="email[]" class="form-control" placeholder="Email 5 here"><br>
-                      <input type="submit" class="form-control btn btn-success" value="Send Email">
+                      <input type="text" name="subject" class="form-control" placeholder="Subject.." required><br>
+                      <textarea name="body" rows="8" cols="80" class="form-control" placeholder="Body.." required></textarea><br>
+                      <table id="user-management" class="table table-striped table-bordered">
+                        <thead>
+                          <tr>
+                            <th>Id</th>
+                            <th>Email</th>
+                            <th>Last Promote</th>
+                            <th>Created_at</th>
+                            <th>Updated_at</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @foreach($mailist as $data)
+                          <tr>
+                            <td>{{ $data->id }}</td>
+                            <td>{{ $data->email }}</td>
+                            <td>{{ $data->last_promote }}</td>
+                            <td>{{ $data->created_at }}</td>
+                            <td>{{ $data->updated_at }}</td>
+                            <td>
+                              <input type="hidden" name="id" value="{{ $data->id }}">
+                              <input type="submit" value="Send Email" class="btn-sm btn-success">
+                            </td>
+                          </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
                     </form>
 
                   </div>

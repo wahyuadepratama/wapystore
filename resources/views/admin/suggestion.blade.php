@@ -10,7 +10,7 @@
     <div class="col-sm-4">
         <div class="page-header float-left">
             <div class="page-title">
-                <h1>Promote</h1>
+                <h1>Kritik dan Saran</h1>
             </div>
         </div>
     </div>
@@ -18,8 +18,8 @@
         <div class="page-header float-right">
             <div class="page-title">
                 <ol class="breadcrumb text-right">
-                    <li><a href="#">Promote via Email</a></li>
-                    <li><a href="#">Promote</a></li>
+                    <li><a href="#">Kritik dan Saran</a></li>
+                    <li><a href="#">Kritik dan Saran</a></li>
                 </ol>
             </div>
         </div>
@@ -36,21 +36,34 @@
               <div class="card">
                   <div class="card-header">
                       <strong class="card-title">
-                        New Promote (Default Message)
+                        List Suggestion
                       </strong>
                   </div>
                   <div class="card-body">
-
-                    <form class="" action="/root/promote-email/store" method="post">
-                      {{ csrf_field() }}
-                      <input type="text" name="email[]" class="form-control" placeholder="Email 1 here" required><br>
-                      <input type="text" name="email[]" class="form-control" placeholder="Email 2 here"><br>
-                      <input type="text" name="email[]" class="form-control" placeholder="Email 3 here"><br>
-                      <input type="text" name="email[]" class="form-control" placeholder="Email 4 here"><br>
-                      <input type="text" name="email[]" class="form-control" placeholder="Email 5 here"><br>
-                      <input type="submit" class="form-control btn btn-success" value="Send Email">
-                    </form>
-
+                    <table id="user-management" class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>Id</th>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Message</th>
+                          <th>Created_at</th>
+                          <th>Updated_at</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach($advice as $data)
+                        <tr>
+                          <td>{{ $data->id }}</td>
+                          <td>{{ $data->name }}</td>
+                          <td>{{ $data->email }}</td>
+                          <td>{{ $data->message }}</td>
+                          <td>{{ $data->created_at }}</td>
+                          <td>{{ $data->updated_at }}</td>
+                        </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
                   </div>
               </div>
           </div>

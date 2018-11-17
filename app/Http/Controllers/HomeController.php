@@ -20,7 +20,7 @@ class HomeController extends Controller
     }
 
     public function index()
-    {
+    {       
         if(Auth::user()->role_id == 3){
           $orderan  = Order::where('client_id',Auth::user()->id)->orderBy('created_at', 'desc')->get();
           $user     = User::with('discount')->where('id',Auth::user()->id)->first();
@@ -29,7 +29,8 @@ class HomeController extends Controller
         if(Auth::user()->role_id == 2){
           $orderan  = Transaction::with('order')->with('user')->orderBy('created_at', 'desc')->get();
           return view('designer/home')->with('job', $orderan);
-        }else{
+        }
+        if(Auth::user()->role_id == 1){
           return redirect('/root');
         }
     }
