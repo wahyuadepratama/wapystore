@@ -381,11 +381,17 @@ class AdminController extends Controller
 
     public function storePromoteEmail(Request $request)
     {
+      foreach ($request as $key){
+        $request->validate([
+          'email' => 'required|unique:mailist',
+        ]);
+      }
+
       $count = 0;
       foreach ($request->email as $key) {
         if($key != ""){
           Mail::to($key)->send(new PromoteEmail($key));
-          Mailist::firstOrNew([
+          Mailist::create([
             'email' => $key,
             'last_promote' => Carbon::now()->setTimezone('Asia/Jakarta'),
             'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),

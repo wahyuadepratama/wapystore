@@ -66,12 +66,10 @@ class RegisterController extends Controller
 
           Mail::to($data['email'])->send(new RegisterConfirmation($token, $name));
 
-          Mailist::firstOrNew([
-            'email' => $data['email'],
-            'last_promote' => NULL,
-            'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
-            'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
-          ]);
+          $mailist = Mailist::where('email', $data['email'])->first();
+          if($mailist){
+            $mailist->delete();
+          }
 
           return User::create([
               'name' => $name,

@@ -43,6 +43,11 @@
 
                     <form class="" action="/root/promote-email/store" method="post">
                       {{ csrf_field() }}
+                      @if ($errors->has('email'))
+                          <span class="help-block alert alert-danger form-control">
+                              <small><strong>{{ $errors->first('email') }}</strong></small>
+                          </span><br>
+                      @endif
                       <input type="text" name="email[]" class="form-control" placeholder="Email 1 here" required><br>
                       <input type="text" name="email[]" class="form-control" placeholder="Email 2 here"><br>
                       <input type="text" name="email[]" class="form-control" placeholder="Email 3 here"><br>
