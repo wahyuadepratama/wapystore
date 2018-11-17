@@ -30,6 +30,11 @@
       <!-- LOGIN SECTION START -->
       <div class="login-section mb-80">
           <div class="container">
+            @if($message = Session::get('success'))
+            <div class="alert alert-success" role="alert">
+              {{ $message }}
+            </div>
+            @endif
               <div class="row">
                   <div class="col-md-6">
                       <div class="new-customers">

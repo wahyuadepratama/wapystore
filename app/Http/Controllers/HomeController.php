@@ -53,7 +53,7 @@ class HomeController extends Controller
       $user = User::find(Auth::user()->id);
       $user->password = bcrypt($request->password);
       $user->save();
-      return redirect('/home')->with('success','You have successfully change your password!');
+      return back()->with('success','You have successfully change your password!');
     }
 
     public function validator(array $data)
