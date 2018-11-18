@@ -117,20 +117,6 @@
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-one">
-                    <div class="stat-icon dib"><i class="ti-layout-grid2 text-warning border-warning"></i></div>
-                    <div class="stat-content dib">
-                        <div class="stat-text">Total Transaction</div>
-                        <div class="stat-digit">Rp {{number_format(($moneyAll),0,',','.')}} ,-</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-xl-4 col-lg-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="stat-widget-one">
                     <div class="stat-icon dib"><i class="ti-layout-grid2 text-default border-default"></i></div>
                     <div class="stat-content dib">
                         <div class="stat-text">Mail Promote</div>
