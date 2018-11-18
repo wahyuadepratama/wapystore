@@ -41,19 +41,6 @@
         </div>
     </div>
 
-    <div class="col-xl-4 col-lg-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="stat-widget-one">
-                    <div class="stat-icon dib"><i class="ti-money text-success border-success"></i></div>
-                    <div class="stat-content dib">
-                        <div class="stat-text">Total Profit</div>
-                        <div class="stat-digit">Rp {{number_format(($adminMoney),0,',','.')}} ,-</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <div class="col-xl-4 col-lg-6">
@@ -88,6 +75,34 @@
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-alarm-clock text-info border-info"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Waiting Order</div>
+                        <div class="stat-digit">{{ $waiting }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-money text-success border-success"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Total Profit</div>
+                        <div class="stat-digit">Rp {{number_format(($adminMoney),0,',','.')}} ,-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
                     <div class="stat-icon dib"><i class="ti-layout-grid2 text-warning border-warning"></i></div>
                     <div class="stat-content dib">
                         <div class="stat-text">Total Transaction</div>
@@ -102,15 +117,31 @@
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-one">
-                    <div class="stat-icon dib"><i class="ti-alarm-clock text-info border-info"></i></div>
+                    <div class="stat-icon dib"><i class="ti-layout-grid2 text-warning border-warning"></i></div>
                     <div class="stat-content dib">
-                        <div class="stat-text">Waiting Order</div>
-                        <div class="stat-digit">{{ $waiting }}</div>
+                        <div class="stat-text">Total Transaction</div>
+                        <div class="stat-digit">Rp {{number_format(($moneyAll),0,',','.')}} ,-</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="col-xl-4 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-layout-grid2 text-default border-default"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Mail Promote</div>
+                        <div class="stat-digit">{{ $promote }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- <div class="col-sm-6 col-lg-3">
         <div class="card text-white bg-flat-color-5">
             <div class="card-body pb-0">

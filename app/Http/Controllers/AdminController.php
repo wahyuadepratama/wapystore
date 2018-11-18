@@ -53,12 +53,15 @@ class AdminController extends Controller
 
       $visitor = Visitor::all()->count();
 
+      $promoteMail = Mailist::all();
+
       return view('admin/dashboard')->with(['user' => $user,
                                             'designer' => $designer,
                                             'adminMoney' => $adminMoney,
                                             'moneyAll' => $moneyAll,
                                             'waiting' => $waiting,
-                                            'visitor' => $visitor
+                                            'visitor' => $visitor,
+                                            'promote' => $promoteMail
                                           ]);
     }
 
