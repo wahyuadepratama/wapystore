@@ -407,9 +407,9 @@ class AdminController extends Controller
       return back()->with('success', 'You have succesfully send email to '. $count . ' user!');
     }
 
-    public function storeMailistPromoteEmail(Request $request)
-    {
-      $mailist = Mailist::find($request->id);
+    public function storeMailistPromoteEmail(Request $request, $id)
+    {      
+      $mailist = Mailist::find($id);
       Mail::to($mailist->email)->send(new MailistPromoteEmail($mailist->email, $request->subject, $request->body));
       return back()->with('success', 'You have succesfully send email to '. $mailist->email);
     }

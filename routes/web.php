@@ -103,7 +103,7 @@ Route::get('root/file-design', 'AdminController@redirectToFiles');
 Route::get('root/promote-email', 'AdminController@promoteEmail');
 Route::get('root/promote-email/mailist', 'AdminController@mailistPromoteEmail');
 Route::post('root/promote-email/store', 'AdminController@storePromoteEmail');
-Route::post('root/promote-email/mailist/store', 'AdminController@storeMailistPromoteEmail');
+Route::post('root/promote-email/mailist/store/{id}', 'AdminController@storeMailistPromoteEmail');
 
 Route::get('root/suggestion', 'AdminController@indexSuggestion');
 // ------------- END OF ADMIN ROUTE ----------------//

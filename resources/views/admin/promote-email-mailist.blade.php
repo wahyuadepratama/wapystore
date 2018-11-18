@@ -66,7 +66,7 @@
                             <td>{{ $data->updated_at }}</td>
                             <td>
                               <input type="hidden" name="id" value="{{ $data->id }}">
-                              <input type="submit" value="Send Email" class="btn-sm btn-success">
+                              <input type="submit" onclick='this.form.action="/root/promote-email/mailist/store/{{ $data->id }}";' value="Send Email" class="btn-sm btn-success">
                             </td>
                           </tr>
                           @endforeach
