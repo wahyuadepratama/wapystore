@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Visitor;
 use App\Models\Advice;
+use App\Models\Photo;
 use App\Models\User;
 use Carbon\Carbon;
 
@@ -29,7 +30,8 @@ class GuestController extends Controller
         ]);
       }
 
-      return view('guest.index');
+      $portofolio = Photo::all()->random(9);
+      return view('guest/index')->with('portofolio', $portofolio);
     }
 
     public function confirmation($token)

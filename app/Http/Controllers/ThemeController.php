@@ -24,7 +24,7 @@ class ThemeController extends Controller
 
     public function indexPortofolio()
     {
-      $portofolio = Photo::paginate(6);
+      $portofolio = Photo::paginate(9);
       return view('guest/portofolio')->with('portofolio', $portofolio);
     }
 
