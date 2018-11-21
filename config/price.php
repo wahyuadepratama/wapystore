@@ -1,15 +1,15 @@
 <?php
 
 return [
-    'spanduk' => 70000,
-    'poster' => 60000,
-    'banner' => 70000,
-    'pamflet' => 60000,
-    'id-card' => 50000,
-    'logo' => 100000,
-    'cv' => 40000,
-    'book-cover' => 50000,
-    'calender' => 50000,
-    'maskot' => 200000,
-    'vector' => 60000
+    'spanduk' => 60000,
+    'poster' => 50000,
+    'banner' => 60000,
+    'pamflet' => 50000,
+    'id-card' => 40000,
+    'logo' => 90000,
+    'cv' => 30000,
+    'book-cover' => 40000,
+    'calender' => 40000,
+    'maskot' => 150000,
+    'vector' => 50000
 ];
