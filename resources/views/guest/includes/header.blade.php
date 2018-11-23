@@ -1,7 +1,7 @@
 <!-- START HEADER AREA -->
 <header class="header-area header-wrapper header-2">
     <!-- header-middle-area -->
-    <div id="sticky-header" class="header-middle-area plr-185" style="font-weight: bolder;">
+    <div id="sticky-header" class="header-middle-area plr-185">
         <div class="container-fluid">
             <div class="full-width-mega-dropdown">
                 <div class="row">

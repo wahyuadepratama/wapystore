@@ -30,8 +30,8 @@ class GuestController extends Controller
         ]);
       }
 
-      $portofolio = Photo::all()->random(9);
-      return view('guest/index')->with('portofolio', $portofolio);
+      // $portofolio = Photo::all()->random(9);
+      return view('guest/index');
     }
 
     public function confirmation($token)

@@ -13,23 +13,42 @@ Note: This is the file where you can add your custom styles to change the look o
 /* ----------------------------------------------------
 	You can put your custom css code here:
 -------------------------------------------------------*/
-p.td-title-2{
-  text-align: right;
+#myCarousel{
 }
-.order-payment{
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 5px;
+.carousel-control:hover {
+color: #ff7f00;
 }
-.select2-selection__rendered{
-  background: #fff none repeat scroll 0 0;
-  border: 1px solid transparent;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-  color: #999999;
-  font-size: 13px;
-  height: 40px;
-  margin-bottom: 20px;
-  padding-left: 20px;
-  width: 100%;
+.carousel-control{
+top: 50%;
+bottom: 50%;
+}
+.carousel-caption{
+  padding: 0px;
+  right: 10%;
+  left: 10%;
+  text-shadow:unset;
+  text-align: left;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+  "first-layer second-layer"
+}
+.first-layer{
+  grid-area: first-layer;
+}
+.second-layer{
+  grid-area: second-layer;
+  text-align: left;
+}
+.second-layer > .slider-content-1 .title-container {
+  right: 0%;
+}
+.second-layer > .slider-content-1 > .title-container {
+  width:50%;
+}
+.second-layer > .slider-content-2 .title-container {
+  left: 0%;
 }
 .nivo-controlNav a.active{
 background: #f7482d none repeat scroll 0 0;
@@ -37,6 +56,9 @@ background: #f7482d none repeat scroll 0 0;
 .main-menu > li:hover > a {
     color: #f7482d
 }
-.submit-btn-1 {
+.submit-btn-1{
     background: #f7482d;
+}
+a.button.button-black{
+  background: #f7482d;
 }

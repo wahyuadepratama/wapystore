@@ -48,7 +48,7 @@ Instagram:  @wapydesign
     @yield('head')
 
 </head>
-<body>
+<body class="wide-layout">
 
   <div class="wrapper">
 
