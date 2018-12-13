@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
+use App\Models\CategoryStock;
+use App\Mail\WapyShopOrder;
 use Illuminate\Http\Request;
+use App\Models\ShopOrder;
 use App\Models\Visitor;
 use App\Models\Advice;
 use App\Models\Photo;
 use App\Models\User;
+use App\Models\Stock;
 use Carbon\Carbon;
 
 class GuestController extends Controller
@@ -79,4 +84,107 @@ class GuestController extends Controller
     {
       return redirect()->away('https://docs.google.com/forms/d/e/1FAIpQLScidJZ1Q2wtumjVJMtZyskBqbkXFWBnKfWTShEcCPu0hwDzPg/viewform?usp=sf_link');
     }
+
+    public function indexShop()
+    {
+      $stock = Stock::paginate(12);
+      return view('shop/index')->with('stock', $stock);
+    }
+
+    public function showShop($id)
+    {
+      $stock = Stock::where('id', $id)->first();
+      return view('shop/detail')->with('stock', $stock);
+    }
+
+    public function categoryShop($category)
+    {
+      $category = CategoryStock::where('name', $category)->first();
+      $stock = Stock::where('id_category', $category->id)->paginate(12);
+      return view('shop/index')->with('stock', $stock);
+    }
+
+    public function searchShop(Request $request)
+    {
+      $stock = Stock::where('name', 'LIKE', '%'.$request->search.'%')->paginate(12);
+      return view('shop/index')->with('stock', $stock);
+    }
+
+    public function searchBrandShop(Request $request)
+    {
+      $stock = Stock::where('brand', 'LIKE', '%'.$request->brand.'%')->paginate(12);
+      return view('shop/index')->with('stock', $stock);
+    }
+
+    public function searchHargaShop(Request $request)
+    {
+      if($request->harga == 1){
+        $stock = Stock::where('price', '<=', 100000)->paginate(12);
+        return view('shop/index')->with('stock', $stock);
+      }
+
+      if($request->harga == 2){
+        $stock = Stock::where('price', '>=', 100000)->where('price', '<=', 150000)->paginate(12);
+        return view('shop/index')->with('stock', $stock);
+      }
+
+      if($request->harga == 3){
+        $stock = Stock::where('price', '>=', 150000)->where('price', '<=', 200000)->paginate(12);
+        return view('shop/index')->with('stock', $stock);
+      }
+
+      if($request->harga == 4){
+        $stock = Stock::where('price', '>=', 200000)->where('price', '<=', 250000)->paginate(12);
+        return view('shop/index')->with('stock', $stock);
+      }
+
+      if($request->harga == 5){
+        $stock = Stock::where('price', '>=', 250000)->paginate(12);
+        return view('shop/index')->with('stock', $stock);
+      }
+    }
+
+    public function searchCategoryShop(Request $request)
+    {
+      $stock = Stock::where('id_category', $request->category)->paginate(12);
+      return view('shop/index')->with('stock', $stock);
+    }
+
+    public function storeShop($id, Request $request)
+    {
+      $validator = Validator::make($request->all(), [
+          'email' => 'required',
+          'name' => 'required',
+          'size' => 'required',
+          'city' => 'required',
+          'address' => 'required',
+          'phone' => 'required'
+      ]);
+
+      $data = Stock::find($id)->first();
+      Mail::to($request->email)->send(new WapyShopOrder($request->name, $data->price, $data->name));
+
+      ShopOrder::create([
+        'stock_id' => $id,
+        'email' => $request->email,
+        'name' => $request->name,
+        'size' => $request->size,
+        'city' => $request->city,
+        'address' => $request->address,
+        'phone' => $request->phone,
+        'postal' => $request->postal,
+        'note' => $request->note,
+        'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+      ]);
+
+      return redirect('/shop'.'/'.$id.'/payment');
+    }
+
+    public function paymentShop($id)
+    {
+      $shop = Stock::find($id)->first();
+      return view('shop/payment')->with('price', $shop->price);
+    }
+
 }

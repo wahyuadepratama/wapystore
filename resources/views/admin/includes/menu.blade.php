@@ -66,6 +66,14 @@
                     <a href="/root/suggestion"> <i class="menu-icon fa fa-bookmark"></i>Suggestion</a>
                 </li>
 
+                <li class="menu-item-has-children dropdown {{ Request::is('root/wapyshop', 'root/wapyshop/*') ? 'active' : '' }}">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-themeisle"></i>Wapy Shop</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-windows"></i><a href="/root/wapyshop">List Stock</a></li>
+                        <li><i class="menu-icon fa fa-photo"></i><a href="/root/wapyshop/transaction">Transaction</a></li>
+                    </ul>
+                </li>
+
             </ul>
         </div>
     </nav>

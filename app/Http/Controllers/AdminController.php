@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Stock;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Order;
@@ -12,9 +13,11 @@ use App\Models\Advice;
 use App\Models\Visitor;
 use App\Models\Mailist;
 use App\Models\Discount;
+use App\Models\ShopOrder;
 use App\Mail\PromoteEmail;
 use App\Models\ThemePhoto;
 use App\Models\Transaction;
+use App\Models\CategoryStock;
 use Illuminate\Http\Request;
 use App\Mail\ConfirmPayment;
 use App\Mail\FinishTransaction;
@@ -408,7 +411,7 @@ class AdminController extends Controller
     }
 
     public function storeMailistPromoteEmail(Request $request, $id)
-    {      
+    {
       $mailist = Mailist::find($id);
       Mail::to($mailist->email)->send(new MailistPromoteEmail($mailist->email, $request->subject, $request->body));
       return back()->with('success', 'You have succesfully send email to '. $mailist->email);
@@ -418,6 +421,53 @@ class AdminController extends Controller
     {
       $advice = Advice::all();
       return view('admin/suggestion')->with('advice', $advice);
+    }
+
+    public function indexWapyshop()
+    {
+      $stock = Stock::paginate(5);
+      $category = CategoryStock::all();
+      return view('admin/wapyshop')->with('stock', $stock)->with('category', $category);
+    }
+
+    public function storeStock(Request $request)
+    {
+      $file = time().'_'.$request->file('file')->getClientOriginalName();
+      $request->file('file')->move(public_path().'/storage/stock', $file);
+
+      $unique = rand(100,999);
+      $request->price = $request->price + $unique;
+      
+      Stock::create([
+        'name' => $request->name,
+        'brand' => $request->brand,
+        'price' => $request->price,
+        'size' => $request->size,
+        'weight' => $request->weight,
+        'material' => $request->material,
+        'color' => $request->color,
+        'description' => $request->description,
+        'id_category' => $request->category,
+        'file' => $file,
+        'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta')
+      ]);
+
+      return back()->with('success', 'You have succesfully add stock');
+    }
+
+    public function transactionWapyshop()
+    {
+      $transaction = ShopOrder::with('stock')->orderBy('created_at','desc')->get();
+      return view('admin/wapyshop-transaction')->with('transaction', $transaction);
+    }
+
+    public function changeStatusWapyshop($id, $status)
+    {
+      $shop = ShopOrder::find($id);
+      $shop->status = $status;
+      $shop->save();
+      return back();
     }
 
 }

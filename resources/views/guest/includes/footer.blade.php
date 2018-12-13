@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="footer-logo">
-                        <img src="{{URL::asset('guest/images/logo/wapydesign.svg')}}" alt="main logo" width="100">
+                        <img src="{{URL::asset('guest/images/logo/wapystore.png')}}" alt="main logo" width="100">
                     </div>
                     <ul class="footer-menu-2">
                         <li><a href="/">Home</a></li>

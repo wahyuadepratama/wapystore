@@ -64,6 +64,16 @@ Route::post('order/vector/store', 'OrderController@storeVector');
 
 Route::get('order/destroy/{token}','OrderController@destroyOrder');
 
+Route::get('shop','GuestController@indexShop');
+Route::get('shop/{id}','GuestController@showShop');
+Route::post('shop/{id}/store','GuestController@storeShop');
+Route::get('shop/{id}/payment','GuestController@paymentShop');
+Route::get('shop/category/{category}', 'GuestController@categoryShop');
+Route::get('shop/search/product', 'GuestController@searchShop');
+Route::get('shop/search/brand', 'GuestController@searchBrandShop');
+Route::get('shop/search/harga', 'GuestController@searchHargaShop');
+Route::get('shop/search/category', 'GuestController@searchCategoryShop');
+
 // ------------- ADMIN ROUTE ----------------//
 Route::get('root', 'AdminController@index');
 Route::get('root/user-management','AdminController@indexUser');
@@ -106,4 +116,9 @@ Route::post('root/promote-email/store', 'AdminController@storePromoteEmail');
 Route::post('root/promote-email/mailist/store/{id}', 'AdminController@storeMailistPromoteEmail');
 
 Route::get('root/suggestion', 'AdminController@indexSuggestion');
+
+Route::get('root/wapyshop','AdminController@indexWapyshop');
+Route::post('root/wapyshop/stock/store','AdminController@storeStock');
+Route::get('root/wapyshop/transaction', 'AdminController@transactionWapyshop');
+Route::get('root/wapyshop/{id}/{status}', 'AdminController@changeStatusWapyshop');
 // ------------- END OF ADMIN ROUTE ----------------//
