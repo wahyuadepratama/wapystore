@@ -35,7 +35,7 @@
                           <td>{{ $value->name }}</td>
                           <td>{{ $value->city }}</td>
                           <td>{{ $value->updated_at }}</td>
-                          <td> <a href="/shop/{{ $value->id }}" style="color:black">{{ $value->stock->name }}</a> </td>
+                          <td> <a href="/shop/{{ $value->stock->id }}" style="color:black">{{ $value->stock->name }}</a> </td>
                           <td>
                             @if($value->status == "waiting")
                              <a href="/root/wapyshop/{{ $value->id }}/sent" class="btn-sm btn-danger">{{ $value->status }}</a>
@@ -62,6 +62,7 @@
                                             <div class="col-md-6" style="text-align:right">
                                               Pesanan dibuat :<br>
                                               Product :<br>
+                                              Harga :<br>
                                               Email :<br>
                                               Nama Pemesan :<br>
                                               Ukuran :<br>
@@ -74,6 +75,7 @@
                                             <div class="col-md-6" style="text-align:left">
                                               {{ $value->created_at }}<br>
                                               {{ $value->stock->name }}<br>
+                                              {{ $value->stock->price }}<br>
                                               {{ $value->email }}<br>
                                               {{ $value->name }}<br>
                                               {{ $value->size }}<br>
