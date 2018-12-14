@@ -104,7 +104,17 @@
           </div>
           @endforeach
         </div>
-        <center>{{ $stock->links() }}</center>
+        @if(Request::is('shop/search/brand'))
+          <center>{{ $stock->appends(['brand' => $brand])->links() }}</center>
+        @elseif(Request::is('shop/search/harga'))
+          <center>{{ $stock->appends(['harga' => $price])->links() }}</center>
+        @elseif(Request::is('shop/search/category'))
+          <center>{{ $stock->appends(['category' => $category])->links() }}</center>
+        @elseif(Request::is('shop/search/product'))
+          <center>{{ $stock->appends(['search' => $search])->links() }}</center>
+        @else
+          <center>{{ $stock->links() }}</center>
+        @endif
       </div>
     </div>
 
@@ -160,8 +170,6 @@
                       <div class="mandiri">
                         <a href="#"><img src="{{URL::asset('guest/images/icons/mandiri.png')}}" width="80%" alt=""></a>
                       </div>
-
-
 
                       </div>
                   </div>

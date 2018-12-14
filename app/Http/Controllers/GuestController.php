@@ -107,47 +107,47 @@ class GuestController extends Controller
     public function searchShop(Request $request)
     {
       $stock = Stock::where('name', 'LIKE', '%'.$request->search.'%')->paginate(12);
-      return view('shop/index')->with('stock', $stock);
+      return view('shop/index')->with('stock', $stock)->with('search', $request->search);
     }
 
     public function searchBrandShop(Request $request)
     {
       $stock = Stock::where('brand', 'LIKE', '%'.$request->brand.'%')->paginate(12);
-      return view('shop/index')->with('stock', $stock);
+      return view('shop/index')->with('stock', $stock)->with('brand', $request->brand);
     }
 
     public function searchHargaShop(Request $request)
     {
       if($request->harga == 1){
         $stock = Stock::where('price', '<=', 100000)->paginate(12);
-        return view('shop/index')->with('stock', $stock);
+        return view('shop/index')->with('stock', $stock)->with('price', $request->harga);
       }
 
       if($request->harga == 2){
         $stock = Stock::where('price', '>=', 100000)->where('price', '<=', 150000)->paginate(12);
-        return view('shop/index')->with('stock', $stock);
+        return view('shop/index')->with('stock', $stock)->with('price', $request->harga);
       }
 
       if($request->harga == 3){
         $stock = Stock::where('price', '>=', 150000)->where('price', '<=', 200000)->paginate(12);
-        return view('shop/index')->with('stock', $stock);
+        return view('shop/index')->with('stock', $stock)->with('price', $request->harga);
       }
 
       if($request->harga == 4){
         $stock = Stock::where('price', '>=', 200000)->where('price', '<=', 250000)->paginate(12);
-        return view('shop/index')->with('stock', $stock);
+        return view('shop/index')->with('stock', $stock)->with('price', $request->harga);
       }
 
       if($request->harga == 5){
         $stock = Stock::where('price', '>=', 250000)->paginate(12);
-        return view('shop/index')->with('stock', $stock);
+        return view('shop/index')->with('stock', $stock)->with('price', $request->harga);
       }
     }
 
     public function searchCategoryShop(Request $request)
     {
       $stock = Stock::where('id_category', $request->category)->paginate(12);
-      return view('shop/index')->with('stock', $stock);
+      return view('shop/index')->with('stock', $stock)->with('category', $request->category);
     }
 
     public function storeShop($id, Request $request)
