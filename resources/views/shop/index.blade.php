@@ -39,7 +39,7 @@
                     <option value="Azzura">Azzura</option>
                     <option value="Java Seven">Java Seven</option>
                     <option value="Inflico">Inficlo</option>
-                    <option value="Blackelly">Blackelly</option>
+                    <option value="Blackelly">Blackkelly</option>
                     <option value="Cuci Gudang">Cuci Gudang</option>
                   </select>
                   <button style="margin-top:1%;margin-bottom:5%" type="submit" class="btn-sm btn-warning form-control"><b>Filter Brand</b></a>
