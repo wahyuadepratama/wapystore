@@ -48,7 +48,7 @@
                         <tr>
                           <td>Berat</td>
                           <td>:</td>
-                          <td>{{ $stock->weight }} Kg</td>
+                          <td>{{ $stock->weight }}</td>
                         </tr>
                         <tr>
                           <td>Bahan</td>

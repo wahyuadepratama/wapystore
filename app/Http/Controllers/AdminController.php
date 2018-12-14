@@ -431,7 +431,7 @@ class AdminController extends Controller
 
     public function indexWapyshop()
     {
-      $stock = Stock::paginate(5);
+      $stock = Stock::orderBy('created_at','desc')->paginate(5);
       $category = CategoryStock::all();
       return view('admin/wapyshop')->with('stock', $stock)->with('category', $category);
     }
