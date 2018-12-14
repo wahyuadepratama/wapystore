@@ -23,13 +23,15 @@
       </div>
 
       <div class="wapy-content" style="padding: 20px;">
-        <p style="font-size: 15px" style="text-align: center;">
-          Terima kasih telah melakukan pemesanan di <b> Wapy Shop </b>. Kami sedang memproses pesanan anda.
-          Harap lakukan pembayaran hingga <b>3 digit terakhir</b>. Berikut adalah total pembayaran anda (sudah termasuk ongkos kirim):<br>
-          <center style = "font-size: 25px"> <b> Rp {{number_format (($price), 0, ',', '.')}}, - </b> </center><br>
-          Untuk mempercepat proses packing, setelah melakukan pembayaran anda dapat <b>mengirimkan foto atau screenshoot bukti pembayaran anda</b>
-          ke <b>dealer dimana anda mendapatkan informasi tentang Wapy Shop.</b>
-        </p><br>
+        <center>
+          <p style="font-size: 15px">
+            Terima kasih telah melakukan pemesanan di <b> Wapy Shop </b>. Kami sedang memproses pesanan anda.
+            Harap lakukan pembayaran hingga <b>3 digit terakhir</b>. Berikut adalah total pembayaran anda (sudah termasuk ongkos kirim):<br>
+            <center style = "font-size: 25px"> <b> Rp {{number_format (($price), 0, ',', '.')}}, - </b> </center><br>
+            Untuk mempercepat proses packing, setelah melakukan pembayaran anda dapat <b>mengirimkan foto atau screenshoot bukti pembayaran anda</b>
+            ke <b>dealer dimana anda mendapatkan informasi tentang Wapy Shop.</b>
+          </p>
+        </center><br>
 
         <p style="font-size: 15px">
           Pembayaran dapat dilakukan melalui salah satu akun berikut ini:

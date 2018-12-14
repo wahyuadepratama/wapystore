@@ -34,8 +34,8 @@
                               </li>
                               <li><a href="#">Fashion Wanita</a>
                                 <ul class="dropdwn">
-                                  @php $pria = \App\Models\CategoryStock::where('name', 'LIKE', '%'.'Wanita'.'%')->get(); @endphp
-                                  @foreach($pria as $data2)
+                                  @php $wanita = \App\Models\CategoryStock::where('name', 'LIKE', '%'.'Wanita'.'%')->get(); @endphp
+                                  @foreach($wanita as $data2)
                                   <li>
                                       <a href="/shop/category/{{ $data2->name }}">{{ $data2->name }} (@php echo count(\App\Models\Stock::where('id_category', $data2->id)->get()) @endphp)</a>
                                   </li>
@@ -44,8 +44,8 @@
                               </li>
                               <li><a href="#">Fashion Anak</a>
                                 <ul class="dropdwn">
-                                  @php $pria = \App\Models\CategoryStock::where('name', 'LIKE', '%'.'Fashion'.'%')->get(); @endphp
-                                  @foreach($pria as $data3)
+                                  @php $anak = \App\Models\CategoryStock::where('name', 'LIKE', '%'.'Fashion'.'%')->get(); @endphp
+                                  @foreach($anak as $data3)
                                   <li>
                                       <a href="/shop/category/{{ $data3->name }}">{{ $data3->name }} (@php echo count(\App\Models\Stock::where('id_category', $data3->id)->get()) @endphp)</a>
                                   </li>
@@ -60,6 +60,55 @@
       </div>
     </div>
   </header>
+
+  <div class="mobile-menu-area hidden-lg hidden-md">
+      <div class="container">
+          <div class="row">
+              <div class="col-xs-12">
+                  <div class="mobile-menu">
+                      <nav id="dropdown">
+                          <ul>
+                              <li>
+                                <a href="/shop">Home</a>
+                              </li>
+                              <li><a href="#">Fashion Pria</a>
+                                <ul>
+                                  @php $pria1 = \App\Models\CategoryStock::where('name', 'LIKE', '%'.'Pria'.'%')->get(); @endphp
+                                  @foreach($pria1 as $data11)
+                                  <li>
+                                      <a href="/shop/category/{{ $data11->name }}">{{ $data11->name }} (@php echo count(\App\Models\Stock::where('id_category', $data11->id)->get()) @endphp)</a>
+                                  </li>
+                                  @endforeach
+                                </ul>
+                              </li>
+                              <li><a href="#">Fashion Wanita</a>
+                                <ul>
+                                  @php $wanita = \App\Models\CategoryStock::where('name', 'LIKE', '%'.'Wanita'.'%')->get(); @endphp
+                                  @foreach($wanita as $data21)
+                                  <li>
+                                      <a href="/shop/category/{{ $data21->name }}">{{ $data21->name }} (@php echo count(\App\Models\Stock::where('id_category', $data21->id)->get()) @endphp)</a>
+                                  </li>
+                                  @endforeach
+                                </ul>
+                              </li>
+                              <li><a href="#">Fashion Anak</a>
+                                <ul>
+                                  @php $anak = \App\Models\CategoryStock::where('name', 'LIKE', '%'.'Fashion'.'%')->get(); @endphp
+                                  @foreach($anak as $data31)
+                                  <li>
+                                      <a href="/shop/category/{{ $data31->name }}">{{ $data31->name }} (@php echo count(\App\Models\Stock::where('id_category', $data31->id)->get()) @endphp)</a>
+                                  </li>
+                                  @endforeach
+                                </ul>
+                              </li>
+                          </ul>
+                      </nav>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
   @else
     <header class="header-area header-wrapper header-2">
         <!-- header-middle-area -->
