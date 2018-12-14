@@ -58,13 +58,19 @@ class AdminController extends Controller
 
       $promoteMail = Mailist::all()->count();
 
+      $wapyshopWaiting = ShopOrder::where('status','waiting')->count();
+
+      $wapyshopSuccess = ShopOrder::where('status','sent')->count();
+
       return view('admin/dashboard')->with(['user' => $user,
                                             'designer' => $designer,
                                             'adminMoney' => $adminMoney,
                                             'moneyAll' => $moneyAll,
                                             'waiting' => $waiting,
                                             'visitor' => $visitor,
-                                            'promote' => $promoteMail
+                                            'promote' => $promoteMail,
+                                            'wapyshopWaiting' => $wapyshopWaiting,
+                                            'wapyshopSuccess' => $wapyshopSuccess
                                           ]);
     }
 
@@ -437,7 +443,7 @@ class AdminController extends Controller
 
       $unique = rand(100,999);
       $request->price = $request->price + $unique;
-      
+
       Stock::create([
         'name' => $request->name,
         'brand' => $request->brand,

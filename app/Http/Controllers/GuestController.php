@@ -87,7 +87,7 @@ class GuestController extends Controller
 
     public function indexShop()
     {
-      $stock = Stock::paginate(12);
+      $stock = Stock::orderBy('created_at','desc')->paginate(12);
       return view('shop/index')->with('stock', $stock);
     }
 

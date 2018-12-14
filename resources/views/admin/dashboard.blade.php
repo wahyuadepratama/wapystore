@@ -127,6 +127,34 @@
         </div>
     </div>
 
+    <div class="col-xl-4 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-alarm-clock text-primary border-primary"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Wapy Shop Order Waiting</div>
+                        <div class="stat-digit">{{ $wapyshopWaiting }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-money text-danger border-danger"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Wapy Shop Transaction Success</div>
+                        <div class="stat-digit">{{ $wapyshopSuccess }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- <div class="col-sm-6 col-lg-3">
         <div class="card text-white bg-flat-color-5">
