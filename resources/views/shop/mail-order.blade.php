@@ -29,13 +29,13 @@
       <div class="wapy-content" style="padding: 20px;">
         <p style="font-family: 'Google Sans', sans-serif; font-size: 15px">
           Terima kasih telah melakukan pemesanan di <b> Wapy Shop </b>. Kami sedang memproses pesanan anda.
-          Harap lakukan pembayaran hingga <b>3 digit terakhir</b>. Setelah melakukan pembayaran, <b>kirimkan foto bukti pembayaran anda</b> melalui <b>0896-7625-3311 (Whatsapp)</b> atau <b>@paa0093h (Line)</b>
-          agar kami dapat memprosesnya dengan cepat. Total pesanan Anda adalah: <br>
+          Harap lakukan pembayaran hingga <b>3 digit terakhir</b>. Untuk mempercepat proses packing, setelah melakukan pembayaran anda dapat <b>mengirimkan foto atau screenshoot bukti pembayaran anda</b>
+          ke <b>dealer dimana anda mendapatkan informasi tentang Wapy Shop.</b> Total pesanan Anda adalah: <br>
           <center style = "font-size: 25px"> <b> Rp {{number_format ($price, 0, ',', '.')}}, - <b> </ center>
         </p><br>
 
         <p style="font-family: 'Google Sans', sans-serif; font-size: 15px">
-          Pembayaran dapat dilakukan melalui akun Bank berikut ini:
+          Pembayaran dapat dilakukan salah satu akun berikut ini:
         </p><br>
 
         <table style="font-family: 'Google Sans', sans-serif; font-size: 15px">

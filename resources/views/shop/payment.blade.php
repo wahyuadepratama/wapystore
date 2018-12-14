@@ -23,14 +23,12 @@
       </div>
 
       <div class="wapy-content" style="padding: 20px;">
-        <p style="font-size: 15px">
+        <p style="font-size: 15px" style="text-align: center;">
           Terima kasih telah melakukan pemesanan di <b> Wapy Shop </b>. Kami sedang memproses pesanan anda.
           Harap lakukan pembayaran hingga <b>3 digit terakhir</b>. Berikut adalah total pembayaran anda (sudah termasuk ongkos kirim):<br>
           <center style = "font-size: 25px"> <b> Rp {{number_format (($price), 0, ',', '.')}}, - </b> </center><br>
-          Setelah melakukan pembayaran, <b>kirimkan foto bukti pembayaran anda</b> agar kami dapat memprosesnya dengan cepat.
-          Kirimkan bukti melalui salah satu nomor berikut:<br><br>
-          <li><b>Whatsapp: 0896-7625-3311</b></li>
-          <li><b>Line: @paa0093h</b></li>
+          Untuk mempercepat proses packing, setelah melakukan pembayaran anda dapat <b>mengirimkan foto atau screenshoot bukti pembayaran anda</b>
+          ke <b>dealer dimana anda mendapatkan informasi tentang Wapy Shop.</b>
         </p><br>
 
         <p style="font-size: 15px">
@@ -38,7 +36,6 @@
         </p><br>
 
         <center>
-
           <div class="row">
             <div class="col-md-4">
               <img src="https://wapydesign.com/guest/images/icons/bni.png" width="100px" style="display:block">
@@ -86,7 +83,7 @@
 
           <div class="row">
             <div class="col-md-4">
-              <img src="https://wapydesign.com/guest/images/icons/dana.png" width="100px" style="display:block">              
+              <img src="https://wapydesign.com/guest/images/icons/dana.png" width="100px" style="display:block">
             </div>
             <div class="col-md-4">
               <b>081371321971</b>
