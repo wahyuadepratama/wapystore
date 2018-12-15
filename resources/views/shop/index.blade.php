@@ -42,6 +42,10 @@
                       <option value="Java Seven">Java Seven</option>
                       <option value="Inficlo">Inficlo</option>
                       <option value="Blackkelly">Blackkelly</option>
+                      <option value="Spiccato">Spiccato</option>
+                      <option value="Everflow">Everflow</option>
+                      <option value="Raindoz">Raindoz</option>
+                      <option value="Kuzatura">Kuzatura</option>
                       <option value="Cuci Gudang">Cuci Gudang</option>
                     </select>
                   </div>
