@@ -38,7 +38,7 @@
                     <option value="Catenzo">Catenzo</option>
                     <option value="Azzura">Azzura</option>
                     <option value="Java Seven">Java Seven</option>
-                    <option value="Inflico">Inficlo</option>
+                    <option value="Inficlo">Inficlo</option>
                     <option value="Blackkelly">Blackkelly</option>
                     <option value="Cuci Gudang">Cuci Gudang</option>
                   </select>
