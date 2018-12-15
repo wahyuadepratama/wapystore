@@ -36,7 +36,7 @@ class GuestController extends Controller
       }
 
       // $portofolio = Photo::all()->random(9);
-      return view('guest/index');
+      return redirect('/shop');
     }
 
     public function confirmation($token)
@@ -87,6 +87,22 @@ class GuestController extends Controller
 
     public function indexShop()
     {
+      $visitor = Visitor::all();
+      $found = false;
+      foreach ($visitor as $key) {
+        if($key->ip == $_SERVER['REMOTE_ADDR']){
+          $found = true;
+        }
+      }
+
+      if($found == false){
+        Visitor::create([
+          'ip' => $_SERVER['REMOTE_ADDR'],
+          'created_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+          'updated_at' => Carbon::now()->setTimezone('Asia/Jakarta'),
+        ]);
+      }
+
       $stock = Stock::orderBy('created_at','desc')->paginate(12);
       return view('shop/index')->with('stock', $stock);
     }
@@ -110,44 +126,178 @@ class GuestController extends Controller
       return view('shop/index')->with('stock', $stock)->with('search', $request->search);
     }
 
-    public function searchBrandShop(Request $request)
+    public function searchFilter(Request $request)
     {
-      $stock = Stock::where('brand', 'LIKE', '%'.$request->brand.'%')->paginate(12);
-      return view('shop/index')->with('stock', $stock)->with('brand', $request->brand);
-    }
+            if($request->brand == "Semua" && $request->price == "Semua" && $request->category == "Semua"){
 
-    public function searchHargaShop(Request $request)
-    {
-      if($request->harga == 1){
-        $stock = Stock::where('price', '<=', 100000)->paginate(12);
-        return view('shop/index')->with('stock', $stock)->with('price', $request->harga);
-      }
+                    return redirect('/shop');
 
-      if($request->harga == 2){
-        $stock = Stock::where('price', '>=', 100000)->where('price', '<=', 150000)->paginate(12);
-        return view('shop/index')->with('stock', $stock)->with('price', $request->harga);
-      }
+            }elseif($request->brand == "Semua" && $request->price == "Semua"){
 
-      if($request->harga == 3){
-        $stock = Stock::where('price', '>=', 150000)->where('price', '<=', 200000)->paginate(12);
-        return view('shop/index')->with('stock', $stock)->with('price', $request->harga);
-      }
+                      $stock = Stock::where('id_category', $request->category)->paginate(12);
+                      $hasil = CategoryStock::where('id',$request->category)->first();
+                      return view('shop/index')->with('stock', $stock)
+                                              ->with('category', $request->category)
+                                              ->with('price', $request->price)
+                                              ->with('brand', $request->brand)
+                                              ->with('message', 'Hasil pencarian untuk kategori '.$hasil->name);
 
-      if($request->harga == 4){
-        $stock = Stock::where('price', '>=', 200000)->where('price', '<=', 250000)->paginate(12);
-        return view('shop/index')->with('stock', $stock)->with('price', $request->harga);
-      }
+            }elseif($request->brand == "Semua" && $request->category == "Semua"){
 
-      if($request->harga == 5){
-        $stock = Stock::where('price', '>=', 250000)->paginate(12);
-        return view('shop/index')->with('stock', $stock)->with('price', $request->harga);
-      }
-    }
+                      if($request->price == 1){
+                        $stock = Stock::where('price', '<=', 100000)->paginate(12);
+                        return view('shop/index')->with('stock', $stock)->with('price', $request->price)
+                                                ->with('category', $request->category)->with('brand', $request->brand)
+                                                ->with('message', 'Hasil pencarian untuk harga dibawah Rp100.000');
+                      }
+                      if($request->price == 2){
+                        $stock = Stock::where('price', '>=', 100000)->where('price', '<=', 150000)->paginate(12);
+                        return view('shop/index')->with('stock', $stock)->with('price', $request->price)
+                                                ->with('category', $request->category)->with('brand', $request->brand)
+                                                ->with('message', 'Hasil pencarian untuk harga Rp100.000 - Rp150.000');
+                      }
+                      if($request->price == 3){
+                        $stock = Stock::where('price', '>=', 150000)->where('price', '<=', 200000)->paginate(12);
+                        return view('shop/index')->with('stock', $stock)->with('price', $request->price)
+                                                ->with('category', $request->category)->with('brand', $request->brand)
+                                                ->with('message', 'Hasil pencarian untuk harga Rp150.000 - Rp200.000');
+                      }
+                      if($request->price == 4){
+                        $stock = Stock::where('price', '>=', 200000)->where('price', '<=', 250000)->paginate(12);
+                        return view('shop/index')->with('stock', $stock)->with('price', $request->price)
+                                                ->with('category', $request->category)->with('brand', $request->brand)
+                                                ->with('message', 'Hasil pencarian untuk harga Rp200.000 - Rp250.000');
+                      }
+                      if($request->price == 5){
+                        $stock = Stock::where('price', '>=', 250000)->paginate(12);
+                        return view('shop/index')->with('stock', $stock)->with('price', $request->price)
+                                                ->with('category', $request->category)->with('brand', $request->brand)
+                                                ->with('message', 'Hasil pencarian untuk harga diatas Rp250.000');
+                      }
 
-    public function searchCategoryShop(Request $request)
-    {
-      $stock = Stock::where('id_category', $request->category)->paginate(12);
-      return view('shop/index')->with('stock', $stock)->with('category', $request->category);
+            }elseif($request->price == "Semua" && $request->category == "Semua"){
+
+                    $stock = Stock::where('brand', $request->brand)->paginate(12);
+                    return view('shop/index')->with('stock', $stock)
+                                            ->with('category', $request->category)
+                                            ->with('price', $request->price)
+                                            ->with('brand', $request->brand)
+                                            ->with('message', 'Hasil pencarian brand '.$request->brand);
+
+            }elseif($request->brand == "Semua"){
+
+                    $hasil = CategoryStock::where('id',$request->category)->first();
+
+                    if($request->price == 1){
+                      $stock = Stock::where('price', '<=', 100000)->where('id_category',$request->category)->paginate(12);
+                      return view('shop/index')->with('stock', $stock)->with('price', $request->price)
+                                              ->with('category', $request->category)->with('brand', $request->brand)
+                                              ->with('message', 'Hasil pencarian kategori '. $hasil->name .' dengan harga dibawah Rp100.000');
+                    }
+                    if($request->price == 2){
+                      $stock = Stock::where('price', '>=', 100000)->where('price', '<=', 150000)->where('id_category',$request->category)->paginate(12);
+                      return view('shop/index')->with('stock', $stock)->with('price', $request->price)
+                                              ->with('category', $request->category)->with('brand', $request->brand)
+                                              ->with('message', 'Hasil pencarian kategori '.$hasil->name.' dengan harga Rp100.000 - Rp150.000');
+                    }
+                    if($request->price == 3){
+                      $stock = Stock::where('price', '>=', 150000)->where('price', '<=', 200000)->where('id_category',$request->category)->paginate(12);
+                      return view('shop/index')->with('stock', $stock)->with('price', $request->price)
+                                              ->with('category', $request->category)->with('brand', $request->brand)
+                                              ->with('message', 'Hasil pencarian kategori '.$hasil->name.' dengan harga Rp150.000 - Rp200.000');
+                    }
+                    if($request->price == 4){
+                      $stock = Stock::where('price', '>=', 200000)->where('price', '<=', 250000)->where('id_category',$request->category)->paginate(12);
+                      return view('shop/index')->with('stock', $stock)->with('price', $request->price)
+                                              ->with('category', $request->category)->with('brand', $request->brand)
+                                              ->with('message', 'Hasil pencarian kategori '.$hasil->name.' dengan harga Rp200.000 - Rp250.000');
+                    }
+                    if($request->price == 5){
+                      $stock = Stock::where('price', '>=', 250000)->where('id_category',$request->category)->paginate(12);
+                      return view('shop/index')->with('stock', $stock)->with('price', $request->price)
+                                              ->with('category', $request->category)->with('brand', $request->brand)
+                                              ->with('message', 'Hasil pencarian kategori '.$hasil->name.' dengan harga diatas Rp250.000');
+                    }
+
+            }elseif($request->price == "Semua"){
+
+                    $stock = Stock::where('brand', $request->brand)->where('id_category', $request->category)->paginate(1);
+                    $hasil = CategoryStock::where('id',$request->category)->first();
+                    return view('shop/index')->with('stock', $stock)
+                                            ->with('category', $request->category)
+                                            ->with('price', $request->price)
+                                            ->with('brand', $request->brand)
+                                            ->with('message', 'Hasil pencarian brand '.$request->brand.' dengan kategori '.$hasil->name);
+
+            }elseif($request->category == "Semua"){
+
+                    if($request->price == 1){
+                      $stock = Stock::where('price', '<=', 100000)->where('brand',$request->brand)->paginate(12);
+                      return view('shop/index')->with('stock', $stock)->with('price', $request->price)
+                                              ->with('category', $request->category)->with('brand', $request->brand)
+                                              ->with('message', 'Hasil pencarian brand '. $request->brand .' dengan harga dibawah Rp100.000');
+                    }
+                    if($request->price == 2){
+                      $stock = Stock::where('price', '>=', 100000)->where('price', '<=', 150000)->where('brand',$request->brand)->paginate(12);
+                      return view('shop/index')->with('stock', $stock)->with('price', $request->price)
+                                              ->with('category', $request->category)->with('brand', $request->brand)
+                                              ->with('message', 'Hasil pencarian brand '.$request->brand.' dengan harga Rp100.000 - Rp150.000');
+                    }
+                    if($request->price == 3){
+                      $stock = Stock::where('price', '>=', 150000)->where('price', '<=', 200000)->where('brand',$request->brand)->paginate(12);
+                      return view('shop/index')->with('stock', $stock)->with('price', $request->price)
+                                              ->with('category', $request->category)->with('brand', $request->brand)
+                                              ->with('message', 'Hasil pencarian brand '.$request->brand.' dengan harga Rp150.000 - Rp200.000');
+                    }
+                    if($request->price == 4){
+                      $stock = Stock::where('price', '>=', 200000)->where('price', '<=', 250000)->where('brand',$request->brand)->paginate(12);
+                      return view('shop/index')->with('stock', $stock)->with('price', $request->price)
+                                              ->with('category', $request->category)->with('brand', $request->brand)
+                                              ->with('message', 'Hasil pencarian brand '.$request->brand.' dengan harga Rp200.000 - Rp250.000');
+                    }
+                    if($request->price == 5){
+                      $stock = Stock::where('price', '>=', 250000)->where('brand',$request->brand)->paginate(12);
+                      return view('shop/index')->with('stock', $stock)->with('price', $request->price)
+                                              ->with('category', $request->category)->with('brand', $request->brand)
+                                              ->with('message', 'Hasil pencarian brand '.$request->brand.' dengan harga diatas Rp250.000');
+                    }
+
+            }else{
+
+                    $hasil = CategoryStock::where('id',$request->category)->first();
+
+                    if($request->price == 1){
+                      $stock = Stock::where('price', '<=', 100000)->where('brand',$request->brand)->where('id_category',$request->category)->paginate(12);
+                      return view('shop/index')->with('stock', $stock)->with('price', $request->price)
+                                              ->with('category', $request->category)->with('brand', $request->brand)
+                                              ->with('message', 'Hasil pencarian brand '. $request->brand .' dan kategori '.$hasil->name.' dengan harga dibawah Rp100.000');
+                    }
+                    if($request->price == 2){
+                      $stock = Stock::where('price', '>=', 100000)->where('price', '<=', 150000)->where('brand',$request->brand)->where('id_category',$request->category)->paginate(12);
+                      return view('shop/index')->with('stock', $stock)->with('price', $request->price)
+                                              ->with('category', $request->category)->with('brand', $request->brand)
+                                              ->with('message', 'Hasil pencarian brand '.$request->brand.' dan kategori '.$hasil->name.' dengan harga Rp100.000 - Rp150.000');
+                    }
+                    if($request->price == 3){
+                      $stock = Stock::where('price', '>=', 150000)->where('price', '<=', 200000)->where('brand',$request->brand)->where('id_category',$request->category)->paginate(12);
+                      return view('shop/index')->with('stock', $stock)->with('price', $request->price)
+                                              ->with('category', $request->category)->with('brand', $request->brand)
+                                              ->with('message', 'Hasil pencarian brand '.$request->brand.' dan kategori '.$hasil->name.' dengan harga Rp150.000 - Rp200.000');
+                    }
+                    if($request->price == 4){
+                      $stock = Stock::where('price', '>=', 200000)->where('price', '<=', 250000)->where('brand',$request->brand)->where('id_category',$request->category)->paginate(12);
+                      return view('shop/index')->with('stock', $stock)->with('price', $request->price)
+                                              ->with('category', $request->category)->with('brand', $request->brand)
+                                              ->with('message', 'Hasil pencarian brand '.$request->brand.' dan kategori '.$hasil->name.' dengan harga Rp200.000 - Rp250.000');
+                    }
+                    if($request->price == 5){
+                      $stock = Stock::where('price', '>=', 250000)->where('brand',$request->brand)->where('id_category',$request->category)->paginate(12);
+                      return view('shop/index')->with('stock', $stock)->with('price', $request->price)
+                                              ->with('category', $request->category)->with('brand', $request->brand)
+                                              ->with('message', 'Hasil pencarian brand '.$request->brand.' dan kategori '.$hasil->name.' dengan harga diatas Rp250.000');
+                    }
+
+            }
     }
 
     public function storeShop($id, Request $request)

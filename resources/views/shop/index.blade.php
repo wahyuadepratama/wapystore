@@ -32,48 +32,58 @@
         <div class="row">
             <div class="row">
 
-              <form class="" action="/shop/search/brand" method="get">
+              <form class="" action="/shop/search/filter" method="get">
                 <div class="col-md-4">
-                  <select class="form-control" name="brand">
-                    <option value="Catenzo">Catenzo</option>
-                    <option value="Azzura">Azzura</option>
-                    <option value="Java Seven">Java Seven</option>
-                    <option value="Inficlo">Inficlo</option>
-                    <option value="Blackkelly">Blackkelly</option>
-                    <option value="Cuci Gudang">Cuci Gudang</option>
-                  </select>
-                  <button style="margin-top:1%;margin-bottom:5%" type="submit" class="btn-sm btn-warning form-control"><b>Filter Brand</b></a>
+                  <div class="col-md-12" style="margin-bottom: 3%">
+                    <select class="form-control" name="brand">
+                      <option value="Semua">Filter Brand</option>
+                      <option value="Catenzo">Catenzo</option>
+                      <option value="Azzura">Azzura</option>
+                      <option value="Java Seven">Java Seven</option>
+                      <option value="Inficlo">Inficlo</option>
+                      <option value="Blackkelly">Blackkelly</option>
+                      <option value="Cuci Gudang">Cuci Gudang</option>
+                    </select>
+                  </div>
                 </div>
-              </form>
 
-              <form class="" action="/shop/search/harga" method="get">
                 <div class="col-md-4">
-                  <select class="form-control" name="harga">
-                    <option value="1"> < Rp 100.000</option>
-                    <option value="2"> Rp 100.000 - Rp 150.000</option>
-                    <option value="3"> Rp 150.000 - Rp 200.000</option>
-                    <option value="4"> Rp 200.000 - Rp 250.000</option>
-                    <option value="5"> > Rp 250.000</option>
-                  </select>
-                  <button style="margin-top:1%;margin-bottom:5%" type="submit" class="btn-sm btn-warning form-control"><b>Filter Harga</b></a>
+                  <div class="col-md-12" style="margin-bottom: 3%">
+                    <select class="form-control" name="price">
+                      <option value="Semua">Filter Harga</option>
+                      <option value="1"> < Rp 100.000</option>
+                      <option value="2"> Rp 100.000 - Rp 150.000</option>
+                      <option value="3"> Rp 150.000 - Rp 200.000</option>
+                      <option value="4"> Rp 200.000 - Rp 250.000</option>
+                      <option value="5"> > Rp 250.000</option>
+                    </select>
+                  </div>
                 </div>
-              </form>
 
-              <form class="" action="/shop/search/category" method="get">
                 <div class="col-md-4">
-                  <select class="form-control" name="category">
-                    @php $all = \App\Models\CategoryStock::all(); @endphp
-                    @foreach($all as $data4)
-                    <option value="{{$data4->id}}">{{ $data4->name }}</option>
-                    @endforeach
-                  </select>
-                  <button style="margin-top:1%;margin-bottom:5%" type="submit" class="btn-sm btn-warning form-control"><b>Filter Fashion</b></a>
+                  <div class="col-md-12" style="margin-bottom: 3%">
+                    <select class="form-control" name="category">
+                      <option value="Semua">Filter Category</option>
+                      @php $all = \App\Models\CategoryStock::all(); @endphp
+                      @foreach($all as $data4)
+                      <option value="{{$data4->id}}">{{ $data4->name }}</option>
+                      @endforeach
+                    </select>
+                  </div>
                 </div>
+
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                  <div class="col-md-12">
+                    <button style="margin-top:1%;margin-bottom:5%" type="submit" class="btn-sm btn-warning form-control"><b>Filter Fashion</b></a>
+                  </div>
+                </div>
+                <div class="col-md-3"></div>
               </form>
 
             </div><br>
 
-            <div class="col-md-12" style="margin-bottom: 5%">
+
               <form class="" action="/shop/search/product" method="get">
                 <div class="col-md-12">
                   <input type="text" name="search" class="form-control" style="background-color: #f7f7f794; color:black" placeholder="Search your product..">
@@ -84,9 +94,9 @@
                 </div>
                 <div class="col-md-4"></div>
               </form>
-            </div>
+        </div><br>
 
-        </div>
+        <center><h4><i>@if(isset($message)) {{ $message }}  @endif</i></h4></center>
 
         <div class="gallery">
           @foreach($stock as $data)
@@ -104,12 +114,8 @@
           </div>
           @endforeach
         </div>
-        @if(Request::is('shop/search/brand'))
-          <center>{{ $stock->appends(['brand' => $brand])->links() }}</center>
-        @elseif(Request::is('shop/search/harga'))
-          <center>{{ $stock->appends(['harga' => $price])->links() }}</center>
-        @elseif(Request::is('shop/search/category'))
-          <center>{{ $stock->appends(['category' => $category])->links() }}</center>
+        @if(Request::is('shop/search/filter'))
+          <center>{{ $stock->appends(['brand' => $brand, 'price' => $price, 'category' => $category])->links() }}</center>
         @elseif(Request::is('shop/search/product'))
           <center>{{ $stock->appends(['search' => $search])->links() }}</center>
         @else

@@ -70,9 +70,7 @@ Route::post('shop/{id}/store','GuestController@storeShop');
 Route::get('shop/{id}/payment','GuestController@paymentShop');
 Route::get('shop/category/{category}', 'GuestController@categoryShop');
 Route::get('shop/search/product', 'GuestController@searchShop');
-Route::get('shop/search/brand', 'GuestController@searchBrandShop');
-Route::get('shop/search/harga', 'GuestController@searchHargaShop');
-Route::get('shop/search/category', 'GuestController@searchCategoryShop');
+Route::get('shop/search/filter','GuestController@searchFilter');
 
 // ------------- ADMIN ROUTE ----------------//
 Route::get('root', 'AdminController@index');
