@@ -46,6 +46,8 @@
                       <option value="Everflow">Everflow</option>
                       <option value="Raindoz">Raindoz</option>
                       <option value="Kuzatura">Kuzatura</option>
+                      <option value="CBR Six">CBR Six</option>
+                      <option value="Giardino">Giardino</option>
                       <option value="Cuci Gudang">Cuci Gudang</option>
                     </select>
                   </div>

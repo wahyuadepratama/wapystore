@@ -221,7 +221,7 @@ class GuestController extends Controller
 
             }elseif($request->price == "Semua"){
 
-                    $stock = Stock::where('brand', $request->brand)->where('id_category', $request->category)->paginate(1);
+                    $stock = Stock::where('brand', $request->brand)->where('id_category', $request->category)->paginate(12);
                     $hasil = CategoryStock::where('id',$request->category)->first();
                     return view('shop/index')->with('stock', $stock)
                                             ->with('category', $request->category)
