@@ -36,7 +36,8 @@ class GuestController extends Controller
       }
 
       // $portofolio = Photo::all()->random(9);
-      return redirect('/shop');
+      //return redirect('/shop');
+	return view('guest/index');
     }
 
     public function confirmation($token)
