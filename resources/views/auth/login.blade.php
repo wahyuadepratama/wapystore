@@ -33,7 +33,7 @@
               <div class="row">
                   <div class="col-md-6">
                       <div class="registered-customers">
-                          <h6 class="widget-title border-left mb-50">REGISTERED CUSTOMERS</h6>
+                          <h6 class="widget-title border-left mb-50">LOGIN HERE</h6>
                             <div class="login-account p-30 box-shadow">
                                 <p>If you have an account, Please log in.</p>
                                 <form class="form-horizontal" method="POST" action="{{ route('login') }}">
@@ -52,7 +52,7 @@
                       </div>
                   </div>
                   <!-- new-customers -->
-                  <div class="col-md-6">
+                  <!-- <div class="col-md-6">
                       <div class="new-customers">
                           <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                             {{ csrf_field() }}
@@ -81,7 +81,7 @@
                               </div>
                           </form>
                       </div>
-                  </div>
+                  </div> -->
               </div>
           </div>
       </div>

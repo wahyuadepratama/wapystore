@@ -312,7 +312,7 @@ class GuestController extends Controller
           'phone' => 'required'
       ]);
 
-      $data = Stock::find($id)->first();
+      $data = Stock::where('id', $id)->first();
       Mail::to($request->email)->send(new WapyShopOrder($request->name, $data->price, $data->name));
 
       ShopOrder::create([
@@ -334,7 +334,7 @@ class GuestController extends Controller
 
     public function paymentShop($id)
     {
-      $shop = Stock::find($id)->first();
+      $shop = Stock::where('id', $id)->first();
       return view('shop/payment')->with('price', $shop->price);
     }
 

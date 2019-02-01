@@ -15,10 +15,10 @@
               <div class="row">
                   <div class="col-xs-12">
                       <div class="breadcrumbs-inner">
-                          <h1 class="breadcrumbs-title">Portofolio</h1>
+                          <h1 class="breadcrumbs-title">Design</h1>
                           <ul class="breadcrumb-list">
                               <li><a href="/">Home</a></li>
-                              <li>Portofolio</li>
+                              <li>Design</li>
                           </ul>
                       </div>
                   </div>

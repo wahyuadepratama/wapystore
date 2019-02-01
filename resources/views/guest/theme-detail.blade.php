@@ -36,7 +36,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title text-left mb-40">
-                        <h2>Detail Theme</h2>
+                        <h3>Detail Theme (Click Image for Preview)</h3>
                     </div>
                 </div>
             </div>
@@ -51,10 +51,14 @@
                             <center>
                             <div style="width:40%" id="zoom_03">
                               <img id="view" src="{{asset('storage/theme/'.$theme->photo->path)}}" data-zoom-image="{{asset('storage/theme/'.$theme->path)}}">
-                              <h5 id="viewName">
-                                {{ $theme->photo->name }}
+                            </div>
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                              <h5 id="viewName"style="margin:2%">
+                                <a class="form-control btn btn-success" href="/order/cv/{{ $theme->photo->id }}"><b>Order</b></a>
                               </h5>
                             </div>
+                            <div class="col-md-4"></div>
                             <div class="col-xs-12">
                                 <div id="gallery_01" class="carousel-btn slick-arrow-3 mt-60" width="50%">
                                   @foreach($detail as $data)
@@ -69,7 +73,7 @@
                                 <script type="text/javascript">
                                   function changeView{{ $data->photo->id }}(){
                                     document.getElementById("view").src = "{{asset('storage/theme/'.$data->photo->path)}}";
-                                    document.getElementById("viewName").innerHTML = "{{ $data->photo->name }}";
+                                    document.getElementById("viewName").innerHTML = '<a class="form-control btn btn-success" href="/order/cv/{{ $theme->photo->id }}">Order</a>';
                                   }
                                 </script>
                                 @endforeach

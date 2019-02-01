@@ -13,7 +13,7 @@
     <div class="bend niceties preview-2">
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
-  
+
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
@@ -39,8 +39,8 @@
                       <p class="slider2-title-4">Lakukan registrasi untuk mendapatkan diskon ini.</p>
                   </div>
                   <div class="slider-button wow fadeInUp" data-wow-duration="1s" data-wow-delay="2.5s">
-                      <a href="#" class="button extra-small button-black">
-                          <span class="text-uppercase">REGISTER NOW</span>
+                      <a href="/design" class="button extra-small button-black">
+                          <span class="text-uppercase">ORDER NOW</span>
                       </a>
                   </div>
               </div>
@@ -68,7 +68,7 @@
                       <p class="slider2-title-4">Kami menyediakan beberapa template pilihan dengan kategori yang berbeda sebagai template desainmu.</p>
                   </div>
                   <div class="slider-button wow fadeInUp" data-wow-duration="1s" data-wow-delay="2.5s">
-                      <a href="#" class="button extra-small button-black">
+                      <a href="/theme" class="button extra-small button-black">
                           <span class="text-uppercase">SEE MORE</span>
                       </a>
                   </div>

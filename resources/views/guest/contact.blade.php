@@ -47,12 +47,6 @@
                   </div>
                   <div class="col-sm-3 col-xs-12">
                       <div class="contact-address box-shadow">
-                          <i class="zmdi zmdi-phone"></i>
-                          <h6>LINE: @paa0093h</h6>
-                      </div>
-                  </div>
-                  <div class="col-sm-3 col-xs-12">
-                      <div class="contact-address box-shadow">
                           <i class="zmdi zmdi-whatsapp"></i>
                           <h6>(+628) 96-7625-3311</h6>
                           <h6>(+628) 13-7132-1971</h6>
@@ -63,6 +57,14 @@
                           <i class="zmdi zmdi-email"></i>
                           <h6>official@wapydesign.com</h6>
                           <h6>wapydesign@gmail.com</h6>
+                      </div>
+                  </div>
+                  <div class="col-sm-3 col-xs-12">
+                      <div class="contact-address box-shadow">
+                          <i class="zmdi zmdi-mail-send"></i>
+                          <h6>Rek. Mandiri <b>111-00-0755133-2</b> (Wahyu Ade Pratama)</h6><br>
+                          <h6>Rek. BRI <b>7241-01-005830-53-8</b> (Wahyu Ade Pratama)</h6><br>
+                          <h6>Rek. BNI <b>0682171537</b> (Wahyu Ade Pratama)</h6>
                       </div>
                   </div>
               </div>

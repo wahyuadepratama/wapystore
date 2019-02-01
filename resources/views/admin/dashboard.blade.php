@@ -43,7 +43,7 @@
 
 
 
-    <div class="col-xl-4 col-lg-6">
+    <!-- <div class="col-xl-4 col-lg-6">
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-one">
@@ -69,7 +69,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="col-xl-4 col-lg-6">
         <div class="card">
@@ -85,7 +85,7 @@
         </div>
     </div>
 
-    <div class="col-xl-4 col-lg-6">
+    <!-- <div class="col-xl-4 col-lg-6">
         <div class="card">
             <div class="card-body">
                 <div class="stat-widget-one">
@@ -111,7 +111,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="col-xl-4 col-lg-6">
         <div class="card">

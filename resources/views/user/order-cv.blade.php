@@ -18,7 +18,7 @@
                         <h1 class="breadcrumbs-title">CV</h1>
                         <ul class="breadcrumb-list">
                             <li><a href="/">Home</a></li>
-                            <li>CV</li>
+                            <li>{{ $theme->name }}</li>
                         </ul>
                     </div>
                 </div>
@@ -44,19 +44,13 @@
                         <li>
                             <a  href="#" data-toggle="tab">
                                 <span>02</span>
-                                Tunggu Desain Dibuat
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#pembayaran" data-toggle="tab">
-                                <span>03</span>
-                                Lakukan Pembayaran
+                                Konfirmasi Pembayaran
                             </a>
                         </li>
                         <li>
                             <a href="#order-complete" data-toggle="tab">
-                                <span>04</span>
-                                Desain Akan Dikirim Ke Email
+                                <span>03</span>
+                                Desain Akan Dikirimkan
                             </a>
                         </li>
                     </ul>
@@ -67,29 +61,35 @@
                         <!-- shopping-cart start -->
                         <div class="tab-pane active" id="isi-form">
                             <div class="checkout-content box-shadow p-30">
-                                <form action="/order/cv/store" method="post" enctype="multipart/form-data">
+                                <form action="/order/cv@store" method="post" enctype="multipart/form-data">
                                   {{ csrf_field() }}
                                     <div class="row">
                                         <div class="col-md-6" style="margin-bottom: 10%">
                                             <div class="billing-details pr-10">
-                                                <h6 class="widget-title border-left mb-20">Ketentuan Order CV</h6>
+                                                <h6 class="widget-title border-left mb-20">Order CV</h6>
                                                 <li>
-                                                  1. Mengisi <b>form pesanan</b> selengkap mungkin
+                                                  1. Anda akan memesan CV dengan desain <b>"{{ $theme->name }}"</b>
                                                 </li>
                                                 <li>
-                                                  2. Biaya desain cv <b>Rp {{number_format((Config::get('price.cv')),0,',','.')}} ,-</b>
+                                                  2. Biaya desain CV <b>Rp {{number_format((20000),0,',','.')}} ,-</b>
                                                 </li>
                                                 <li>
-                                                  3. Pengerjaan paling cepat adalah {{ Config::get('time-work.cv') }} hari
+                                                  3. Setelah melakukan pemesanan, kirim bukti pembayaran ke <a target="_blank" rel="noopener noreferrer" href="https://wa.me/6289676253311">WhatsApp (Klik Link Ini)</a>
+                                                </li>
+                                                <li>
+                                                  4. Jika ada pertanyaan, silahkan langsung tanyakan ke nomor WhatsApp diatas
                                                 </li>
                                             </div>
                                             <div class="billing-details pr-10" style="margin-top: 15%">
-                                                <h6 class="widget-title border-left mb-20">Apa yang Akan Anda Dapatkan</h6>
+                                                <h6 class="widget-title border-left mb-20">Info Pembayaran</h6>
                                                 <li>
-                                                  1. Anda akan mendapatkan file cdr, psd, jpg dan png
+                                                  - Rek. Mandiri <b>111-00-0755133-2</b> (Wahyu Ade Pratama)
                                                 </li>
                                                 <li>
-                                                  2. Anda akan mendapatkan kesempatan revisi sebanyak {{ Config::get('revision.cv') }}x
+                                                  - Rek. BRI <b>7241-01-005830-53-8</b> (Wahyu Ade Pratama)
+                                                </li>
+                                                <li>
+                                                  - Rek. BNI <b>0682171537</b> (Wahyu Ade Pratama)
                                                 </li>
                                             </div>
                                         </div>
@@ -97,21 +97,15 @@
                                         <style media="screen">.custom-text{ color: black !important; }</style>
                                         <div class="col-md-6">
                                             <div class="billing-details pr-10" style="margin-bottom: 5%">
-                                                <h6 class="widget-title border-left mb-20">Media Pengiriman Desain</h6>
+                                                <h6 class="widget-title border-left mb-20">Data Pemesan</h6>
 
-                                                <input type="text" disabled value="{{ Auth::user()->email }}">
                                                 @if ($errors->has('phone'))
                                                     <span class="text-danger">
                                                         <small><strong>{{ $errors->first('phone') }}</strong></small>
                                                     </span>
                                                 @endif
-                                                <input type="text" class="custom-text" value="{{ Auth::user()->phone }}" name="phone" placeholder="No HP atau WA" required>
-                                                <input type="text" class="custom-text" value="{{ Auth::user()->sosmed }}" name="sosmed" placeholder="(Opsional)  LINE atau Telegram">
-
-                                            </div>
-
-                                            <div class="billing-details pr-10">
-                                                <h6 class="widget-title border-left mb-20">Order CV</h6>
+                                                <input type="text" class="custom-text" name="name" placeholder="Nama Pemesan" required>
+                                                <input type="text" class="custom-text" name="phone" placeholder="No HP atau WA" required>
 
                                                 @if ($errors->has('theme'))
                                                     <span class="text-danger">
@@ -119,58 +113,12 @@
                                                     </span>
                                                 @endif
 
-                                                <select class="form-control custom-select" name="theme" onchange="myFunction()" id="theme">
-                                                  <option value="Bebas">Pilih Tema Desain</option>
-                                                  @foreach($theme as $value)
-                                                  <option value="{{ $value->name }}">{{ $value->name }}</option>
-                                                  @endforeach
-                                                  <option value="create_own">Tulis Tema Sendiri</option>
-                                                </select>
-                                                <br><br>
-
-                                                  <script type="text/javascript">
-                                                  // In your Javascript (external .js resource or <script> tag)
-                                                    $(document).ready(function() {
-                                                      $('.custom-select').select2();
-                                                    });
-                                                  </script>
-
-                                                <div id="create_own"></div><br>
-                                                <small><i> *Desain yang akan dibuat tidak akan sama persis dengan tema yang dipilih, namun hanya sebagai gambaran seperti apa warna dan model desainya </i></small>
-                                                <small><i> *Pilih 'tulis tema sendiri' jika tidak ada pilihan tema yang sesuai bagi anda </i></small>
-                                                <br><br>
-
-                                                <script>
-                                                function myFunction() {
-
-                                                    var data = document.getElementById("theme").value;
-                                                    if(data == "create_own"){
-                                                      var input = document.createElement("input");
-                                                      input.setAttribute('type', 'text');
-                                                      input.setAttribute('placeholder', 'Tulis permintaan tema disini..');
-                                                      input.setAttribute('name','theme');
-
-                                                      var parent = document.getElementById("create_own");
-                                                      parent.appendChild(input);
-
-                                                      document.getElementById("theme").disabled = true;
-                                                    }
-                                                }
-                                                </script>
-
-                                                @if ($errors->has('content'))
-                                                    <span class="text-danger">
-                                                        <small><strong>{{ $errors->first('content') }}</strong></small>
-                                                    </span>
-                                                @endif
-                                                <textarea value="{{ old('content') }}" name="content" class="custom-textarea" placeholder="Jelaskan konten CV disini. Deskripsikan kebutuhan desain CV seperti apa dan untuk apa akan anda gunakan " required></textarea>
-
                                                 @if ($errors->has('note'))
                                                     <span class="text-danger">
                                                         <small><strong>{{ $errors->first('note') }}</strong></small>
                                                     </span>
                                                 @endif
-                                                <textarea value="{{ old('note') }}" name="note" class="custom-textarea" placeholder="(Opsional) Tambahkan catatan untuk designer. Seperti: warna yang digunakan, posisi konten, dsb"></textarea>
+                                                <textarea value="{{ old('note') }}" name="note" class="custom-textarea" placeholder="(Boleh Dikosongkan) Tambahkan catatan untuk designer. Seperti: warna yang digunakan, posisi konten, dsb"></textarea><br><br>
 
                                                 @if ($errors->has('file'))
                                                     <span class="text-danger">
@@ -178,7 +126,7 @@
                                                     </span>
                                                 @endif
                                                 <input type="file" name="file" class="form-control">
-                                                <small><i> Lampirkan CV selengkap-lengkapnya dalam bentuk word, pdf, atau zip sehingga dapat kami desain dengan optimal </i></small>
+                                                <small><i> Lampirkan CV yang akan didesain disini atau boleh juga melalui <a target="_blank" rel="noopener noreferrer" href="https://wa.me/6289676253311?text=Saya%20sudah%20mengisi%20data.%20Berikut%20saya%20lampirkan%20CV%20yang%20akan%20di%20desain.">WhatsApp (Klik Link Ini)</a></i></small>
                                             </div>
                                             <div class="col-md-12">
                                                 <button class="submit-btn-1 mt-30 btn-hover-1 form-control" type="submit">Pesan Desain</button>

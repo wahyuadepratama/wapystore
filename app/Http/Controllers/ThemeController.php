@@ -22,10 +22,10 @@ class ThemeController extends Controller
       return view('guest/theme-detail')->with('detail', $detail)->with('theme',$first);
     }
 
-    public function indexPortofolio()
+    public function indexDesign()
     {
       $portofolio = Photo::paginate(9);
-      return view('guest/portofolio')->with('portofolio', $portofolio);
+      return view('guest/design')->with('portofolio', $portofolio);
     }
 
     public function search(Request $request)
