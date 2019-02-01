@@ -126,6 +126,7 @@
                                                     </span>
                                                 @endif
                                                 <input type="file" name="file" class="form-control">
+                                                <input type="hidden" name="theme" value="{{ $theme->name }}">
                                                 <small><i> Lampirkan CV yang akan didesain disini atau boleh juga melalui <a target="_blank" rel="noopener noreferrer" href="https://wa.me/6289676253311?text=Saya%20sudah%20mengisi%20data.%20Berikut%20saya%20lampirkan%20CV%20yang%20akan%20di%20desain.">WhatsApp (Klik Link Ini)</a></i></small>
                                             </div>
                                             <div class="col-md-12">

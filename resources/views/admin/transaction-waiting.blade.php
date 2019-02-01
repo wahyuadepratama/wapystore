@@ -43,6 +43,7 @@
                           <th>Owner</th>
                           <th>Theme</th>
                           <th>Price</th>
+                          <th>File</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -53,6 +54,9 @@
                           <td>{{ $value->user->name }}</td>
                           <td>{{ $value->theme }}</td>
                           <td>Rp {{number_format($value->price,0,',','.')}} ,-</td>
+                          <td>
+                            <a class="btn btn-danger" href="{{ asset('/storage/orderan/'. $value->file) }}"><i class="fa fa-download" aria-hidden="true"></i></a>
+                          </td>
                         </tr>
                         @endforeach
                       </tbody>

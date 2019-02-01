@@ -370,14 +370,15 @@ class OrderController extends Controller
 
       $user = User::create([
         'name' => $request->name,
-        'email' => 'user@wapydesign.com',
+        'phone' => $request->phone,
+        'email' => 'user-'.time().'@wapydesign.com',
         'password' => bcrypt('123456'),
         'role_id' => 3,
         'discount_id' => 1
       ]);
 
       $cv = Order::create([
-        'client_id' => 1,
+        'client_id' => $user->id,
         'name' => 'CV',
         'price' => 20000,
         'theme' => $request->theme,

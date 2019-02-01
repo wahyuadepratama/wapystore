@@ -16,14 +16,14 @@
                     <a href="/root"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                 </li>
 
-                <!-- <li class="menu-item-has-children dropdown {{ Request::is('root/user-management', 'root/user-management/*') ? 'active' : '' }}">
+                <li class="menu-item-has-children dropdown {{ Request::is('root/user-management', 'root/user-management/*') ? 'active' : '' }}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>User Management</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="menu-icon fa fa-user"></i><a href="/root/user-management">All User</a></li>
                         <li><i class="menu-icon ti-lock"></i><a href="/root/user-management/blocked">User Blocked</a></li>
-                        <li><i class="menu-icon fa fa-plus-square"></i><a href="/root/user-management/add-designer">Add New Designer</a></li>
+                        <!-- <li><i class="menu-icon fa fa-plus-square"></i><a href="/root/user-management/add-designer">Add New Designer</a></li> -->
                     </ul>
-                </li> -->
+                </li>
 
                 <!-- <li class="menu-item-has-children dropdown {{ Request::is('root/discount-management', 'root/discount-management/*') ? 'active' : '' }}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tags"></i>Discount Management</a>
@@ -37,7 +37,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-shopping-cart"></i>Transactions</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="menu-icon fa fa-bell"></i><a href="/root/transaction">Waiting Order</a></li>
-                        <li><i class="menu-icon fa fa-user"></i><a href="/root/transaction/on-progress">On Progress Order</a></li>
+                        <!-- <li><i class="menu-icon fa fa-user"></i><a href="/root/transaction/on-progress">On Progress Order</a></li> -->
                     </ul>
                 </li>
 
