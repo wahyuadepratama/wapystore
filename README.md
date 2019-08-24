@@ -4,11 +4,6 @@
 - Use Laravel 5.5.43 (PHP >= 7.0)
 - Use Sufee Admin
 
-### 2. Stucture Views
+### 2. UI
 
-- admin > all pages about view admin
-- auth  > all pages about auth in the apps like login, register, forget password, etc
-- errors > all pages about the error page like 404, 403, 501, etc
-- guest > all pages about the user who have not logged in
-- user > all pages about the user who have logged in
-- layouts > all pages about the layouts in the apps
+![Picture1](https://user-images.githubusercontent.com/29891035/63634911-f5025980-c686-11e9-9eac-e887e0f14b35.png)
