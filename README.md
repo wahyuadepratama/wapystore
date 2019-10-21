@@ -1,4 +1,4 @@
-# WAPYDESIGN APPS
+# WAPYSTORE APPS
 
 ### 1. Requirement
 - Use Laravel 5.5.43 (PHP >= 7.0)
